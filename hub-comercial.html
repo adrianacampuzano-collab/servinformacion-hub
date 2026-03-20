@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hub Comercial · Servinformación</title>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #008DD4;
+    --red: #D0131F;
+    --dark: #0a1628;
+    --dark2: #0d1f3c;
+    --surface: #111d35;
+    --surface2: #162340;
+    --border: rgba(0,141,212,0.18);
+    --text: #e8f4fc;
+    --text2: #8aafc8;
+    --white: #ffffff;
+    --grid: rgba(0,141,212,0.04);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Google Sans', 'Montserrat', sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.15;
+  }
+  .orb1 { width: 600px; height: 600px; background: var(--blue); top: -200px; right: -100px; }
+  .orb2 { width: 400px; height: 400px; background: var(--red); bottom: 100px; left: -100px; }
+
+  .layout {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 260px 1fr 380px;
+    grid-template-rows: 64px 1fr;
+    height: 100vh;
+  }
+
+  .topbar {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28px;
+    background: rgba(10,22,40,0.9);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+  }
+
+  .logo { display: flex; align-items: center; gap: 10px; }
+
+  .logo-icon {
+    width: 36px; height: 36px;
+    background: var(--red);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 900; color: white; letter-spacing: -1px;
+    position: relative; overflow: hidden;
+  }
+  .logo-icon::after {
+    content: '';
+    position: absolute;
+    width: 20px; height: 20px;
+    background: var(--blue);
+    border-radius: 50%;
+    right: -6px; bottom: -6px;
+    opacity: 0.7;
+  }
+
+  .logo-text { font-size: 15px; font-weight: 700; color: white; letter-spacing: 0.3px; }
+  .logo-sub { font-size: 9px; font-weight: 400; color: var(--text2); letter-spacing: 2px; text-transform: uppercase; }
+
+  .topbar-center {
+    display: flex; align-items: center; gap: 6px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 7px 14px;
+    width: 340px;
+  }
+  .topbar-center input {
+    background: transparent; border: none; outline: none;
+    color: var(--text); font-family: inherit; font-size: 13px; width: 100%;
+  }
+  .topbar-center input::placeholder { color: var(--text2); }
+
+  .topbar-right { display: flex; align-items: center; gap: 14px; }
+
+  .hs-badge {
+    display: flex; align-items: center; gap: 6px;
+    background: rgba(255,122,0,0.12);
+    border: 1px solid rgba(255,122,0,0.3);
+    border-radius: 8px; padding: 5px 12px;
+    font-size: 12px; color: #ff9a00; font-weight: 600;
+  }
+  .hs-dot {
+    width: 7px; height: 7px; background: #ff7a00;
+    border-radius: 50%; animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .avatar {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue), var(--red));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; cursor: pointer;
+  }
+
+  .sidebar {
+    background: rgba(13,31,60,0.8);
+    border-right: 1px solid var(--border);
+    padding: 24px 0; overflow-y: auto;
+    backdrop-filter: blur(8px);
+  }
+  .sidebar-section { margin-bottom: 32px; }
+  .sidebar-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--text2);
+    padding: 0 20px; margin-bottom: 10px;
+  }
+  .sidebar-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 20px; cursor: pointer; transition: all 0.2s;
+    border-left: 2px solid transparent;
+    font-size: 13px; color: var(--text2); position: relative;
+  }
+  .sidebar-item:hover { background: rgba(0,141,212,0.08); color: var(--text); border-left-color: var(--blue); }
+  .sidebar-item.active { background: rgba(0,141,212,0.12); color: var(--white); border-left-color: var(--blue); }
+  .sidebar-item .icon {
+    width: 30px; height: 30px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; flex-shrink: 0;
+  }
+  .icon-blue { background: rgba(0,141,212,0.15); }
+  .icon-red { background: rgba(208,19,31,0.15); }
+  .icon-green { background: rgba(0,200,100,0.15); }
+  .icon-orange { background: rgba(255,122,0,0.15); }
+
+  .sidebar-badge {
+    margin-left: auto; background: var(--red); color: white;
+    font-size: 10px; font-weight: 700; padding: 1px 7px; border-radius: 10px;
+  }
+  .sidebar-badge.blue { background: var(--blue); }
+
+  .main { overflow-y: auto; padding: 28px; scroll-behavior: smooth; }
+  .page { display: none; animation: fadeIn 0.3s ease; }
+  .page.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .page-header { margin-bottom: 28px; }
+  .page-title { font-size: 26px; font-weight: 700; color: white; letter-spacing: -0.5px; line-height: 1.2; }
+  .page-title span { color: var(--blue); }
+  .page-subtitle { font-size: 13px; color: var(--text2); margin-top: 4px; }
+
+  .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 28px; }
+
+  .stat-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 18px;
+    position: relative; overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s; cursor: default;
+  }
+  .stat-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--blue), transparent);
+  }
+  .stat-card:hover { transform: translateY(-2px); border-color: rgba(0,141,212,0.35); }
+  .stat-card.red::before { background: linear-gradient(90deg, var(--red), transparent); }
+
+  .stat-label { font-size: 11px; color: var(--text2); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+  .stat-value { font-size: 28px; font-weight: 700; color: white; line-height: 1; }
+  .stat-value span { font-size: 14px; font-weight: 400; color: var(--text2); margin-left: 4px; }
+  .stat-change { font-size: 11px; margin-top: 6px; color: #4ade80; }
+  .stat-change.down { color: #f87171; }
+  .stat-icon { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 32px; opacity: 0.1; }
+
+  .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin-bottom: 28px; }
+
+  .material-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden; cursor: pointer;
+    transition: all 0.25s; position: relative;
+  }
+  .material-card:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,141,212,0.15); }
+  .material-card-thumb {
+    height: 110px; display: flex; align-items: center; justify-content: center;
+    font-size: 36px; position: relative; overflow: hidden;
+  }
+  .thumb-blue { background: linear-gradient(135deg, rgba(0,141,212,0.2), rgba(0,141,212,0.05)); }
+  .thumb-red { background: linear-gradient(135deg, rgba(208,19,31,0.2), rgba(208,19,31,0.05)); }
+  .thumb-green { background: linear-gradient(135deg, rgba(0,200,100,0.2), rgba(0,200,100,0.05)); }
+  .thumb-orange { background: linear-gradient(135deg, rgba(255,122,0,0.2), rgba(255,122,0,0.05)); }
+
+  .card-version {
+    position: absolute; top: 10px; right: 10px;
+    background: rgba(0,0,0,0.6); border: 1px solid var(--border);
+    border-radius: 6px; font-size: 10px; padding: 2px 8px; color: var(--text2);
+  }
+  .card-body { padding: 14px; }
+  .card-title { font-size: 13px; font-weight: 600; color: white; margin-bottom: 4px; }
+  .card-meta { font-size: 11px; color: var(--text2); }
+  .card-footer { padding: 10px 14px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .card-stage { font-size: 10px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; padding: 3px 9px; border-radius: 6px; }
+  .stage-blue { background: rgba(0,141,212,0.15); color: var(--blue); }
+  .stage-red { background: rgba(208,19,31,0.15); color: var(--red); }
+  .stage-green { background: rgba(0,200,100,0.15); color: #4ade80; }
+  .stage-orange { background: rgba(255,122,0,0.15); color: #fb923c; }
+  .card-action { background: none; border: none; cursor: pointer; color: var(--text2); font-size: 14px; transition: color 0.2s; }
+  .card-action:hover { color: var(--blue); }
+
+  .funnel-stages { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-bottom: 24px; }
+  .funnel-stage {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px 12px; text-align: center;
+    cursor: pointer; transition: all 0.2s; position: relative;
+  }
+  .funnel-stage:hover, .funnel-stage.active { border-color: var(--blue); background: rgba(0,141,212,0.1); }
+  .funnel-stage-icon { font-size: 22px; margin-bottom: 8px; }
+  .funnel-stage-name { font-size: 11px; font-weight: 600; color: var(--text2); }
+  .funnel-stage-count {
+    position: absolute; top: -6px; right: -6px;
+    background: var(--blue); color: white; font-size: 10px; font-weight: 700;
+    width: 20px; height: 20px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .section-title {
+    font-size: 14px; font-weight: 700; color: white;
+    margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+  }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .hs-panel { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-bottom: 20px; }
+  .hs-panel-header {
+    background: rgba(255,122,0,0.08); border-bottom: 1px solid rgba(255,122,0,0.2);
+    padding: 14px 18px; display: flex; align-items: center; gap: 10px;
+  }
+  .hs-logo { width: 28px; height: 28px; background: #ff7a00; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 15px; }
+  .hs-panel-title { font-size: 13px; font-weight: 700; color: white; }
+  .hs-panel-sub { font-size: 11px; color: var(--text2); }
+  .hs-panel-body { padding: 16px 18px; }
+
+  .hs-deal-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .hs-deal-item:last-child { border-bottom: none; }
+  .hs-deal-avatar {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue), #005a8a);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; flex-shrink: 0;
+  }
+  .hs-deal-info { flex: 1; }
+  .hs-deal-name { font-size: 12px; font-weight: 600; color: white; }
+  .hs-deal-company { font-size: 11px; color: var(--text2); }
+  .hs-deal-value { font-size: 12px; font-weight: 700; color: var(--blue); }
+
+  .chat-panel {
+    background: rgba(13,31,60,0.85); border-left: 1px solid var(--border);
+    display: flex; flex-direction: column; backdrop-filter: blur(8px);
+  }
+  .chat-header { padding: 16px 18px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+  .chat-ai-avatar {
+    width: 34px; height: 34px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--blue), var(--red));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; position: relative;
+  }
+  .chat-ai-avatar::after {
+    content: ''; position: absolute; bottom: -2px; right: -2px;
+    width: 10px; height: 10px; background: #4ade80;
+    border-radius: 50%; border: 2px solid var(--dark);
+  }
+  .chat-header-info { flex: 1; }
+  .chat-name { font-size: 13px; font-weight: 700; color: white; }
+  .chat-status { font-size: 11px; color: #4ade80; }
+
+  .chat-messages {
+    flex: 1; overflow-y: auto; padding: 16px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .chat-messages::-webkit-scrollbar { width: 4px; }
+  .chat-messages::-webkit-scrollbar-track { background: transparent; }
+  .chat-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  .msg { display: flex; gap: 8px; animation: msgIn 0.3s ease; }
+  @keyframes msgIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .msg.user { flex-direction: row-reverse; }
+  .msg-avatar {
+    width: 28px; height: 28px; border-radius: 8px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; align-self: flex-end;
+  }
+  .msg-ai-av { background: linear-gradient(135deg, var(--blue), #005a8a); }
+  .msg-user-av { background: linear-gradient(135deg, var(--red), #8a0010); }
+  .msg-bubble { max-width: 80%; padding: 10px 13px; border-radius: 12px; font-size: 12.5px; line-height: 1.6; }
+  .msg-ai .msg-bubble { background: var(--surface2); border: 1px solid var(--border); color: var(--text); border-bottom-left-radius: 4px; }
+  .msg-user .msg-bubble { background: var(--blue); color: white; border-bottom-right-radius: 4px; }
+  .msg-time { font-size: 10px; color: var(--text2); margin-top: 4px; }
+  .msg-ai .msg-time { text-align: left; }
+  .msg-user .msg-time { text-align: right; }
+
+  .quick-chips { padding: 10px 16px; display: flex; flex-wrap: wrap; gap: 6px; border-top: 1px solid var(--border); }
+  .chip {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 20px; padding: 5px 12px; font-size: 11px;
+    color: var(--text2); cursor: pointer; transition: all 0.2s; font-family: inherit;
+  }
+  .chip:hover { border-color: var(--blue); color: var(--blue); background: rgba(0,141,212,0.08); }
+
+  .chat-input-area { padding: 14px 16px; border-top: 1px solid var(--border); display: flex; gap: 8px; align-items: flex-end; }
+  .chat-input {
+    flex: 1; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 10px 14px; color: var(--text);
+    font-family: inherit; font-size: 13px; outline: none; resize: none;
+    max-height: 100px; line-height: 1.5; transition: border-color 0.2s;
+  }
+  .chat-input:focus { border-color: var(--blue); }
+  .chat-input::placeholder { color: var(--text2); }
+  .send-btn {
+    width: 38px; height: 38px; background: var(--blue); border: none;
+    border-radius: 10px; cursor: pointer; display: flex; align-items: center;
+    justify-content: center; font-size: 15px; transition: all 0.2s; flex-shrink: 0;
+  }
+  .send-btn:hover { background: #00a3f0; transform: scale(1.05); }
+
+  .typing { display: flex; gap: 4px; align-items: center; padding: 4px 0; }
+  .typing span { width: 6px; height: 6px; border-radius: 50%; background: var(--text2); animation: bounce 1.2s infinite; }
+  .typing span:nth-child(2) { animation-delay: 0.2s; }
+  .typing span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+    30% { transform: translateY(-5px); opacity: 1; }
+  }
+
+  .msg-card {
+    background: rgba(0,141,212,0.1); border: 1px solid rgba(0,141,212,0.25);
+    border-radius: 10px; padding: 10px 12px; margin-top: 8px;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .msg-card:hover { border-color: var(--blue); }
+  .msg-card-title { font-size: 12px; font-weight: 600; color: white; margin-bottom: 2px; }
+  .msg-card-meta { font-size: 11px; color: var(--text2); }
+
+  .empty { text-align: center; padding: 60px 20px; }
+  .empty-icon { font-size: 48px; margin-bottom: 12px; opacity: 0.4; }
+  .empty-title { font-size: 16px; font-weight: 600; color: var(--text2); }
+
+  .main::-webkit-scrollbar, .sidebar::-webkit-scrollbar { width: 4px; }
+  .main::-webkit-scrollbar-track, .sidebar::-webkit-scrollbar-track { background: transparent; }
+  .main::-webkit-scrollbar-thumb, .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  .activity-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .activity-item:last-child { border: none; }
+  .activity-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+  .activity-text { font-size: 12px; color: var(--text); line-height: 1.5; }
+  .activity-time { font-size: 11px; color: var(--text2); margin-top: 2px; }
+
+  @media (max-width: 1100px) {
+    .layout { grid-template-columns: 200px 1fr 320px; }
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* NOVEDADES BANNER */
+  .news-banner-wrap {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+    height: 210px;
+  }
+  .news-banner-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #0a1e3a 0%, #0d2a50 60%, #101830 100%);
+  }
+  .news-banner-img {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    opacity: 0.22;
+    transition: opacity 0.5s;
+  }
+  .news-banner-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(8,18,36,0.92) 38%, rgba(8,18,36,0.3) 100%);
+  }
+  .news-banner-shimmer {
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--red), var(--blue));
+    background-size: 200% 100%;
+    animation: shimmer 3s linear infinite;
+  }
+  @keyframes shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+  .news-banner-content {
+    position: relative; z-index: 2;
+    display: flex; height: 100%;
+    flex-direction: column; justify-content: space-between;
+    padding: 18px 20px 16px;
+  }
+  .news-banner-top {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .news-live-badge {
+    font-size: 10px; font-weight: 700; letter-spacing: 1px;
+    color: #4ade80; background: rgba(74,222,128,0.12);
+    border: 1px solid rgba(74,222,128,0.3);
+    border-radius: 20px; padding: 3px 10px;
+    animation: pulse 2s infinite;
+  }
+  .news-banner-counter {
+    font-size: 11px; color: var(--text2);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .news-dot-nav { display: flex; gap: 5px; }
+  .news-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(255,255,255,0.25); cursor: pointer; transition: all 0.2s;
+  }
+  .news-dot.active { background: var(--blue); transform: scale(1.3); }
+
+  .news-banner-body { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 6px 0; }
+  .news-banner-tag {
+    font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; margin-bottom: 6px;
+  }
+  .news-banner-title { font-size: 20px; font-weight: 700; color: white; line-height: 1.25; margin-bottom: 6px; }
+  .news-banner-desc  { font-size: 12px; color: var(--text2); line-height: 1.6; max-width: 420px; }
+
+  .news-banner-footer {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .news-banner-who { font-size: 11px; color: var(--text2); }
+  .news-banner-actions { display: flex; gap: 8px; }
+  .news-banner-btn {
+    border: none; border-radius: 8px;
+    padding: 7px 16px; font-size: 12px; font-weight: 700;
+    cursor: pointer; font-family: inherit; transition: all 0.2s;
+  }
+  .news-banner-btn.primary { background: var(--blue); color: white; }
+  .news-banner-btn.primary:hover { background: #00a3f0; }
+  .news-banner-btn.ghost  { background: rgba(255,255,255,0.08); color: var(--text2); border: 1px solid var(--border); }
+  .news-banner-btn.ghost:hover { background: rgba(255,255,255,0.14); color: white; }
+
+  /* Nav arrows */
+  .news-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    z-index: 3; background: rgba(0,0,0,0.45); border: 1px solid var(--border);
+    width: 28px; height: 28px; border-radius: 50%; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; color: white; transition: background 0.2s;
+    user-select: none;
+  }
+  .news-arrow:hover { background: rgba(0,141,212,0.5); }
+  .news-arrow.prev { left: 12px; }
+  .news-arrow.next { right: 12px; }
+</style>
+</head>
+<body>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
+<div class="layout">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="logo">
+      <div class="logo-icon">S</div>
+      <div>
+        <div class="logo-text">servinformación</div>
+        <div class="logo-sub">Hub Comercial</div>
+      </div>
+    </div>
+    <div class="topbar-center">
+      <span>🔍</span>
+      <input type="text" id="searchInput" placeholder="Buscar material, etapa, producto…" onkeyup="handleSearch(this.value)">
+    </div>
+    <div class="topbar-right">
+      <div class="hs-badge">
+        <div class="hs-dot"></div>
+        HubSpot · 12 deals activos
+      </div>
+      <div class="avatar">JS</div>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Navegación</div>
+      <div class="sidebar-item active" onclick="showPage('inicio', this)">
+        <div class="icon icon-blue">🏠</div> Inicio
+      </div>
+      <div class="sidebar-item" onclick="showPage('materiales', this)">
+        <div class="icon icon-blue">📁</div> Todos los materiales
+        <div class="sidebar-badge blue">47</div>
+      </div>
+      <div class="sidebar-item" onclick="showPage('funnel', this)">
+        <div class="icon icon-red">🎯</div> Por etapa del funnel
+      </div>
+      <div class="sidebar-item" onclick="showPage('hubspot', this)">
+        <div class="icon icon-orange">🔗</div> HubSpot CRM
+        <div class="sidebar-badge">3</div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Etapas</div>
+      <div class="sidebar-item" onclick="showPage('materiales', this); filterByStage('Prospección')">
+        <div class="icon icon-blue">📡</div> Prospección
+        <div class="sidebar-badge blue">8</div>
+      </div>
+      <div class="sidebar-item" onclick="showPage('materiales', this); filterByStage('Calificación')">
+        <div class="icon icon-blue">🔎</div> Calificación
+        <div class="sidebar-badge blue">6</div>
+      </div>
+      <div class="sidebar-item" onclick="showPage('materiales', this); filterByStage('Propuesta')">
+        <div class="icon icon-red">📋</div> Propuesta
+        <div class="sidebar-badge blue">9</div>
+      </div>
+      <div class="sidebar-item" onclick="showPage('materiales', this); filterByStage('Objeciones')">
+        <div class="icon icon-orange">🛡️</div> Objeciones
+        <div class="sidebar-badge blue">7</div>
+      </div>
+      <div class="sidebar-item" onclick="showPage('materiales', this); filterByStage('Cierre')">
+        <div class="icon icon-green">✅</div> Cierre
+        <div class="sidebar-badge blue">5</div>
+      </div>
+      <div class="sidebar-item" onclick="showPage('materiales', this); filterByStage('Post-venta')">
+        <div class="icon icon-green">⭐</div> Post-venta
+        <div class="sidebar-badge blue">12</div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Configuración</div>
+      <div class="sidebar-item" onclick="alert('Funcionalidad de marca disponible — usa los colores #008DD4 y #D0131F con tipografía HARABARA / Google Sans')">
+        <div class="icon icon-blue">🎨</div> Manual de marca
+      </div>
+      <div class="sidebar-item">
+        <div class="icon icon-blue">⚙️</div> Permisos y roles
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main">
+
+    <!-- INICIO -->
+    <div class="page active" id="page-inicio">
+      <div class="page-header">
+        <div class="page-title">Bienvenido, <span>Julián</span> 👋</div>
+        <div class="page-subtitle">Viernes, 20 de marzo 2026 · Todo listo para vender hoy</div>
+      </div>
+
+      <!-- NOVEDADES BANNER -->
+      <div class="news-banner-wrap" id="newsBanner">
+        <div class="news-banner-bg"></div>
+        <div class="news-banner-img" id="bannerImg"></div>
+        <div class="news-banner-overlay"></div>
+        <div class="news-banner-shimmer"></div>
+        <div class="news-arrow prev" onclick="moveBanner(-1)">‹</div>
+        <div class="news-arrow next" onclick="moveBanner(1)">›</div>
+        <div class="news-banner-content">
+          <div class="news-banner-top">
+            <span class="news-live-badge">● NOVEDADES</span>
+            <div class="news-banner-counter">
+              <span id="bannerCount">1 / 3</span>
+              <div class="news-dot-nav" id="bannerDots"></div>
+            </div>
+          </div>
+          <div class="news-banner-body">
+            <div class="news-banner-tag" id="bannerTag"></div>
+            <div class="news-banner-title" id="bannerTitle"></div>
+            <div class="news-banner-desc"  id="bannerDesc"></div>
+          </div>
+          <div class="news-banner-footer">
+            <span class="news-banner-who" id="bannerWho"></span>
+            <div class="news-banner-actions" id="bannerActions"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-icon">📁</div>
+          <div class="stat-label">Materiales activos</div>
+          <div class="stat-value">47 <span>docs</span></div>
+          <div class="stat-change">↑ 3 nuevos esta semana</div>
+        </div>
+        <div class="stat-card red">
+          <div class="stat-icon">🎯</div>
+          <div class="stat-label">Deals en HubSpot</div>
+          <div class="stat-value">12 <span>activos</span></div>
+          <div class="stat-change">↑ COP 890M en pipeline</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📥</div>
+          <div class="stat-label">Descargas este mes</div>
+          <div class="stat-value">248 <span>usos</span></div>
+          <div class="stat-change">↑ 18% vs mes anterior</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">⚠️</div>
+          <div class="stat-label">Docs por actualizar</div>
+          <div class="stat-value">3 <span>pendientes</span></div>
+          <div class="stat-change down">↓ Requieren revisión</div>
+        </div>
+      </div>
+
+      <div class="section-title">📂 Acceso rápido — Materiales más usados</div>
+      <div class="cards-grid" id="quick-cards"></div>
+
+      <div class="section-title">📊 Actividad reciente</div>
+      <div class="hs-panel">
+        <div class="hs-panel-body">
+          <div class="activity-item">
+            <div class="activity-dot" style="background:#4ade80"></div>
+            <div>
+              <div class="activity-text"><strong>María López</strong> descargó "Propuesta Estándar Enterprise v4" para <em>Bancolombia</em></div>
+              <div class="activity-time">Hace 12 min</div>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot" style="background:var(--blue)"></div>
+            <div>
+              <div class="activity-text"><strong>Carlos Rueda</strong> actualizó "Listado de precios Q1 2026" — nueva versión disponible</div>
+              <div class="activity-time">Hace 1 hora</div>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot" style="background:var(--red)"></div>
+            <div>
+              <div class="activity-text"><strong>HubSpot</strong> · Deal "Grupo Éxito — Localización Flota" avanzó a etapa <em>Negociación</em></div>
+              <div class="activity-time">Hace 2 horas</div>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot" style="background:#fb923c"></div>
+            <div>
+              <div class="activity-text"><strong>Andrés Mora</strong> usó el chat IA para generar una respuesta a objeción de precio para <em>EPM</em></div>
+              <div class="activity-time">Hace 3 horas</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MATERIALES -->
+    <div class="page" id="page-materiales">
+      <div class="page-header">
+        <div class="page-title">Todos los <span>Materiales</span></div>
+        <div class="page-subtitle">47 documentos activos · Haz clic en cualquiera para previsualizar</div>
+      </div>
+      <div class="cards-grid" id="all-cards"></div>
+    </div>
+
+    <!-- FUNNEL -->
+    <div class="page" id="page-funnel">
+      <div class="page-header">
+        <div class="page-title">Materiales por <span>Etapa del Funnel</span></div>
+        <div class="page-subtitle">Selecciona la etapa en la que estás con tu prospecto</div>
+      </div>
+      <div class="funnel-stages">
+        <div class="funnel-stage active" onclick="setFunnelStage(this,'📡','Prospección','Scripts de primer contacto, presentación corporativa y perfil de cliente ideal.')">
+          <div class="funnel-stage-icon">📡</div>
+          <div class="funnel-stage-name">Prospección</div>
+          <div class="funnel-stage-count">8</div>
+        </div>
+        <div class="funnel-stage" onclick="setFunnelStage(this,'🔎','Calificación','Preguntas de descubrimiento, guías de calificación BANT y perfiles de ICP.')">
+          <div class="funnel-stage-icon">🔎</div>
+          <div class="funnel-stage-name">Calificación</div>
+          <div class="funnel-stage-count">6</div>
+        </div>
+        <div class="funnel-stage" onclick="setFunnelStage(this,'📋','Propuesta','Plantillas de propuesta por segmento, lista de precios vigente y calculadora de ROI.')">
+          <div class="funnel-stage-icon">📋</div>
+          <div class="funnel-stage-name">Propuesta</div>
+          <div class="funnel-stage-count">9</div>
+        </div>
+        <div class="funnel-stage" onclick="setFunnelStage(this,'🛡️','Objeciones','Banco de objeciones, comparativo vs. competencia y argumentarios por industria.')">
+          <div class="funnel-stage-icon">🛡️</div>
+          <div class="funnel-stage-name">Objeciones</div>
+          <div class="funnel-stage-count">7</div>
+        </div>
+        <div class="funnel-stage" onclick="setFunnelStage(this,'✅','Cierre','Plantillas de contrato, condiciones comerciales y scripts de cierre por urgencia.')">
+          <div class="funnel-stage-icon">✅</div>
+          <div class="funnel-stage-name">Cierre</div>
+          <div class="funnel-stage-count">5</div>
+        </div>
+        <div class="funnel-stage" onclick="setFunnelStage(this,'⭐','Post-venta','Casos de éxito, testimonios, encuestas NPS y scripts de reactivación / upsell.')">
+          <div class="funnel-stage-icon">⭐</div>
+          <div class="funnel-stage-name">Post-venta</div>
+          <div class="funnel-stage-count">12</div>
+        </div>
+      </div>
+      <div class="hs-panel" id="funnel-detail">
+        <div class="hs-panel-header" id="funnel-detail-header">
+          <span style="font-size:20px">📡</span>
+          <div>
+            <div class="hs-panel-title">Prospección</div>
+            <div class="hs-panel-sub">8 materiales disponibles para esta etapa</div>
+          </div>
+        </div>
+        <div class="hs-panel-body">
+          <p style="font-size:13px; color:var(--text2); line-height:1.7;" id="funnel-detail-text">
+            Scripts de primer contacto, presentación corporativa y perfil de cliente ideal.
+          </p>
+          <div class="cards-grid" style="margin-top:16px" id="funnel-cards"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HUBSPOT -->
+    <div class="page" id="page-hubspot">
+      <div class="page-header">
+        <div class="page-title">Integración <span>HubSpot CRM</span></div>
+        <div class="page-subtitle">Deals activos · Sugiere material según la etapa del deal</div>
+      </div>
+      <div class="hs-panel">
+        <div class="hs-panel-header">
+          <div class="hs-logo">🧡</div>
+          <div>
+            <div class="hs-panel-title">HubSpot · Pipeline Comercial</div>
+            <div class="hs-panel-sub">12 deals activos · Última sincronización: hace 5 min</div>
+          </div>
+        </div>
+        <div class="hs-panel-body">
+          <div id="hs-deals"></div>
+        </div>
+      </div>
+      <div class="section-title">💡 Material sugerido por IA para tus deals</div>
+      <div class="cards-grid" id="hs-suggested"></div>
+    </div>
+
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="chat-header">
+      <div class="chat-ai-avatar">🤖</div>
+      <div class="chat-header-info">
+        <div class="chat-name">Asistente Comercial IA</div>
+        <div class="chat-status">● En línea · Servinformación</div>
+      </div>
+    </div>
+
+    <div class="chat-messages" id="chatMessages">
+      <div class="msg msg-ai">
+        <div class="msg-avatar msg-ai-av">S</div>
+        <div>
+          <div class="msg-bubble">
+            ¡Hola! Soy tu asistente comercial de Servinformación 👋<br><br>
+            Puedo ayudarte a <strong>encontrar el material correcto</strong> según tu prospecto, generar respuestas a objeciones, o prepararte para una reunión.<br><br>
+            ¿Con qué necesitas ayuda hoy?
+          </div>
+          <div class="msg-time">Ahora</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="quick-chips">
+      <button class="chip" onclick="sendChip(this.textContent)">📋 Propuesta para banco</button>
+      <button class="chip" onclick="sendChip(this.textContent)">🛡️ Objeción de precio</button>
+      <button class="chip" onclick="sendChip(this.textContent)">📡 Script prospección</button>
+      <button class="chip" onclick="sendChip(this.textContent)">⭐ Caso de éxito</button>
+    </div>
+
+    <div class="chat-input-area">
+      <textarea class="chat-input" id="chatInput" placeholder="Escribe tu consulta…" rows="1"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage()}"
+        oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'"></textarea>
+      <button class="send-btn" onclick="sendMessage()">➤</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const bannerSlides = [
+  {
+    tag: "🆕 Nuevo · Material",
+    tagColor: "#008DD4",
+    title: "Propuesta Enterprise v5 disponible",
+    desc: "Nueva sección de ROI por industria y benchmarks actualizados. Reemplaza la v4 desde hoy. Úsala en todas tus reuniones con grandes cuentas.",
+    who: "📌 Publicado por Carlos Rueda · hace 2 horas",
+    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80",
+    btnPrimary: { label: "Ver documento →", action: "alert('Abriendo Propuesta Enterprise v5 en Drive…')" },
+    btnGhost:   { label: "Ver todos los cambios", action: "showPage('materiales', null)" },
+  },
+  {
+    tag: "🔄 Actualizado · Precios",
+    tagColor: "#fb923c",
+    title: "Lista de Precios Q1 2026 — nueva versión",
+    desc: "Ajuste en descuentos para flotas de más de 50 unidades. Revisa la tabla de escalonamiento antes de tu próxima propuesta.",
+    who: "📌 Publicado por Equipo Pricing · hace 5 horas",
+    img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80",
+    btnPrimary: { label: "Ver precios →", action: "alert('Abriendo Lista de Precios Q1 2026…')" },
+    btnGhost:   { label: "¿Qué cambió?", action: "sendChip('¿Qué cambió en la lista de precios Q1 2026?')" },
+  },
+  {
+    tag: "💡 Tip · Objeciones",
+    tagColor: "#4ade80",
+    title: "Respuesta validada: «Ya tenemos GPS»",
+    desc: "El equipo senior probó una nueva respuesta para esta objeción. Tasa de avance al siguiente paso: +31%. Disponible en el banco de objeciones.",
+    who: "📌 Publicado por Dir. Comercial · hace 1 día",
+    img: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&q=80",
+    btnPrimary: { label: "Ver argumentario →", action: "alert('Abriendo Banco de Objeciones v5…')" },
+    btnGhost:   { label: "Practicar con IA", action: "sendChip('Objeción de precio')" },
+  },
+];
+
+let bannerIdx = 0, bannerTimer;
+
+function renderBanner(idx) {
+  const s = bannerSlides[idx];
+  document.getElementById('bannerImg').style.backgroundImage = `url('${s.img}')`;
+  document.getElementById('bannerTag').innerHTML = `<span style="color:${s.tagColor}">${s.tag}</span>`;
+  document.getElementById('bannerTitle').textContent = s.title;
+  document.getElementById('bannerDesc').textContent  = s.desc;
+  document.getElementById('bannerWho').textContent   = s.who;
+  document.getElementById('bannerCount').textContent = `${idx+1} / ${bannerSlides.length}`;
+  document.getElementById('bannerActions').innerHTML = `
+    <button class="news-banner-btn ghost"  onclick="${s.btnGhost.action}">${s.btnGhost.label}</button>
+    <button class="news-banner-btn primary" onclick="${s.btnPrimary.action}">${s.btnPrimary.label}</button>
+  `;
+  document.querySelectorAll('.news-dot').forEach((d,i) => d.classList.toggle('active', i===idx));
+}
+
+function moveBanner(dir) {
+  bannerIdx = (bannerIdx + dir + bannerSlides.length) % bannerSlides.length;
+  renderBanner(bannerIdx);
+  resetBannerTimer();
+}
+
+function resetBannerTimer() {
+  clearInterval(bannerTimer);
+  bannerTimer = setInterval(() => moveBanner(1), 6000);
+}
+
+function initBanner() {
+  const dots = document.getElementById('bannerDots');
+  bannerSlides.forEach((_,i) => {
+    const d = document.createElement('div');
+    d.className = 'news-dot' + (i===0?' active':'');
+    d.onclick = () => { bannerIdx=i; renderBanner(i); resetBannerTimer(); };
+    dots.appendChild(d);
+  });
+  renderBanner(0);
+  resetBannerTimer();
+}
+
+const materials = [
+  { id:1, title:"Presentación Corporativa Servinformación", type:"📊", thumb:"thumb-blue", stage:"Prospección", stageStyle:"stage-blue", version:"v4", date:"Feb 2026", desc:"Deck completo 24 slides" },
+  { id:2, title:"Script Primer Contacto — Frío", type:"📞", thumb:"thumb-blue", stage:"Prospección", stageStyle:"stage-blue", version:"v2", date:"Ene 2026", desc:"Guión telefónico y por email" },
+  { id:3, title:"Propuesta Estándar Enterprise", type:"📋", thumb:"thumb-red", stage:"Propuesta", stageStyle:"stage-red", version:"v4", date:"Feb 2026", desc:"Template para grandes cuentas" },
+  { id:4, title:"Propuesta PYME — Localización Básica", type:"📋", thumb:"thumb-red", stage:"Propuesta", stageStyle:"stage-red", version:"v3", date:"Feb 2026", desc:"Template para segmento PYME" },
+  { id:5, title:"Banco de Objeciones — Precio y ROI", type:"🛡️", thumb:"thumb-orange", stage:"Objeciones", stageStyle:"stage-orange", version:"v5", date:"Feb 2026", desc:"23 objeciones con respuestas" },
+  { id:6, title:"Caso de Éxito — Logística & Transporte", type:"⭐", thumb:"thumb-green", stage:"Post-venta", stageStyle:"stage-green", version:"v2", date:"Dic 2025", desc:"NPS 94 · ROI documentado" },
+  { id:7, title:"Comparativo vs. Competencia 2026", type:"⚔️", thumb:"thumb-orange", stage:"Objeciones", stageStyle:"stage-orange", version:"v3", date:"Feb 2026", desc:"Maptual, Fleetio, Samsara" },
+  { id:8, title:"Lista de Precios Q1 2026", type:"💰", thumb:"thumb-red", stage:"Propuesta", stageStyle:"stage-red", version:"v1", date:"Feb 2026", desc:"Precios vigentes y descuentos" },
+  { id:9, title:"Contrato Estándar de Servicios", type:"📄", thumb:"thumb-blue", stage:"Cierre", stageStyle:"stage-green", version:"v6", date:"Ene 2026", desc:"Aprobado por Legal" },
+  { id:10, title:"Perfil de Cliente Ideal (ICP)", type:"🎯", thumb:"thumb-blue", stage:"Calificación", stageStyle:"stage-blue", version:"v3", date:"Nov 2025", desc:"Segmentación y criterios BANT" },
+  { id:11, title:"Calculadora de ROI Localización", type:"📈", thumb:"thumb-green", stage:"Propuesta", stageStyle:"stage-red", version:"v2", date:"Ene 2026", desc:"Excel interactivo con fórmulas" },
+  { id:12, title:"Testimonios en Video — Q4 2025", type:"🎬", thumb:"thumb-green", stage:"Post-venta", stageStyle:"stage-green", version:"v1", date:"Dic 2025", desc:"8 videos de clientes reales" },
+];
+
+const hsDeals = [
+  { initials:"BG", name:"Grupo Bancolombia", value:"COP 180M", stage:"Propuesta", color:"#4ade80" },
+  { initials:"EP", name:"EPM Medellín", value:"COP 240M", stage:"Negociación", color:"#fb923c" },
+  { initials:"GX", name:"Grupo Éxito — Flota", value:"COP 95M", stage:"Calificación", color:"var(--blue)" },
+  { initials:"AV", name:"Avianca Cargo", value:"COP 310M", stage:"Propuesta", color:"#4ade80" },
+  { initials:"CV", name:"Cementos Argos", value:"COP 65M", stage:"Primer contacto", color:"var(--text2)" },
+];
+
+const aiResponses = {
+  "propuesta para banco": {
+    text: "Para un prospecto del sector bancario te recomiendo estos materiales en orden:",
+    cards: [
+      { title:"Propuesta Estándar Enterprise v4", meta:"Versión vigente · Feb 2026 · Personalizable" },
+      { title:"Caso de Éxito — Sector Financiero", meta:"ROI documentado · 3 clientes bancarios" },
+      { title:"Comparativo vs. Competencia 2026", meta:"Sección especial sector regulado" }
+    ]
+  },
+  "objeción de precio": {
+    text: "Aquí tienes las mejores respuestas para objeciones de precio en Servinformación:\n\n💬 <b>«Es muy caro»</b> → Enfoca en el costo por unidad/mes vs. pérdidas por falta de visibilidad. Usa la Calculadora de ROI.\n\n💬 <b>«Tenemos una opción más económica»</b> → Activa el Comparativo vs. Competencia — nuestra diferencia está en datos verificados y actualización en tiempo real.\n\n💬 <b>«No tenemos presupuesto ahora»</b> → Propón piloto de 30 días con 5 unidades.",
+    cards: [
+      { title:"Banco de Objeciones — Precio y ROI v5", meta:"23 objeciones con argumentarios listos" },
+      { title:"Calculadora de ROI Localización v2", meta:"Demuestra el retorno en minutos" }
+    ]
+  },
+  "script prospección": {
+    text: "Para prospección de Servinformación usa este marco en 3 partes:\n\n<b>1. Apertura (15 seg):</b> «Buenos días, soy [nombre] de Servinformación, expertos en Localización Inteligente. Hablo con [empresa] que tiene flota de [X] vehículos, ¿correcto?»\n\n<b>2. Gancho (20 seg):</b> «Trabajamos con [empresa similar] y logramos reducir sus costos operativos un 23% en 4 meses. ¿Tiene 10 minutos esta semana para contarle cómo?»\n\n<b>3. CTA:</b> Cierra con fecha y hora específicas.",
+    cards: [
+      { title:"Script Primer Contacto — Frío v2", meta:"Guión completo telefónico y email" },
+      { title:"Perfil de Cliente Ideal (ICP) v3", meta:"Criterios de calificación rápida" }
+    ]
+  },
+  "caso de éxito": {
+    text: "Tenemos casos de éxito sólidos para tus conversaciones. Te sugiero estos según el sector de tu prospecto:",
+    cards: [
+      { title:"Caso — Logística & Transporte v2", meta:"NPS 94 · ROI 3.2x documentado" },
+      { title:"Testimonios en Video Q4 2025", meta:"8 videos de clientes reales" },
+      { title:"Presentación Corporativa v4", meta:"Slides 18-22: success stories" }
+    ]
+  }
+};
+
+const defaultResponses = [
+  "Entendido. Basándome en tu consulta, aquí tienes los materiales más relevantes de nuestro hub comercial:",
+  "Perfecto. Te muestro lo que tenemos disponible para esa situación de venta:",
+  "Bien! Para ese escenario, estos son los recursos que recomiendo usar:",
+];
+
+function renderCard(m) {
+  return `
+    <div class="material-card" onclick="alert('Abriendo: ${m.title}\\n\\nVersión: ${m.version} — ${m.date}\\n\\nEn producción, esto abriría el documento en Google Drive.')">
+      <div class="material-card-thumb ${m.thumb}">
+        <span style="font-size:38px">${m.type}</span>
+        <div class="card-version">${m.version}</div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">${m.title}</div>
+        <div class="card-meta">${m.desc} · ${m.date}</div>
+      </div>
+      <div class="card-footer">
+        <div class="card-stage ${m.stageStyle}">${m.stage}</div>
+        <button class="card-action" onclick="event.stopPropagation(); sendChip('Material: ${m.title}')">💬</button>
+      </div>
+    </div>
+  `;
+}
+
+function renderDeal(d) {
+  return `
+    <div class="hs-deal-item">
+      <div class="hs-deal-avatar">${d.initials}</div>
+      <div class="hs-deal-info">
+        <div class="hs-deal-name">${d.name}</div>
+        <div class="hs-deal-company">Etapa: ${d.stage}</div>
+      </div>
+      <div class="hs-deal-stage" style="background:${d.color}22; color:${d.color}; font-size:10px; font-weight:600; padding:3px 9px; border-radius:6px;">${d.stage}</div>
+      <div class="hs-deal-value" style="margin-left:8px">${d.value}</div>
+    </div>
+  `;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initBanner();
+  document.getElementById('quick-cards').innerHTML = materials.slice(0,6).map(renderCard).join('');
+  document.getElementById('all-cards').innerHTML = materials.map(renderCard).join('');
+  document.getElementById('hs-deals').innerHTML = hsDeals.map(renderDeal).join('');
+  document.getElementById('hs-suggested').innerHTML = materials.filter(m => m.stage==='Propuesta').slice(0,4).map(renderCard).join('');
+  setFunnelStage(document.querySelector('.funnel-stage.active'), '📡', 'Prospección', 'Scripts de primer contacto, presentación corporativa y perfil de cliente ideal.');
+});
+
+function showPage(id, el) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  if(el) el.classList.add('active');
+}
+
+function filterByStage(stage) {
+  const filtered = materials.filter(m => m.stage === stage);
+  document.getElementById('all-cards').innerHTML = filtered.map(renderCard).join('');
+  document.querySelector('#page-materiales .page-subtitle').textContent =
+    `${filtered.length} materiales para etapa: ${stage}`;
+}
+
+function setFunnelStage(el, icon, name, desc) {
+  document.querySelectorAll('.funnel-stage').forEach(s => s.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('funnel-detail-header').innerHTML = `
+    <span style="font-size:20px">${icon}</span>
+    <div>
+      <div class="hs-panel-title">${name}</div>
+      <div class="hs-panel-sub">${materials.filter(m=>m.stage===name).length || '~'} materiales disponibles para esta etapa</div>
+    </div>
+  `;
+  document.getElementById('funnel-detail-text').textContent = desc;
+  const filtered = materials.filter(m => m.stage === name);
+  document.getElementById('funnel-cards').innerHTML = filtered.length ?
+    filtered.map(renderCard).join('') :
+    `<p style="color:var(--text2); font-size:13px">Materiales de esta etapa próximamente.</p>`;
+}
+
+function handleSearch(q) {
+  if(!q || q.length < 2) return;
+  const filtered = materials.filter(m =>
+    m.title.toLowerCase().includes(q.toLowerCase()) ||
+    m.stage.toLowerCase().includes(q.toLowerCase())
+  );
+  showPage('materiales', null);
+  document.getElementById('all-cards').innerHTML = filtered.length ?
+    filtered.map(renderCard).join('') :
+    `<div class="empty"><div class="empty-icon">🔍</div><div class="empty-title">Sin resultados para "${q}"</div></div>`;
+}
+
+function sendMessage() {
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if(!text) return;
+  addMessage(text, 'user');
+  input.value = '';
+  input.style.height = 'auto';
+  showTyping();
+  setTimeout(() => {
+    removeTyping();
+    const key = Object.keys(aiResponses).find(k => text.toLowerCase().includes(k));
+    if(key) {
+      const r = aiResponses[key];
+      addAIMessage(r.text, r.cards);
+    } else {
+      const r = defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
+      addAIMessage(r, materials.filter(() => Math.random() > 0.6).slice(0,2).map(m => ({title: m.title, meta: m.desc + ' · ' + m.version})));
+    }
+  }, 1200 + Math.random() * 600);
+}
+
+function sendChip(text) {
+  document.getElementById('chatInput').value = text;
+  sendMessage();
+}
+
+function addMessage(text, role) {
+  const c = document.getElementById('chatMessages');
+  const isUser = role === 'user';
+  const d = document.createElement('div');
+  d.className = `msg ${isUser ? 'msg-user' : 'msg-ai'}`;
+  d.innerHTML = `
+    <div class="msg-avatar ${isUser ? 'msg-user-av' : 'msg-ai-av'}">${isUser ? '👤' : 'S'}</div>
+    <div>
+      <div class="msg-bubble">${text}</div>
+      <div class="msg-time">${new Date().toLocaleTimeString('es-CO',{hour:'2-digit',minute:'2-digit'})}</div>
+    </div>
+  `;
+  c.appendChild(d);
+  c.scrollTop = c.scrollHeight;
+}
+
+function addAIMessage(text, cards) {
+  const c = document.getElementById('chatMessages');
+  const d = document.createElement('div');
+  d.className = 'msg msg-ai';
+  const cardsHtml = cards && cards.length ? cards.map(card => `
+    <div class="msg-card" onclick="alert('Abriendo: ${card.title}')">
+      <div class="msg-card-title">📄 ${card.title}</div>
+      <div class="msg-card-meta">${card.meta}</div>
+    </div>
+  `).join('') : '';
+  d.innerHTML = `
+    <div class="msg-avatar msg-ai-av">S</div>
+    <div>
+      <div class="msg-bubble">${text}${cardsHtml}</div>
+      <div class="msg-time">${new Date().toLocaleTimeString('es-CO',{hour:'2-digit',minute:'2-digit'})}</div>
+    </div>
+  `;
+  c.appendChild(d);
+  c.scrollTop = c.scrollHeight;
+}
+
+function showTyping() {
+  const c = document.getElementById('chatMessages');
+  const d = document.createElement('div');
+  d.className = 'msg msg-ai'; d.id = 'typing-indicator';
+  d.innerHTML = `
+    <div class="msg-avatar msg-ai-av">S</div>
+    <div><div class="msg-bubble"><div class="typing"><span></span><span></span><span></span></div></div></div>
+  `;
+  c.appendChild(d); c.scrollTop = c.scrollHeight;
+}
+
+function removeTyping() {
+  const t = document.getElementById('typing-indicator');
+  if(t) t.remove();
+}
+</script>
+</body>
+</html>
