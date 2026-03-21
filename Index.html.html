@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hub Comercial · Servinformación</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#008DD4;--blue-mid:rgba(0,141,212,0.12);--blue-light:#e8f5fd;
+  --red:#D0131F;--green:#22c55e;--orange:#f97316;--purple:#8b5cf6;
+  --dark:#06101f;--dark2:#091629;--surface:#0d1d35;--surface2:#112240;--surface3:#162b4a;
+  --border:rgba(255,255,255,0.07);--border2:rgba(0,141,212,0.2);
+  --text:#cdd9e8;--text2:#6b8399;--text3:#8faec8;--white:#fff;
+  --radius:14px;--radius-sm:9px;--radius-xs:6px;
+  --shadow:0 8px 32px rgba(0,0,0,0.4);--shadow-blue:0 8px 32px rgba(0,141,212,0.18);
+  --menu-w:260px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;overflow:hidden;}
+body{font-family:'Inter',sans-serif;background:var(--dark);color:var(--text);font-size:13px;line-height:1.5;}
+body::before{content:'';position:fixed;inset:0;
+  background-image:radial-gradient(ellipse 80% 60% at 70% -10%,rgba(0,141,212,0.08),transparent 60%),
+    radial-gradient(ellipse 50% 40% at 10% 90%,rgba(208,19,31,0.06),transparent 60%);
+  pointer-events:none;z-index:0;}
+
+/* ── APP SHELL ── */
+.app{position:relative;z-index:1;display:grid;grid-template-rows:56px 1fr;height:100vh;}
+
+/* ── TOPBAR ── */
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 20px;gap:12px;
+  background:rgba(6,16,31,0.96);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(20px);
+  position:relative;z-index:100;
+}
+.topbar-left{display:flex;align-items:center;gap:12px;}
+
+/* HAMBURGER */
+.ham-btn{
+  width:36px;height:36px;border-radius:9px;
+  background:var(--surface);border:1px solid var(--border);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  cursor:pointer;transition:all .2s;flex-shrink:0;
+}
+.ham-btn:hover{background:var(--surface2);border-color:var(--border2);}
+.ham-line{width:16px;height:1.5px;background:var(--text3);border-radius:2px;transition:all .3s;}
+.ham-btn.open .ham-line:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.ham-btn.open .ham-line:nth-child(2){opacity:0;transform:scaleX(0);}
+.ham-btn.open .ham-line:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+
+.logo{display:flex;align-items:center;gap:9px;}
+.logo-mark{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--red),#a50f19);
+  display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#fff;
+  position:relative;overflow:hidden;flex-shrink:0;}
+.logo-mark::after{content:'';position:absolute;width:14px;height:14px;background:var(--blue);
+  border-radius:50%;right:-4px;bottom:-4px;opacity:.8;}
+.logo-name{font-size:13px;font-weight:700;color:#fff;letter-spacing:-.2px;}
+.logo-tag{font-size:8.5px;font-weight:500;color:var(--text2);letter-spacing:2px;text-transform:uppercase;}
+
+.top-search{display:flex;align-items:center;gap:8px;background:var(--surface);
+  border:1px solid var(--border);border-radius:10px;padding:0 12px;width:280px;height:36px;flex:1;max-width:300px;}
+.top-search input{background:transparent;border:none;outline:none;color:var(--text);
+  font-family:inherit;font-size:12.5px;width:100%;}
+.top-search input::placeholder{color:var(--text2);}
+
+.top-right{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.hs-pill{display:flex;align-items:center;gap:6px;background:rgba(249,115,22,0.1);
+  border:1px solid rgba(249,115,22,0.25);border-radius:20px;padding:5px 12px;
+  font-size:11px;color:#fb923c;font-weight:600;}
+.pulse-dot{width:6px;height:6px;border-radius:50%;background:#f97316;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.75);}}
+.avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--red));
+  display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:700;color:#fff;cursor:pointer;}
+
+/* ── DRAWER OVERLAY ── */
+.overlay{
+  position:fixed;inset:0;top:56px;
+  background:rgba(0,0,0,0);
+  pointer-events:none;
+  transition:background .3s;
+  z-index:90;
+}
+.overlay.show{background:rgba(0,0,0,0.55);pointer-events:all;}
+
+/* ── DRAWER MENU ── */
+.drawer{
+  position:fixed;left:0;top:56px;bottom:0;
+  width:var(--menu-w);
+  background:var(--dark2);
+  border-right:1px solid var(--border);
+  transform:translateX(-100%);
+  transition:transform .3s cubic-bezier(.4,0,.2,1);
+  z-index:95;
+  display:flex;flex-direction:column;
+  overflow:hidden;
+}
+.drawer.open{transform:translateX(0);}
+.drawer-inner{flex:1;overflow-y:auto;padding:16px 10px 20px;}
+.drawer-inner::-webkit-scrollbar{width:0;}
+
+/* DRAWER HEADER */
+.drawer-hdr{
+  padding:14px 16px 12px;
+  border-bottom:1px solid var(--border);
+  background:rgba(0,141,212,0.04);
+  flex-shrink:0;
+}
+.drawer-hdr-title{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;}
+.drawer-hdr-sub{font-size:10px;color:var(--text2);margin-top:2px;}
+
+/* DRAWER GROUPS */
+.dg{margin-bottom:6px;}
+.dg-label{
+  font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--text2);padding:12px 10px 5px;display:flex;align-items:center;gap:6px;
+}
+.dg-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* STEP ITEM — collapsible trigger */
+.step-item{
+  display:flex;align-items:center;gap:9px;
+  padding:9px 10px;border-radius:var(--radius-sm);
+  cursor:pointer;transition:all .18s;
+  font-size:12.5px;font-weight:600;color:var(--text3);
+  position:relative;user-select:none;
+}
+.step-item:hover{background:var(--surface2);color:var(--white);}
+.step-item.active{background:var(--blue-mid);color:var(--white);}
+.step-item.active::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:3px;height:18px;background:var(--blue);border-radius:0 3px 3px 0;}
+.step-num{width:20px;height:20px;border-radius:6px;display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:800;background:rgba(0,141,212,0.15);color:var(--blue);flex-shrink:0;}
+.step-item.active .step-num{background:var(--blue);color:#fff;}
+.step-ico{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+.ic-b{background:rgba(0,141,212,0.1);} .ic-r{background:rgba(208,19,31,0.1);}
+.ic-g{background:rgba(34,197,94,0.1);} .ic-o{background:rgba(249,115,22,0.1);}
+.ic-p{background:rgba(139,92,246,0.1);}
+.step-arrow{margin-left:auto;font-size:10px;color:var(--text2);transition:transform .25s;flex-shrink:0;}
+.step-item.expanded .step-arrow{transform:rotate(90deg);}
+.sb-badge{margin-left:auto;font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:10px;
+  background:var(--blue);color:#fff;flex-shrink:0;}
+.sb-badge.r{background:var(--red);} .sb-badge.g{background:var(--green);}
+
+/* SUB-ITEMS */
+.sub-items{
+  max-height:0;overflow:hidden;
+  transition:max-height .3s cubic-bezier(.4,0,.2,1),opacity .25s;
+  opacity:0;padding-left:14px;
+}
+.sub-items.open{max-height:300px;opacity:1;}
+.sub-item{
+  display:flex;align-items:center;gap:8px;
+  padding:7px 10px;border-radius:7px;
+  cursor:pointer;transition:all .15s;
+  font-size:12px;font-weight:500;color:var(--text2);
+  border-left:1px solid var(--border);margin-left:4px;
+}
+.sub-item:hover{background:var(--surface2);color:var(--text);border-left-color:var(--border2);}
+.sub-item.active{background:var(--blue-mid);color:#fff;border-left-color:var(--blue);}
+.sub-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+
+/* DIVIDER */
+.dv{height:1px;background:var(--border);margin:6px 8px 10px;}
+
+/* ── CONTENT AREA ── */
+.content{overflow-y:auto;padding:22px 24px;scroll-behavior:smooth;height:100%;}
+.content::-webkit-scrollbar{width:4px;}
+.content::-webkit-scrollbar-thumb{background:var(--surface3);border-radius:4px;}
+
+/* ── BODY LAYOUT (content + chat) ── */
+.body-row{display:flex;height:calc(100vh - 56px);overflow:hidden;}
+.content-wrap{flex:1;overflow:hidden;position:relative;}
+.chat-wrap{width:300px;flex-shrink:0;border-left:1px solid var(--border);}
+
+/* ── PAGE ── */
+.page{display:none;}
+.page.active{display:block;animation:fadeUp .28s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.ph{margin-bottom:20px;}
+.ph-title{font-size:22px;font-weight:700;color:#fff;letter-spacing:-.5px;line-height:1.2;}
+.ph-title em{color:var(--blue);font-style:normal;}
+.ph-sub{font-size:12px;color:var(--text2);margin-top:3px;}
+
+/* ── BANNER ── */
+.banner{position:relative;border-radius:var(--radius);overflow:hidden;height:190px;margin-bottom:20px;border:1px solid var(--border2);}
+.b-bg{position:absolute;inset:0;background:var(--surface2);}
+.b-upload-btn{
+  position:absolute;bottom:12px;right:52px;z-index:4;
+  display:flex;align-items:center;gap:5px;
+  background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.15);
+  backdrop-filter:blur(8px);border-radius:8px;
+  padding:5px 12px;font-size:11px;font-weight:600;color:rgba(255,255,255,.7);
+  cursor:pointer;transition:all .2s;user-select:none;
+}
+.b-upload-btn:hover{background:rgba(0,141,212,.5);border-color:rgba(0,141,212,.6);color:#fff;}
+.b-upload-btn span{display:inline;}
+.b-photo{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.28;transition:opacity .6s,background-image .4s;}
+.b-gradient{position:absolute;inset:0;background:linear-gradient(105deg,rgba(6,16,31,.97) 35%,rgba(6,16,31,.4));}
+.b-accent{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--red),var(--purple),var(--blue));background-size:300%;animation:flow 4s linear infinite;}
+@keyframes flow{0%{background-position:0%;}100%{background-position:300%;}}
+.b-arr{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:26px;height:26px;border-radius:50%;
+  background:rgba(255,255,255,.06);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;
+  font-size:12px;color:var(--text3);cursor:pointer;transition:all .2s;user-select:none;}
+.b-arr:hover{background:rgba(0,141,212,.3);color:#fff;border-color:var(--blue);}
+.b-arr.l{left:10px;} .b-arr.r{right:10px;}
+.b-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:space-between;padding:16px 18px 14px;}
+.b-top{display:flex;align-items:center;justify-content:space-between;}
+.b-live{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--green);
+  background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);border-radius:20px;padding:3px 10px;animation:pulse 2s infinite;}
+.b-nav{display:flex;align-items:center;gap:8px;}
+.b-counter{font-size:10px;color:var(--text2);}
+.b-dots{display:flex;gap:4px;}
+.b-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.2);cursor:pointer;transition:all .2s;}
+.b-dot.on{background:var(--blue);transform:scale(1.5);}
+.b-body{flex:1;display:flex;flex-direction:column;justify-content:center;padding:6px 0;}
+.b-tag{font-size:9.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;}
+.b-title{font-size:17px;font-weight:700;color:#fff;line-height:1.25;margin-bottom:4px;}
+.b-desc{font-size:11.5px;color:var(--text3);line-height:1.55;max-width:380px;}
+.b-foot{display:flex;align-items:center;justify-content:space-between;}
+.b-who{font-size:10px;color:var(--text2);}
+.b-actions{display:flex;gap:6px;}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:5px;border:none;border-radius:var(--radius-xs);
+  padding:6px 13px;font-size:11.5px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .18s;}
+.btn-primary{background:var(--blue);color:#fff;} .btn-primary:hover{background:#009be8;}
+.btn-ghost{background:rgba(255,255,255,.06);color:var(--text3);border:1px solid var(--border);} .btn-ghost:hover{background:rgba(255,255,255,.1);color:#fff;}
+.btn-purple{background:rgba(139,92,246,.15);color:#a78bfa;border:1px solid rgba(139,92,246,.25);} .btn-purple:hover{background:rgba(139,92,246,.25);}
+
+/* ── STATS ── */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:15px;position:relative;overflow:hidden;transition:transform .18s,border-color .18s;}
+.stat:hover{transform:translateY(-2px);border-color:var(--border2);}
+.stat-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.stat-ico{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;}
+.stat-delta{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;}
+.delta-up{background:rgba(34,197,94,.1);color:var(--green);} .delta-dn{background:rgba(239,68,68,.1);color:#f87171;}
+.stat-val{font-size:24px;font-weight:700;color:#fff;line-height:1;margin-bottom:2px;}
+.stat-val sup{font-size:12px;font-weight:500;color:var(--text2);margin-left:2px;}
+.stat-lbl{font-size:10.5px;color:var(--text2);}
+.stat-line{position:absolute;bottom:0;left:0;right:0;height:2px;opacity:.5;}
+
+/* ── SEC ── */
+.sec{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.sec-t{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;white-space:nowrap;}
+.sec-line{flex:1;height:1px;background:var(--border);}
+
+/* ── QUICK ── */
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;}
+.qcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;cursor:pointer;transition:all .2s;}
+.qcard:hover{border-color:var(--border2);background:var(--surface2);transform:translateY(-2px);box-shadow:var(--shadow);}
+.qc-ico{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:8px;}
+.qc-t{font-size:12.5px;font-weight:600;color:#fff;margin-bottom:3px;}
+.qc-s{font-size:11px;color:var(--text2);line-height:1.4;}
+
+/* ── ACTIVITY ── */
+.act-list{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+.act-row{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border-bottom:1px solid var(--border);transition:background .15s;}
+.act-row:last-child{border:none;} .act-row:hover{background:var(--surface2);}
+.act-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:4px;}
+.act-txt{font-size:12px;color:var(--text);line-height:1.5;}
+.act-txt strong{color:#fff;font-weight:600;} .act-txt em{color:var(--blue);font-style:normal;}
+.act-time{font-size:10px;color:var(--text2);margin-top:2px;}
+
+/* ── CARDS ── */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:10px;margin-bottom:20px;}
+.mat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:all .22s;}
+.mat-card:hover{border-color:var(--border2);transform:translateY(-3px);box-shadow:var(--shadow-blue);}
+.mc-thumb{height:90px;display:flex;align-items:center;justify-content:center;font-size:30px;position:relative;}
+.th-b{background:linear-gradient(135deg,rgba(0,141,212,.15),rgba(0,141,212,.03));}
+.th-r{background:linear-gradient(135deg,rgba(208,19,31,.15),rgba(208,19,31,.03));}
+.th-g{background:linear-gradient(135deg,rgba(34,197,94,.15),rgba(34,197,94,.03));}
+.th-o{background:linear-gradient(135deg,rgba(249,115,22,.15),rgba(249,115,22,.03));}
+.th-p{background:linear-gradient(135deg,rgba(139,92,246,.15),rgba(139,92,246,.03));}
+.mc-ver{position:absolute;top:7px;right:7px;background:rgba(0,0,0,.55);border:1px solid var(--border);border-radius:4px;font-size:9px;padding:1px 6px;color:var(--text2);}
+.mc-body{padding:11px 12px;}
+.mc-title{font-size:12px;font-weight:600;color:#fff;margin-bottom:3px;line-height:1.35;}
+.mc-meta{font-size:10.5px;color:var(--text2);}
+.mc-foot{padding:8px 12px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.mc-tag{font-size:9.5px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;padding:2px 7px;border-radius:4px;}
+.tg-b{background:rgba(0,141,212,.15);color:var(--blue);} .tg-r{background:rgba(208,19,31,.12);color:#f87171;}
+.tg-g{background:rgba(34,197,94,.12);color:var(--green);} .tg-o{background:rgba(249,115,22,.12);color:var(--orange);}
+.tg-p{background:rgba(139,92,246,.12);color:var(--purple);}
+.mc-chat{background:none;border:none;cursor:pointer;color:var(--text2);font-size:12px;transition:color .15s;}
+.mc-chat:hover{color:var(--blue);}
+
+/* ── SOL TABS ── */
+.sol-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;}
+.sol-tab{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:5px 13px;font-size:11.5px;font-weight:500;color:var(--text2);cursor:pointer;transition:all .18s;font-family:inherit;display:flex;align-items:center;gap:5px;}
+.sol-tab:hover{border-color:var(--border2);color:var(--text);} .sol-tab.on{background:var(--blue-mid);border-color:var(--border2);color:#fff;font-weight:600;}
+.sol-tab-dot{width:5px;height:5px;border-radius:50%;}
+
+/* ── PANEL ── */
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:16px;}
+.panel-h{padding:12px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);}
+.panel-h.blue{background:rgba(0,141,212,.06);} .panel-h.green{background:rgba(34,197,94,.06);}
+.panel-h.orange{background:rgba(249,115,22,.06);} .panel-h.purple{background:rgba(139,92,246,.06);}
+.panel-ico{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;}
+.panel-title{font-size:12.5px;font-weight:700;color:#fff;}
+.panel-sub{font-size:10.5px;color:var(--text2);}
+.panel-body{padding:14px 16px;}
+
+/* ── TRAINING ── */
+.mod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.mod-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px;cursor:pointer;transition:all .2s;}
+.mod-card:hover{border-color:var(--border2);transform:translateY(-2px);}
+.mod-ico{font-size:22px;margin-bottom:8px;}
+.mod-t{font-size:12px;font-weight:700;color:#fff;margin-bottom:3px;}
+.mod-d{font-size:11px;color:var(--text2);line-height:1.5;}
+.prog-bar{height:3px;background:var(--surface3);border-radius:3px;overflow:hidden;margin-top:10px;}
+.prog-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--blue),#22d3ee);}
+.prog-lbl{font-size:9.5px;color:var(--text2);margin-top:4px;}
+
+/* ── PLAYBOOK ── */
+.pb-row{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--border);}
+.pb-row:last-child{border:none;}
+.pb-num{width:28px;height:28px;border-radius:8px;background:var(--blue-mid);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:700;color:var(--blue);flex-shrink:0;margin-top:1px;}
+.pb-t{font-size:12.5px;font-weight:700;color:#fff;margin-bottom:3px;}
+.pb-d{font-size:11.5px;color:var(--text2);line-height:1.5;}
+.pb-chips{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px;}
+.pb-chip{background:var(--surface3);border:1px solid var(--border);border-radius:5px;padding:2px 8px;font-size:10px;color:var(--text2);}
+
+/* ── COUNTRIES ── */
+.country-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin-bottom:16px;}
+.c-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px;text-align:center;cursor:pointer;transition:all .2s;}
+.c-card:hover,.c-card.on{background:var(--blue-mid);border-color:var(--border2);}
+.c-flag{font-size:22px;margin-bottom:5px;}
+.c-name{font-size:11.5px;font-weight:600;color:#fff;}
+.c-sols{font-size:10px;color:var(--text2);margin-top:1px;}
+
+/* ── NOTEBOOK ── */
+.nb-hero{background:linear-gradient(135deg,rgba(139,92,246,.1),rgba(0,141,212,.08));border:1px solid rgba(139,92,246,.2);border-radius:var(--radius);padding:18px;margin-bottom:16px;}
+.nb-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.nb-brand{display:flex;align-items:center;gap:10px;}
+.nb-logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#7c3aed,#4c1d95);display:flex;align-items:center;justify-content:center;font-size:16px;}
+.nb-name{font-size:13.5px;font-weight:700;color:#fff;} .nb-sub{font-size:10.5px;color:var(--text2);}
+.nb-books{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;}
+.nb-book{background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.15);border-radius:var(--radius-sm);padding:13px;cursor:pointer;transition:all .2s;}
+.nb-book:hover{border-color:rgba(139,92,246,.4);background:rgba(139,92,246,.14);transform:translateY(-1px);}
+.nb-book-ico{font-size:18px;margin-bottom:6px;}
+.nb-book-t{font-size:12px;font-weight:700;color:#fff;margin-bottom:3px;}
+.nb-book-d{font-size:10.5px;color:var(--text2);line-height:1.5;}
+.nb-tag{display:inline-block;margin-top:6px;font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:rgba(139,92,246,.18);color:#a78bfa;}
+.nb-tag.live{background:rgba(34,197,94,.12);color:var(--green);}
+.nb-cta{display:flex;align-items:center;justify-content:space-between;background:rgba(0,0,0,.2);border-radius:var(--radius-sm);padding:10px 14px;}
+.nb-cta-txt{font-size:11.5px;color:var(--text2);} .nb-cta-txt strong{color:#fff;}
+.nb-featured{grid-column:span 3;background:rgba(34,197,94,.04);border-color:rgba(34,197,94,.25)!important;overflow:hidden;padding:0;}
+.nb-featured:hover{border-color:rgba(34,197,94,.45)!important;transform:none;}
+.nb-feat-head{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(34,197,94,.12);}
+.nb-feat-info{display:flex;align-items:center;gap:10px;}
+.nb-feat-ico{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#7c3aed,#4c1d95);display:flex;align-items:center;justify-content:center;font-size:14px;}
+.nb-feat-t{font-size:12.5px;font-weight:700;color:#fff;} .nb-feat-s{font-size:10px;color:var(--text2);}
+.nb-live{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--green);background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);border-radius:20px;padding:3px 10px;animation:pulse 2s infinite;}
+.nb-feat-actions{display:flex;align-items:center;gap:8px;}
+.nb-iframe-wrap{width:100%;height:400px;background:var(--surface2);}
+.nb-iframe-wrap iframe{width:100%;height:100%;border:none;}
+
+/* ── HUBSPOT ── */
+.hs-stage-col{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;}
+.hs-stage-hdr{font-size:10.5px;font-weight:700;color:var(--text3);padding:8px 10px;border-top:3px solid;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
+.hs-stage-hdr span{background:var(--surface3);border-radius:10px;padding:1px 7px;font-size:10px;color:var(--text2);}
+.hs-deal-mini{font-size:11.5px;font-weight:600;color:#fff;padding:9px 10px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s;}
+.hs-deal-mini:hover{background:var(--surface2);} .hs-deal-mini:last-child{border:none;}
+.hs-task{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);}
+.hs-task-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.hs-task-info{flex:1;}
+.hs-task-t{font-size:12px;color:var(--text);margin-bottom:2px;} .hs-task-t strong{color:#fff;}
+.hs-task-s{font-size:10.5px;color:var(--text2);}
+
+/* ── DEAL ROW ── */
+.deal-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);}
+.deal-row:last-child{border:none;}
+.deal-av{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--blue),#0064a0);display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;color:#fff;flex-shrink:0;}
+.deal-info{flex:1;} .deal-n{font-size:12px;font-weight:600;color:#fff;} .deal-s{font-size:10.5px;color:var(--text2);}
+.deal-stage{font-size:9.5px;font-weight:700;padding:2px 8px;border-radius:5px;white-space:nowrap;}
+.deal-v{font-size:11.5px;font-weight:700;color:var(--blue);white-space:nowrap;}
+
+/* ── CHAT ── */
+.chat{background:var(--dark2);display:flex;flex-direction:column;height:100%;overflow:hidden;}
+.chat-head{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px;background:rgba(0,141,212,.04);flex-shrink:0;}
+.chat-av{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--red));display:flex;align-items:center;justify-content:center;font-size:14px;position:relative;}
+.chat-av::after{content:'';position:absolute;bottom:-1px;right:-1px;width:9px;height:9px;background:var(--green);border-radius:50%;border:2px solid var(--dark2);}
+.chat-n{font-size:12.5px;font-weight:700;color:#fff;} .chat-s{font-size:10.5px;color:var(--green);}
+.chat-msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;}
+.chat-msgs::-webkit-scrollbar{width:3px;} .chat-msgs::-webkit-scrollbar-thumb{background:var(--surface3);border-radius:3px;}
+.msg{display:flex;gap:7px;animation:msgIn .25s ease;}
+@keyframes msgIn{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:translateY(0);}}
+.msg.u{flex-direction:row-reverse;}
+.msg-av{width:25px;height:25px;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;align-self:flex-end;}
+.av-ai{background:linear-gradient(135deg,var(--blue),#004f87);} .av-u{background:linear-gradient(135deg,var(--red),#7a0010);}
+.msg-b{max-width:84%;padding:9px 12px;border-radius:11px;font-size:12px;line-height:1.6;}
+.msg-ai .msg-b{background:var(--surface2);border:1px solid var(--border);color:var(--text);border-bottom-left-radius:3px;}
+.msg-u .msg-b{background:var(--blue);color:#fff;border-bottom-right-radius:3px;}
+.msg-t{font-size:9.5px;color:var(--text2);margin-top:3px;}
+.msg-ai .msg-t{text-align:left;} .msg-u .msg-t{text-align:right;}
+.m-card{background:rgba(0,141,212,.09);border:1px solid rgba(0,141,212,.2);border-radius:8px;padding:8px 10px;margin-top:6px;cursor:pointer;transition:border-color .15s;}
+.m-card:hover{border-color:var(--blue);}
+.m-card-t{font-size:11.5px;font-weight:600;color:#fff;margin-bottom:1px;} .m-card-s{font-size:10.5px;color:var(--text2);}
+.chips-bar{padding:8px 12px;display:flex;flex-wrap:wrap;gap:5px;border-top:1px solid var(--border);flex-shrink:0;}
+.chip{background:var(--surface2);border:1px solid var(--border);border-radius:16px;padding:4px 10px;font-size:10.5px;color:var(--text2);cursor:pointer;transition:all .15s;font-family:inherit;}
+.chip:hover{border-color:var(--border2);color:var(--blue);background:var(--blue-mid);}
+.chat-inp-row{padding:10px 12px;border-top:1px solid var(--border);display:flex;gap:7px;align-items:flex-end;flex-shrink:0;}
+.chat-inp{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:8px 12px;color:var(--text);font-family:inherit;font-size:12.5px;outline:none;resize:none;max-height:80px;line-height:1.5;transition:border-color .15s;}
+.chat-inp:focus{border-color:var(--border2);} .chat-inp::placeholder{color:var(--text2);}
+.send{width:34px;height:34px;background:var(--blue);border:none;border-radius:9px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:all .18s;flex-shrink:0;}
+.send:hover{background:#009be8;}
+.typing{display:flex;gap:3px;align-items:center;}
+.typing span{width:5px;height:5px;border-radius:50%;background:var(--text2);animation:bop 1.2s infinite;}
+.typing span:nth-child(2){animation-delay:.2s;} .typing span:nth-child(3){animation-delay:.4s;}
+@keyframes bop{0%,60%,100%{transform:translateY(0);opacity:.4;}30%{transform:translateY(-5px);opacity:1;}}
+
+.empty{text-align:center;padding:40px 16px;}
+.empty-ico{font-size:36px;margin-bottom:8px;opacity:.3;}
+.empty-t{font-size:13px;font-weight:600;color:var(--text2);}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <div class="ham-btn" id="hamBtn" onclick="toggleMenu()">
+        <div class="ham-line"></div>
+        <div class="ham-line"></div>
+        <div class="ham-line"></div>
+      </div>
+      <div class="logo">
+        <img 
+          src="https://drive.google.com/thumbnail?id=1RBkan2v4xB_8VPYXKTc1SO0_8xu98357&sz=w200"
+          style="height:42px;width:auto;object-fit:contain;display:block;filter:brightness(1.1);"
+          alt="Servinformación"
+          onerror="this.style.display='none';document.getElementById('logoFallback').style.display='flex'">
+        <div id="logoFallback" style="display:none;width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#D0131F,#a50f19);align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#fff;position:relative;overflow:hidden;">S<div style="position:absolute;width:14px;height:14px;background:#008DD4;border-radius:50%;right:-4px;bottom:-4px;opacity:.8;"></div></div>
+        <div>
+          <div class="logo-name">servinformación</div>
+          <div class="logo-tag">Localización Inteligente · Hub Comercial</div>
+        </div>
+      </div>
+    </div>
+    <div class="top-search">
+      <span style="color:var(--text2);font-size:13px">🔍</span>
+      <input type="text" placeholder="Buscar solución, país, material…" onkeyup="handleSearch(this.value)">
+    </div>
+    <div class="top-right">
+      <div class="hs-pill"><div class="pulse-dot"></div>HubSpot · 12 deals</div>
+      <div class="avatar">AD</div>
+    </div>
+  </header>
+
+  <!-- BODY -->
+  <div class="body-row">
+
+    <!-- OVERLAY -->
+    <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+    <!-- DRAWER -->
+    <nav class="drawer" id="drawer">
+      <div class="drawer-hdr">
+        <div class="drawer-hdr-title">Menú de navegación</div>
+        <div class="drawer-hdr-sub">+20 soluciones · +12 países</div>
+      </div>
+      <div class="drawer-inner">
+
+        <!-- Inicio -->
+        <div class="dg">
+          <div class="step-item active" id="si-inicio" onclick="nav('inicio');closeMenu()">
+            <div class="step-ico ic-b">🏠</div>
+            Inicio
+          </div>
+        </div>
+
+        <div class="dv"></div>
+
+        <!-- Paso 1 -->
+        <div class="dg">
+          <div class="dg-label">1 · Formación</div>
+          <div class="step-item expanded" id="si-training" onclick="toggleStep('training-sub',this)">
+            <div class="step-num">1</div>
+            <div class="step-ico ic-b">🎓</div>
+            Plan de entrenamiento
+            <div class="sb-badge">20+</div>
+            <span class="step-arrow">›</span>
+          </div>
+          <div class="sub-items open" id="training-sub">
+            <div class="sub-item on" onclick="nav('training');closeMenu()"><div class="sub-dot" style="background:#008DD4"></div>Por solución</div>
+            <div class="sub-item" onclick="nav('training');closeMenu()"><div class="sub-dot" style="background:#22c55e"></div>Mi progreso</div>
+            <div class="sub-item" onclick="nav('training');closeMenu()"><div class="sub-dot" style="background:#f97316"></div>Certificaciones</div>
+          </div>
+        </div>
+
+        <!-- Paso 2 -->
+        <div class="dg">
+          <div class="dg-label">2 · Material</div>
+          <div class="step-item" id="si-material" onclick="toggleStep('material-sub',this)">
+            <div class="step-num">2</div>
+            <div class="step-ico ic-r">📊</div>
+            Material Comercial
+            <div class="sb-badge r">47</div>
+            <span class="step-arrow">›</span>
+          </div>
+          <div class="sub-items" id="material-sub">
+            <div class="sub-item" onclick="nav('material');closeMenu()"><div class="sub-dot" style="background:#D0131F"></div>Presentaciones</div>
+            <div class="sub-item" onclick="nav('paises');closeMenu()"><div class="sub-dot" style="background:#f97316"></div>Por industria & país</div>
+            <div class="sub-item" onclick="nav('material');closeMenu()"><div class="sub-dot" style="background:#8b5cf6"></div>Landing pages</div>
+          </div>
+        </div>
+
+        <!-- Paso 3 -->
+        <div class="dg">
+          <div class="dg-label">3 · Proceso</div>
+          <div class="step-item" id="si-playbook" onclick="toggleStep('playbook-sub',this)">
+            <div class="step-num">3</div>
+            <div class="step-ico ic-g">📘</div>
+            Sales Playbook
+            <span class="step-arrow">›</span>
+          </div>
+          <div class="sub-items" id="playbook-sub">
+            <div class="sub-item" onclick="nav('playbook');closeMenu()"><div class="sub-dot" style="background:#22c55e"></div>Por solución</div>
+            <div class="sub-item" onclick="nav('playbook');closeMenu()"><div class="sub-dot" style="background:#38bdf8"></div>Por tipo de reunión</div>
+            <div class="sub-item" onclick="nav('playbook');closeMenu()"><div class="sub-dot" style="background:#a78bfa"></div>Scripts de cierre</div>
+          </div>
+        </div>
+
+        <!-- Paso 4 -->
+        <div class="dg">
+          <div class="dg-label">4 · Inteligencia</div>
+          <div class="step-item" id="si-notebook" onclick="toggleStep('notebook-sub',this)">
+            <div class="step-num">4</div>
+            <div class="step-ico ic-p">🧠</div>
+            NotebookLM
+            <div class="sb-badge g">Live</div>
+            <span class="step-arrow">›</span>
+          </div>
+          <div class="sub-items" id="notebook-sub">
+            <div class="sub-item" onclick="nav('notebook');closeMenu()"><div class="sub-dot" style="background:#8b5cf6"></div>byCerebro</div>
+            <div class="sub-item" onclick="nav('notebook');closeMenu()"><div class="sub-dot" style="background:#6b8399"></div>Precios & soluciones</div>
+            <div class="sub-item" onclick="nav('notebook');closeMenu()"><div class="sub-dot" style="background:#6b8399"></div>Objeciones</div>
+          </div>
+        </div>
+
+        <!-- Paso 5 -->
+        <div class="dg">
+          <div class="dg-label">5 · CRM & Pipeline</div>
+          <div class="step-item" id="si-hubspot" onclick="toggleStep('hubspot-sub',this)">
+            <div class="step-num" style="background:rgba(249,115,22,.15);color:var(--orange)">5</div>
+            <div class="step-ico ic-o">🔗</div>
+            HubSpot CRM
+            <div class="sb-badge r">3</div>
+            <span class="step-arrow">›</span>
+          </div>
+          <div class="sub-items" id="hubspot-sub">
+            <div class="sub-item" onclick="nav('hubspot');closeMenu()"><div class="sub-dot" style="background:#f97316"></div>Pipeline & deals</div>
+            <div class="sub-item" onclick="nav('hubspot');closeMenu()"><div class="sub-dot" style="background:#f87171"></div>Tareas pendientes</div>
+            <div class="sub-item" onclick="nav('hubspot');closeMenu()"><div class="sub-dot" style="background:#22c55e"></div>Material sugerido IA</div>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- CONTENT -->
+    <div class="content-wrap">
+      <div class="content" id="content">
+
+        <!-- INICIO -->
+        <div class="page active" id="page-inicio">
+          <div class="ph">
+            <div class="ph-title">Bienvenida, <em>Adriana</em> 👋</div>
+            <div class="ph-sub">Viernes 20 de marzo 2026 · +20 soluciones · +12 países activos</div>
+          </div>
+          <div class="banner" id="mainBanner">
+            <div class="b-bg"></div>
+            <div class="b-photo" id="bImg"></div>
+            <div class="b-gradient"></div>
+            <div class="b-accent"></div>
+            <!-- Upload trigger -->
+            <div class="b-upload-btn" id="bUploadBtn" onclick="document.getElementById('bFileInput').click()" title="Cambiar imagen del banner">
+              📷 <span>Cambiar imagen</span>
+            </div>
+            <input type="file" id="bFileInput" accept="image/*" style="display:none" onchange="handleBannerImage(this)">
+            <div class="b-arr l" onclick="movB(-1)">‹</div>
+            <div class="b-arr r" onclick="movB(1)">›</div>
+            <div class="b-content">
+              <div class="b-top"><span class="b-live">● Novedades</span><div class="b-nav"><span class="b-counter" id="bCnt">1/3</span><div class="b-dots" id="bDots"></div></div></div>
+              <div class="b-body"><div class="b-tag" id="bTag"></div><div class="b-title" id="bTitle"></div><div class="b-desc" id="bDesc"></div></div>
+              <div class="b-foot"><span class="b-who" id="bWho"></span><div class="b-actions" id="bActs"></div></div>
+            </div>
+          </div>
+          <div class="stats">
+            <div class="stat"><div class="stat-top"><div class="stat-ico ic-p">🧩</div><span class="stat-delta delta-up">+2 mes</span></div><div class="stat-val">20<sup>+</sup></div><div class="stat-lbl">Soluciones activas</div><div class="stat-line" style="background:linear-gradient(90deg,var(--purple),transparent)"></div></div>
+            <div class="stat"><div class="stat-top"><div class="stat-ico ic-r">🌎</div><span class="stat-delta delta-up">+Perú</span></div><div class="stat-val">12<sup>+</sup></div><div class="stat-lbl">Países operativos</div><div class="stat-line" style="background:linear-gradient(90deg,var(--red),transparent)"></div></div>
+            <div class="stat"><div class="stat-top"><div class="stat-ico ic-b">📁</div><span class="stat-delta delta-up">+3 sem</span></div><div class="stat-val">47</div><div class="stat-lbl">Materiales activos</div><div class="stat-line" style="background:linear-gradient(90deg,var(--blue),transparent)"></div></div>
+            <div class="stat"><div class="stat-top"><div class="stat-ico ic-o">🎯</div><span class="stat-delta delta-up">890M</span></div><div class="stat-val">12</div><div class="stat-lbl">Deals HubSpot</div><div class="stat-line" style="background:linear-gradient(90deg,var(--orange),transparent)"></div></div>
+          </div>
+          <div class="sec"><span class="sec-t">⚡ Acceso rápido</span><div class="sec-line"></div></div>
+          <div class="quick">
+            <div class="qcard" onclick="nav('training')"><div class="qc-ico ic-b">🎓</div><div class="qc-t">Plan de formación</div><div class="qc-s">Aprende a vender cada solución</div></div>
+            <div class="qcard" onclick="nav('material')"><div class="qc-ico ic-r">📊</div><div class="qc-t">Material comercial</div><div class="qc-s">Decks y presentaciones listas</div></div>
+            <div class="qcard" onclick="nav('playbook')"><div class="qc-ico ic-g">📘</div><div class="qc-t">Sales Playbook</div><div class="qc-s">Paso a paso para cerrar deals</div></div>
+            <div class="qcard" onclick="nav('notebook')"><div class="qc-ico ic-p">🧠</div><div class="qc-t">NotebookLM</div><div class="qc-s">Consultas sobre precios y países</div></div>
+          </div>
+          <div class="sec"><span class="sec-t">📋 Actividad reciente</span><div class="sec-line"></div></div>
+          <div class="act-list">
+            <div class="act-row"><div class="act-dot" style="background:var(--green)"></div><div><div class="act-txt"><strong>María López</strong> descargó "Propuesta Enterprise v5" para <em>Bancolombia</em></div><div class="act-time">Hace 12 min</div></div></div>
+            <div class="act-row"><div class="act-dot" style="background:var(--blue)"></div><div><div class="act-txt"><strong>Carlos Rueda</strong> actualizó el Playbook de Localización Flota</div><div class="act-time">Hace 1 hora</div></div></div>
+            <div class="act-row"><div class="act-dot" style="background:var(--red)"></div><div><div class="act-txt"><strong>HubSpot</strong> · Deal "Grupo Éxito — Flota" avanzó a <em>Negociación</em></div><div class="act-time">Hace 2 horas</div></div></div>
+            <div class="act-row"><div class="act-dot" style="background:var(--orange)"></div><div><div class="act-txt"><strong>NotebookLM</strong> · Andrés Mora consultó precios para <em>Ecuador</em></div><div class="act-time">Hace 3 horas</div></div></div>
+          </div>
+        </div>
+
+        <!-- TRAINING -->
+        <div class="page" id="page-training">
+          <div class="ph"><div class="ph-title">Plan de <em>Entrenamiento</em></div><div class="ph-sub">Formación por solución · Entiéndela y véndela con confianza</div></div>
+          <div class="sol-tabs" id="trTabs"></div>
+          <div class="panel">
+            <div class="panel-h blue"><div class="panel-ico ic-b">🧩</div><div><div class="panel-title" id="trName">Selecciona una solución</div><div class="panel-sub" id="trSub">Elige arriba para ver el plan</div></div></div>
+            <div class="panel-body"><div class="mod-grid" id="trMods"><div class="empty"><div class="empty-ico">🎓</div><div class="empty-t">Selecciona una solución</div></div></div></div>
+          </div>
+        </div>
+
+        <!-- MATERIAL -->
+        <div class="page" id="page-material">
+          <div class="ph"><div class="ph-title">Material <em>Comercial</em></div><div class="ph-sub">47 documentos · Filtra por solución</div></div>
+          <div class="sol-tabs" id="matTabs"></div>
+          <div class="cards" id="matCards"></div>
+        </div>
+
+        <!-- PAISES -->
+        <div class="page" id="page-paises">
+          <div class="ph"><div class="ph-title">Por <em>Industria & País</em></div><div class="ph-sub">Material específico por mercado</div></div>
+          <div class="sec"><span class="sec-t">🌎 Selecciona un país</span><div class="sec-line"></div></div>
+          <div class="country-grid" id="countryGrid"></div>
+          <div class="panel" id="countryDetail" style="display:none">
+            <div class="panel-h blue" id="countryHdr"></div>
+            <div class="panel-body"><div class="cards" id="countryCards"></div></div>
+          </div>
+        </div>
+
+        <!-- PLAYBOOK -->
+        <div class="page" id="page-playbook">
+          <div class="ph"><div class="ph-title">Sales <em>Playbook</em></div><div class="ph-sub">Guía paso a paso para vender cada solución</div></div>
+          <div class="sol-tabs" id="pbTabs"></div>
+          <div class="panel">
+            <div class="panel-h green"><div class="panel-ico ic-g">📘</div><div><div class="panel-title" id="pbName">Selecciona una solución</div><div class="panel-sub">Elige arriba para ver el playbook</div></div></div>
+            <div class="panel-body" id="pbSteps"><div class="empty"><div class="empty-ico">📘</div><div class="empty-t">Selecciona una solución</div></div></div>
+          </div>
+        </div>
+
+        <!-- NOTEBOOK -->
+        <div class="page" id="page-notebook">
+          <div class="ph"><div class="ph-title"><em>NotebookLM</em> · Inteligencia comercial</div><div class="ph-sub">Cuadernos actualizados con precios, industrias y soluciones por país</div></div>
+          <div class="nb-hero">
+            <div class="nb-top">
+              <div class="nb-brand"><div class="nb-logo">🧠</div><div><div class="nb-name">NotebookLM · Servinformación</div><div class="nb-sub">6 cuadernos activos · Actualización semanal</div></div></div>
+            </div>
+            <div class="nb-books">
+              <div class="nb-book nb-featured">
+                <div class="nb-feat-head">
+                  <div class="nb-feat-info"><div class="nb-feat-ico">🧠</div><div><div class="nb-feat-t">byCerebro · Cuaderno oficial</div><div class="nb-feat-s">Funcionalidades, casos de uso, precios y argumentarios</div></div></div>
+                  <div class="nb-feat-actions"><span class="nb-live">● Live</span><button class="btn btn-purple" onclick="window.open('https://notebooklm.google.com/notebook/f4cac0e9-c08b-4289-9c8f-4d231751ea9c','_blank')">Abrir completo ↗</button></div>
+                </div>
+                <div class="nb-iframe-wrap"><iframe src="https://notebooklm.google.com/notebook/f4cac0e9-c08b-4289-9c8f-4d231751ea9c/preview" allow="clipboard-read;clipboard-write" title="byCerebro NotebookLM"></iframe></div>
+              </div>
+              <div class="nb-book" onclick="alert('Próximamente')"><div class="nb-book-ico">💰</div><div class="nb-book-t">Soluciones & Precios</div><div class="nb-book-d">Listados vigentes por país y descuentos por volumen.</div><div class="nb-tag">Próximamente</div></div>
+              <div class="nb-book" onclick="alert('Próximamente')"><div class="nb-book-ico">🏭</div><div class="nb-book-t">Industrias por País</div><div class="nb-book-d">Verticales prioritarias y benchmarks por mercado.</div><div class="nb-tag">Próximamente</div></div>
+              <div class="nb-book" onclick="alert('Próximamente')"><div class="nb-book-ico">🛡️</div><div class="nb-book-t">Objeciones & Argumentarios</div><div class="nb-book-d">Respuestas validadas para las 40+ objeciones.</div><div class="nb-tag">Próximamente</div></div>
+              <div class="nb-book" onclick="alert('Próximamente')"><div class="nb-book-ico">⚔️</div><div class="nb-book-t">Competencia</div><div class="nb-book-d">Comparativos y diferenciadores por región.</div><div class="nb-tag">Próximamente</div></div>
+              <div class="nb-book" onclick="alert('Próximamente')"><div class="nb-book-ico">⭐</div><div class="nb-book-t">Casos de Éxito</div><div class="nb-book-d">ROI documentado por solución e industria.</div><div class="nb-tag">Próximamente</div></div>
+            </div>
+            <div class="nb-cta"><div class="nb-cta-txt">¿No encuentras lo que buscas? <strong>Pregunta al asistente IA →</strong></div><button class="btn btn-purple" onclick="sendChip('Consulta NotebookLM: precios y disponibilidad por país')">Abrir asistente</button></div>
+          </div>
+        </div>
+
+        <!-- HUBSPOT -->
+        <div class="page" id="page-hubspot">
+          <div class="ph"><div class="ph-title">HubSpot <em>CRM</em></div><div class="ph-sub">Paso 5 · Pipeline, tareas y material sugerido en tiempo real</div></div>
+          <div class="stats">
+            <div class="stat"><div class="stat-top"><div class="stat-ico ic-o">🎯</div><span class="stat-delta delta-up">+2 sem</span></div><div class="stat-val">12</div><div class="stat-lbl">Deals activos</div><div class="stat-line" style="background:linear-gradient(90deg,var(--orange),transparent)"></div></div>
+            <div class="stat"><div class="stat-top"><div class="stat-ico ic-b">💰</div><span class="stat-delta delta-up">+15%</span></div><div class="stat-val">890<sup>M</sup></div><div class="stat-lbl">Pipeline COP</div><div class="stat-line" style="background:linear-gradient(90deg,var(--blue),transparent)"></div></div>
+            <div class="stat"><div class="stat-top"><div class="stat-ico ic-g">✅</div><span class="stat-delta delta-up">este mes</span></div><div class="stat-val">3</div><div class="stat-lbl">Deals cerrados</div><div class="stat-line" style="background:linear-gradient(90deg,var(--green),transparent)"></div></div>
+            <div class="stat"><div class="stat-top"><div class="stat-ico ic-r">⚠️</div><span class="stat-delta delta-dn">hoy</span></div><div class="stat-val">4</div><div class="stat-lbl">Tareas pendientes</div><div class="stat-line" style="background:linear-gradient(90deg,var(--red),transparent)"></div></div>
+          </div>
+          <div class="sec"><span class="sec-t">🔁 Pipeline por etapa</span><div class="sec-line"></div></div>
+          <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:20px">
+            <div class="hs-stage-col"><div class="hs-stage-hdr" style="border-top-color:#6b8399">Primer contacto<span>1</span></div><div class="hs-deal-mini">🏗️ Cementos Argos<div style="font-size:10px;color:var(--text2)">COP 65M</div></div></div>
+            <div class="hs-stage-col"><div class="hs-stage-hdr" style="border-top-color:var(--blue)">Calificación<span>1</span></div><div class="hs-deal-mini">🛒 Grupo Éxito<div style="font-size:10px;color:var(--text2)">COP 95M</div></div></div>
+            <div class="hs-stage-col"><div class="hs-stage-hdr" style="border-top-color:#a78bfa">Propuesta<span>2</span></div><div class="hs-deal-mini">🏦 Bancolombia<div style="font-size:10px;color:var(--text2)">COP 180M</div></div><div class="hs-deal-mini">✈️ Avianca Cargo<div style="font-size:10px;color:var(--text2)">COP 310M</div></div></div>
+            <div class="hs-stage-col"><div class="hs-stage-hdr" style="border-top-color:var(--orange)">Negociación<span>1</span></div><div class="hs-deal-mini">⚡ EPM Medellín<div style="font-size:10px;color:var(--text2)">COP 240M</div></div></div>
+            <div class="hs-stage-col"><div class="hs-stage-hdr" style="border-top-color:var(--green)">Cierre<span>0</span></div><div style="font-size:11px;color:var(--text2);padding:10px;text-align:center">Sin deals en esta etapa</div></div>
+          </div>
+          <div class="sec"><span class="sec-t">📋 Detalle de deals</span><div class="sec-line"></div></div>
+          <div class="panel">
+            <div class="panel-h orange"><div class="panel-ico ic-o">🧡</div><div><div class="panel-title">Pipeline Comercial</div><div class="panel-sub">12 deals · Sync hace 5 min</div></div><button class="btn btn-ghost" style="margin-left:auto;font-size:11px" onclick="alert('Abriendo HubSpot…')">Abrir HubSpot ↗</button></div>
+            <div class="panel-body" id="hsDeals"></div>
+          </div>
+          <div class="sec"><span class="sec-t">📌 Tareas pendientes hoy</span><div class="sec-line"></div></div>
+          <div class="panel" style="margin-bottom:20px">
+            <div class="panel-body">
+              <div class="hs-task"><div class="hs-task-dot" style="background:var(--red)"></div><div class="hs-task-info"><div class="hs-task-t">Enviar propuesta a <strong>Avianca Cargo</strong></div><div class="hs-task-s">Vence hoy · 3:00 PM · Propuesta</div></div><button class="btn btn-ghost" style="font-size:10.5px;padding:4px 10px" onclick="nav('material')">Ver material</button></div>
+              <div class="hs-task"><div class="hs-task-dot" style="background:var(--orange)"></div><div class="hs-task-info"><div class="hs-task-t">Llamada con <strong>EPM Medellín</strong></div><div class="hs-task-s">Vence hoy · 5:00 PM · Negociación</div></div><button class="btn btn-ghost" style="font-size:10.5px;padding:4px 10px" onclick="sendChip('Objeción de precio')">Preparar IA</button></div>
+              <div class="hs-task"><div class="hs-task-dot" style="background:var(--blue)"></div><div class="hs-task-info"><div class="hs-task-t">Demo con <strong>Grupo Éxito</strong></div><div class="hs-task-s">Vence mañana · Calificación</div></div><button class="btn btn-ghost" style="font-size:10.5px;padding:4px 10px" onclick="nav('playbook')">Ver playbook</button></div>
+              <div class="hs-task" style="border:none"><div class="hs-task-dot" style="background:#6b8399"></div><div class="hs-task-info"><div class="hs-task-t">Contactar <strong>Cementos Argos</strong></div><div class="hs-task-s">Esta semana · Primer contacto</div></div><button class="btn btn-ghost" style="font-size:10.5px;padding:4px 10px" onclick="nav('training')">Ver script</button></div>
+            </div>
+          </div>
+          <div class="sec"><span class="sec-t">💡 Material sugerido por IA</span><div class="sec-line"></div></div>
+          <div class="cards" id="hsSug"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CHAT -->
+    <div class="chat-wrap">
+      <div class="chat">
+        <div class="chat-head">
+          <div class="chat-av">🤖</div>
+          <div><div class="chat-n">Asistente Comercial IA</div><div class="chat-s">● En línea</div></div>
+        </div>
+        <div class="chat-msgs" id="chatMsgs">
+          <div class="msg msg-ai">
+            <div class="msg-av av-ai">S</div>
+            <div>        <div class="msg-b">¡Hola Adriana! 👋<br><br>Puedo ayudarte a <strong>preparar reuniones</strong>, encontrar material, consultar precios por país o manejar objeciones.<br><br>¿En qué solución o país trabajas hoy?</div><div class="msg-t">Ahora</div></div>
+          </div>
+        </div>
+        <div class="chips-bar">
+          <button class="chip" onclick="sendChip(this.textContent)">🎓 ¿Cómo vendo Localización?</button>
+          <button class="chip" onclick="sendChip(this.textContent)">💰 Precios para México</button>
+          <button class="chip" onclick="sendChip(this.textContent)">🛡️ Objeción de precio</button>
+          <button class="chip" onclick="sendChip(this.textContent)">📊 Deck para banca</button>
+        </div>
+        <div class="chat-inp-row">
+          <textarea class="chat-inp" id="chatInp" placeholder="Escribe tu consulta…" rows="1"
+            onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMsg()}"
+            oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'"></textarea>
+          <button class="send" onclick="sendMsg()">➤</button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /body-row -->
+</div><!-- /app -->
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────
+const solutions=[
+  {id:'loc',name:'Localización Flota',color:'#008DD4'},
+  {id:'tel',name:'Telemetría',color:'#f97316'},
+  {id:'cam',name:'Cámaras IoT',color:'#22c55e'},
+  {id:'geo',name:'Geocercas',color:'#8b5cf6'},
+  {id:'fue',name:'Control Combustible',color:'#f87171'},
+  {id:'man',name:'Mant. Predictivo',color:'#38bdf8'},
+];
+const trainMods={
+  loc:[{ico:'📖',t:'Fundamentos de Localización',d:'GPS, GNSS, redes celulares y tecnología IoT aplicada a flotas.',pct:80},{ico:'💬',t:'Argumentario de ventas',d:'Propuesta de valor, beneficios y diferenciadores vs. competencia.',pct:65},{ico:'🛡️',t:'Manejo de objeciones',d:'Las 15 objeciones más frecuentes y respuestas validadas.',pct:50},{ico:'📋',t:'Demo del producto',d:'Guía para ejecutar una demo impactante de 20 minutos.',pct:30},{ico:'🎯',t:'Cierre por industria',d:'Técnicas de cierre para logística, transporte y construcción.',pct:20},{ico:'⭐',t:'Casos de éxito',d:'5 historias con ROI documentado para usar en reuniones.',pct:90}],
+  tel:[{ico:'📡',t:'¿Qué es la telemetría?',d:'Sensores, protocolos de datos y aplicaciones en flotas.',pct:70},{ico:'💬',t:'Pitch de telemetría',d:'Cómo presentar el valor de los datos al director de operaciones.',pct:55},{ico:'📊',t:'ROI y métricas clave',d:'KPIs: reducción de consumo, accidentes y mantenimiento.',pct:40},{ico:'🛡️',t:'Objeciones técnicas',d:'Respuestas a preguntas de integración y seguridad de datos.',pct:25}],
+  cam:[{ico:'📷',t:'Tecnología de cámaras IoT',d:'Tipos de cámara, IA embebida, reconocimiento de conductor.',pct:60},{ico:'⚖️',t:'Compliance y legalidad',d:'Marco legal por país para grabación en vehículos.',pct:45},{ico:'💬',t:'Venta a Seguridad & RRHH',d:'Cómo hablar con el Director de Seguridad y RRHH.',pct:30}],
+};
+const materials=[
+  {id:1,t:'Presentación Corporativa',ico:'📊',th:'th-b',sol:'loc',tag:'Localización',tg:'tg-b',ver:'v4',date:'Feb 2026',d:'Deck 24 slides'},
+  {id:2,t:'Propuesta Enterprise v5',ico:'📋',th:'th-r',sol:'loc',tag:'Propuesta',tg:'tg-r',ver:'v5',date:'Mar 2026',d:'Grandes cuentas'},
+  {id:3,t:'Deck Telemetría — Logística',ico:'📡',th:'th-o',sol:'tel',tag:'Telemetría',tg:'tg-o',ver:'v2',date:'Feb 2026',d:'Flotas largo recorrido'},
+  {id:4,t:'Brochure Cámaras IoT',ico:'📷',th:'th-g',sol:'cam',tag:'Cámaras',tg:'tg-g',ver:'v3',date:'Ene 2026',d:'PDF 8 págs bilingüe'},
+  {id:5,t:'Calculadora ROI',ico:'📈',th:'th-b',sol:'loc',tag:'Localización',tg:'tg-b',ver:'v2',date:'Ene 2026',d:'Excel interactivo'},
+  {id:6,t:'Lista de Precios Q1 2026',ico:'💰',th:'th-r',sol:'loc',tag:'Propuesta',tg:'tg-r',ver:'v1',date:'Feb 2026',d:'Precios y descuentos'},
+  {id:7,t:'Banco de Objeciones',ico:'🛡️',th:'th-o',sol:'loc',tag:'Objeciones',tg:'tg-o',ver:'v5',date:'Feb 2026',d:'23 objeciones'},
+  {id:8,t:'Comparativo vs. Competencia',ico:'⚔️',th:'th-p',sol:'loc',tag:'Objeciones',tg:'tg-p',ver:'v3',date:'Feb 2026',d:'Maptual, Fleetio, Samsara'},
+  {id:9,t:'Deck Geocercas — Retail',ico:'🗺️',th:'th-p',sol:'geo',tag:'Geocercas',tg:'tg-p',ver:'v2',date:'Dic 2025',d:'Retail y logística'},
+  {id:10,t:'Propuesta Combustible',ico:'⛽',th:'th-r',sol:'fue',tag:'Combustible',tg:'tg-r',ver:'v1',date:'Mar 2026',d:'Sector transporte'},
+  {id:11,t:'Contrato Estándar',ico:'📄',th:'th-b',sol:'loc',tag:'Cierre',tg:'tg-b',ver:'v6',date:'Ene 2026',d:'Aprobado por Legal'},
+  {id:12,t:'Caso de Éxito — Logística',ico:'⭐',th:'th-g',sol:'loc',tag:'Post-venta',tg:'tg-g',ver:'v2',date:'Dic 2025',d:'NPS 94 · ROI 3.2x'},
+];
+const countries=[
+  {flag:'🇨🇴',name:'Colombia',sols:12},{flag:'🇲🇽',name:'México',sols:10},
+  {flag:'🇨🇱',name:'Chile',sols:9},{flag:'🇵🇪',name:'Perú',sols:7},
+  {flag:'🇦🇷',name:'Argentina',sols:8},{flag:'🇪🇨',name:'Ecuador',sols:6},
+  {flag:'🇧🇷',name:'Brasil',sols:5},{flag:'🇨🇷',name:'Costa Rica',sols:4},
+  {flag:'🇵🇦',name:'Panamá',sols:4},{flag:'🇧🇴',name:'Bolivia',sols:3},
+  {flag:'🇵🇾',name:'Paraguay',sols:3},{flag:'🇺🇾',name:'Uruguay',sols:5},
+];
+const pbSteps={
+  loc:[
+    {n:1,t:'Prospección inteligente',d:'Identifica empresas con flota >10 vehículos usando LinkedIn + HubSpot. Foco en logística, construcción y transporte.',chips:['Script frío','Perfil ICP','Email plantilla']},
+    {n:2,t:'Primer contacto',d:'Llama al Director de Operaciones. Gancho: "Logramos reducir costos un 23% para [empresa similar]".',chips:['Script llamada','Email seguimiento']},
+    {n:3,t:'Reunión de descubrimiento',d:'Aplica BANT + SPIN. Entiende flota, problemas actuales y presupuesto.',chips:['Guía BANT','Preguntas SPIN','Calculadora ROI']},
+    {n:4,t:'Demo personalizada',d:'Muestra el dashboard con datos reales del sector. Enfócate en los 3 problemas identificados.',chips:['Guía demo 20min','Casos similares']},
+    {n:5,t:'Propuesta a medida',d:'Usa plantilla Enterprise o PYME. Incluye ROI proyectado y caso de éxito del mismo sector.',chips:['Propuesta Enterprise','Propuesta PYME','ROI calc']},
+    {n:6,t:'Manejo de objeciones',d:'Anticipa las 5 objeciones más comunes: precio, integración, cambio de proveedor, ROI y soporte.',chips:['Banco objeciones','Comparativo competencia']},
+    {n:7,t:'Cierre y firma',d:'Propón piloto 30 días si hay duda. Ten el contrato listo para firmar en la reunión.',chips:['Contrato estándar','Condiciones piloto']},
+  ],
+};
+const hsDeals=[
+  {i:'BG',n:'Grupo Bancolombia',v:'COP 180M',s:'Propuesta',c:'#22c55e'},
+  {i:'EP',n:'EPM Medellín',v:'COP 240M',s:'Negociación',c:'#f97316'},
+  {i:'GX',n:'Grupo Éxito — Flota',v:'COP 95M',s:'Calificación',c:'#008DD4'},
+  {i:'AV',n:'Avianca Cargo',v:'COP 310M',s:'Propuesta',c:'#22c55e'},
+  {i:'CV',n:'Cementos Argos',v:'COP 65M',s:'Primer contacto',c:'#6b8399'},
+];
+const slides=[
+  {tag:'🆕 Últimas actualizaciones · ServiMeet',tagC:'#38bdf8',title:'Últimas actualizaciones ServiMeet',desc:'Conoce todas las novedades, mejoras y lanzamientos más recientes de la plataforma. Mantente al día con lo que el equipo ha preparado para ti.',who:'📌 Equipo ServiMeet · Actualizado hoy',img:'__SERVIMEET__',p:{l:'Ver novedades →',a:"nav('training')"},g:{l:'Ver en NotebookLM',a:"nav('notebook')"}},
+  {tag:'🔄 Actualizado · Precios',tagC:'#f97316',title:'Lista de Precios Q1 2026 — nueva versión',desc:'Ajuste en descuentos para flotas +50 unidades. Revisa antes de tu próxima propuesta.',who:'📌 Equipo Pricing · hace 5 horas',img:'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80',p:{l:'Ver precios →',a:"alert('Abriendo precios…')"},g:{l:'Consultar IA',a:"sendChip('¿Precios Q1 2026?')"}},
+  {tag:'💡 Tip · Playbook',tagC:'#22c55e',title:'Respuesta validada: «Ya tenemos GPS»',desc:'Tasa de avance al siguiente paso +31%. Disponible en el banco de objeciones.',who:'📌 Dir. Comercial · hace 1 día',img:'https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&q=80',p:{l:'Ver argumentario →',a:"nav('playbook')"},g:{l:'Practicar con IA',a:"sendChip('Objeción de precio')"}},
+];
+const aiR={
+  'localización':{text:'Para vender Localización de Flota, enfócate en el costo de NO tener visibilidad.',cards:[{t:'Plan de entrenamiento · Localización',s:'6 módulos · Fundamentos hasta cierre'},{t:'Sales Playbook · Localización v7',s:'7 pasos · Prospección → Cierre'}]},
+  'precio':{text:'Para la objeción de precio usa este marco:\n\n💬 <b>«Es muy caro»</b> → Costo por unidad vs. pérdidas sin visibilidad.\n\n💬 <b>«Hay opciones más baratas»</b> → Activa el Comparativo vs. Competencia.\n\n💬 <b>«No hay presupuesto»</b> → Propón piloto 30 días.',cards:[{t:'Banco de Objeciones v5',s:'23 objeciones con argumentarios'},{t:'Calculadora ROI v2',s:'Demuestra el retorno en minutos'}]},
+  'méxico':{text:'Para México, aquí está lo que necesitas:',cards:[{t:'Precios vigentes México Q1 2026',s:'Descuentos por volumen'},{t:'Casos de éxito México',s:'Logística, retail y construcción'}]},
+  'deck':{text:'Para el sector bancario, te recomiendo:',cards:[{t:'Propuesta Enterprise v5',s:'Nueva sección ROI · Mar 2026'},{t:'Caso de Éxito — Financiero',s:'ROI 3.2x documentado'}]},
+};
+const defR=['Entendido. Aquí tienes los recursos más relevantes:','Para ese escenario, estos son los materiales que recomiendo:','Aquí está lo que necesitas para avanzar:'];
+
+// ── MENU ──────────────────────────────────────────────────────────────────
+let menuOpen=false;
+function toggleMenu(){
+  menuOpen=!menuOpen;
+  document.getElementById('hamBtn').classList.toggle('open',menuOpen);
+  document.getElementById('drawer').classList.toggle('open',menuOpen);
+  document.getElementById('overlay').classList.toggle('show',menuOpen);
+}
+function closeMenu(){
+  menuOpen=false;
+  document.getElementById('hamBtn').classList.remove('open');
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+}
+
+function toggleStep(subId, el){
+  const sub=document.getElementById(subId);
+  const isOpen=sub.classList.contains('open');
+  // close all
+  document.querySelectorAll('.sub-items').forEach(s=>s.classList.remove('open'));
+  document.querySelectorAll('.step-item').forEach(s=>s.classList.remove('expanded'));
+  if(!isOpen){sub.classList.add('open');el.classList.add('expanded');}
+}
+
+// ── INJECT SLIDE 1 IMAGE ──────────────────────────────────────────────────
+const _s1img="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=1200&q=80";
+slides[0].img=_s1img;
+
+// ── BANNER IMAGE UPLOAD ───────────────────────────────────────────────────
+function handleBannerImage(input){
+  const file=input.files[0];
+  if(!file||!file.type.startsWith('image/'))return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    slides[bI].img=e.target.result;
+    const ph=document.getElementById('bImg');
+    ph.style.opacity='0';
+    setTimeout(()=>{ph.style.backgroundImage=`url('${e.target.result}')`;ph.style.opacity='.35';},200);
+  };
+  reader.readAsDataURL(file);
+  input.value='';
+}
+
+// ── BANNER ────────────────────────────────────────────────────────────────
+let bI=0,bT;
+function rB(i){
+  const s=slides[i];
+  document.getElementById('bImg').style.backgroundImage=`url('${s.img}')`;
+  document.getElementById('bTag').innerHTML=`<span style="color:${s.tagC}">${s.tag}</span>`;
+  document.getElementById('bTitle').textContent=s.title;
+  document.getElementById('bDesc').textContent=s.desc;
+  document.getElementById('bWho').textContent=s.who;
+  document.getElementById('bCnt').textContent=`${i+1}/${slides.length}`;
+  document.getElementById('bActs').innerHTML=`<button class="btn btn-ghost" onclick="${s.g.a}">${s.g.l}</button><button class="btn btn-primary" onclick="${s.p.a}">${s.p.l}</button>`;
+  document.querySelectorAll('.b-dot').forEach((d,j)=>d.classList.toggle('on',j===i));
+}
+function movB(d){bI=(bI+d+slides.length)%slides.length;rB(bI);resetBT();}
+function resetBT(){clearInterval(bT);bT=setInterval(()=>movB(1),6000);}
+function initBanner(){
+  const dc=document.getElementById('bDots');
+  slides.forEach((_,i)=>{const d=document.createElement('div');d.className='b-dot'+(i===0?' on':'');d.onclick=()=>{bI=i;rB(i);resetBT();};dc.appendChild(d);});
+  rB(0);resetBT();
+}
+
+// ── RENDER ────────────────────────────────────────────────────────────────
+function rCard(m){
+  return `<div class="mat-card" onclick="alert('Abriendo: ${m.t}\\nVersión ${m.ver} · ${m.date}')">
+    <div class="mc-thumb ${m.th}"><span style="font-size:30px">${m.ico}</span><div class="mc-ver">${m.ver}</div></div>
+    <div class="mc-body"><div class="mc-title">${m.t}</div><div class="mc-meta">${m.d} · ${m.date}</div></div>
+    <div class="mc-foot"><div class="mc-tag ${m.tg}">${m.tag}</div><button class="mc-chat" onclick="event.stopPropagation();sendChip('Material: ${m.t}')">💬</button></div>
+  </div>`;
+}
+function rDeal(d){
+  return `<div class="deal-row">
+    <div class="deal-av">${d.i}</div>
+    <div class="deal-info"><div class="deal-n">${d.n}</div><div class="deal-s">Etapa: ${d.s}</div></div>
+    <div class="deal-stage" style="background:${d.c}18;color:${d.c}">${d.s}</div>
+    <div class="deal-v">${d.v}</div>
+  </div>`;
+}
+function rTabs(id,fn){
+  document.getElementById(id).innerHTML=solutions.map((s,i)=>
+    `<button class="sol-tab${i===0?' on':''}" onclick="${fn}('${s.id}',this)" style="border-left:3px solid ${s.color}">
+      <span class="sol-tab-dot" style="background:${s.color}"></span>${s.name}
+    </button>`).join('');
+}
+
+// ── TRAINING ──────────────────────────────────────────────────────────────
+function loadTr(sid,el){
+  document.querySelectorAll('#trTabs .sol-tab').forEach(t=>t.classList.remove('on'));if(el)el.classList.add('on');
+  const sol=solutions.find(s=>s.id===sid),mods=trainMods[sid]||[];
+  document.getElementById('trName').textContent=sol?sol.name:'Solución';
+  document.getElementById('trSub').textContent=`${mods.length} módulos disponibles`;
+  document.getElementById('trMods').innerHTML=mods.length?mods.map(m=>`
+    <div class="mod-card"><div class="mod-ico">${m.ico}</div><div class="mod-t">${m.t}</div><div class="mod-d">${m.d}</div>
+    <div class="prog-bar"><div class="prog-fill" style="width:${m.pct}%"></div></div><div class="prog-lbl">${m.pct}% completado</div></div>`).join(''):
+    `<div class="empty"><div class="empty-ico">🎓</div><div class="empty-t">Próximamente</div></div>`;
+}
+function loadMat(sid,el){
+  document.querySelectorAll('#matTabs .sol-tab').forEach(t=>t.classList.remove('on'));if(el)el.classList.add('on');
+  const f=materials.filter(m=>m.sol===sid);
+  document.getElementById('matCards').innerHTML=f.length?f.map(rCard).join(''):
+    `<div class="empty"><div class="empty-ico">📁</div><div class="empty-t">Próximamente</div></div>`;
+}
+function loadPb(sid,el){
+  document.querySelectorAll('#pbTabs .sol-tab').forEach(t=>t.classList.remove('on'));if(el)el.classList.add('on');
+  const sol=solutions.find(s=>s.id===sid),steps=pbSteps[sid]||[];
+  document.getElementById('pbName').textContent=sol?`Playbook · ${sol.name}`:'Selecciona';
+  document.getElementById('pbSteps').innerHTML=steps.length?steps.map(s=>`
+    <div class="pb-row"><div class="pb-num">${s.n}</div><div>
+      <div class="pb-t">${s.t}</div><div class="pb-d">${s.d}</div>
+      <div class="pb-chips">${s.chips.map(c=>`<span class="pb-chip">${c}</span>`).join('')}</div>
+    </div></div>`).join(''):
+    `<div class="empty"><div class="empty-ico">📘</div><div class="empty-t">Próximamente</div></div>`;
+}
+function initCountries(){
+  document.getElementById('countryGrid').innerHTML=countries.map(c=>
+    `<div class="c-card" onclick="loadCountry('${c.name}','${c.flag}',${c.sols},this)">
+      <div class="c-flag">${c.flag}</div><div class="c-name">${c.name}</div><div class="c-sols">${c.sols} soluciones</div>
+    </div>`).join('');
+}
+function loadCountry(name,flag,sols,el){
+  document.querySelectorAll('.c-card').forEach(c=>c.classList.remove('on'));el.classList.add('on');
+  const det=document.getElementById('countryDetail');det.style.display='block';
+  document.getElementById('countryHdr').innerHTML=`<span style="font-size:20px">${flag}</span><div><div class="panel-title">${name} · ${sols} soluciones</div><div class="panel-sub">Material disponible para este mercado</div></div>`;
+  document.getElementById('countryCards').innerHTML=materials.slice(0,Math.min(sols,6)).map(rCard).join('');
+}
+
+// ── NAV ───────────────────────────────────────────────────────────────────
+function nav(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.getElementById('content').scrollTop=0;
+  // highlight drawer item
+  document.querySelectorAll('.step-item[id^="si-"]').forEach(i=>i.classList.remove('active'));
+  const si=document.getElementById('si-'+id);if(si)si.classList.add('active');
+  if(id==='training')setTimeout(()=>loadTr('loc',document.querySelector('#trTabs .sol-tab')),30);
+  if(id==='material')setTimeout(()=>loadMat('loc',document.querySelector('#matTabs .sol-tab')),30);
+  if(id==='playbook')setTimeout(()=>loadPb('loc',document.querySelector('#pbTabs .sol-tab')),30);
+}
+
+// ── SEARCH ────────────────────────────────────────────────────────────────
+function handleSearch(q){
+  if(!q||q.length<2)return;
+  const f=materials.filter(m=>m.t.toLowerCase().includes(q.toLowerCase())||m.tag.toLowerCase().includes(q.toLowerCase()));
+  nav('material');
+  setTimeout(()=>{document.getElementById('matCards').innerHTML=f.length?f.map(rCard).join(''):
+    `<div class="empty"><div class="empty-ico">🔍</div><div class="empty-t">Sin resultados para "${q}"</div></div>`;},50);
+}
+
+// ── CHAT ──────────────────────────────────────────────────────────────────
+function sendMsg(){
+  const inp=document.getElementById('chatInp'),txt=inp.value.trim();if(!txt)return;
+  addMsg(txt,'u');inp.value='';inp.style.height='auto';showTyp();
+  setTimeout(()=>{removeTyp();const key=Object.keys(aiR).find(k=>txt.toLowerCase().includes(k));
+    if(key){const r=aiR[key];addAI(r.text,r.cards);}
+    else addAI(defR[Math.floor(Math.random()*defR.length)],materials.filter(()=>Math.random()>.65).slice(0,2).map(m=>({t:m.t,s:m.d+' · '+m.ver})));
+  },900+Math.random()*600);
+}
+function sendChip(t){document.getElementById('chatInp').value=t;sendMsg();}
+function addMsg(txt,role){
+  const c=document.getElementById('chatMsgs'),u=role==='u',d=document.createElement('div');
+  d.className=`msg ${u?'msg-u':'msg-ai'}`;
+  d.innerHTML=`<div class="msg-av ${u?'av-u':'av-ai'}">${u?'👤':'S'}</div><div><div class="msg-b">${txt}</div><div class="msg-t">${new Date().toLocaleTimeString('es-CO',{hour:'2-digit',minute:'2-digit'})}</div></div>`;
+  c.appendChild(d);c.scrollTop=c.scrollHeight;
+}
+function addAI(txt,cards){
+  const c=document.getElementById('chatMsgs'),d=document.createElement('div');d.className='msg msg-ai';
+  const ch=cards&&cards.length?cards.map(cd=>`<div class="m-card" onclick="alert('${cd.t}')"><div class="m-card-t">📄 ${cd.t}</div><div class="m-card-s">${cd.s}</div></div>`).join(''):'';
+  d.innerHTML=`<div class="msg-av av-ai">S</div><div><div class="msg-b">${txt}${ch}</div><div class="msg-t">${new Date().toLocaleTimeString('es-CO',{hour:'2-digit',minute:'2-digit'})}</div></div>`;
+  c.appendChild(d);c.scrollTop=c.scrollHeight;
+}
+function showTyp(){
+  const c=document.getElementById('chatMsgs'),d=document.createElement('div');d.className='msg msg-ai';d.id='typ';
+  d.innerHTML=`<div class="msg-av av-ai">S</div><div><div class="msg-b"><div class="typing"><span></span><span></span><span></span></div></div></div>`;
+  c.appendChild(d);c.scrollTop=c.scrollHeight;
+}
+function removeTyp(){const t=document.getElementById('typ');if(t)t.remove();}
+
+// ── INIT ──────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded',()=>{
+  initBanner();initCountries();
+  rTabs('trTabs','loadTr');rTabs('matTabs','loadMat');rTabs('pbTabs','loadPb');
+  document.getElementById('hsDeals').innerHTML=hsDeals.map(rDeal).join('');
+  document.getElementById('hsSug').innerHTML=materials.slice(0,4).map(rCard).join('');
+});
+</script>
+</body>
+</html>
