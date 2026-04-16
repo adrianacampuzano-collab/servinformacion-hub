@@ -430,6 +430,54 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 }
 .pb-drive-hero:hover .pb-drive-open-btn{background:#0f766e;transform:translateY(-1px);}
 
+
+/* ── NOTEBOOK TABS ── */
+.nb-tab-bar{display:flex;gap:0;margin-bottom:20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:4px;width:fit-content;}
+.nb-tab{padding:7px 20px;border-radius:7px;font-size:12.5px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .18s;white-space:nowrap;border:none;background:none;font-family:'Inter',sans-serif;}
+.nb-tab:hover{color:var(--text);}
+.nb-tab.active{background:var(--blue-mid);color:#fff;border:1px solid var(--border2);}
+.nb-section{display:none;animation:fadeUp .25s ease;}
+.nb-section.active{display:block;}
+.nb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:8px;}
+.nb-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);overflow:hidden;
+  transition:all .22s;position:relative;
+}
+.nb-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2);}
+.nb-card-header{
+  padding:16px 18px 14px;
+  display:flex;align-items:flex-start;gap:12px;
+  border-bottom:1px solid var(--border);
+}
+.nb-card-ico{
+  width:40px;height:40px;border-radius:10px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:18px;
+}
+.nb-card-ico.purple{background:linear-gradient(135deg,#7c3aed,#4c1d95);}
+.nb-card-ico.blue{background:linear-gradient(135deg,var(--blue),#004f87);}
+.nb-card-ico.teal{background:linear-gradient(135deg,var(--teal),#0f766e);}
+.nb-card-ico.red{background:linear-gradient(135deg,var(--red),#7a0010);}
+.nb-card-title{font-size:13px;font-weight:700;color:#fff;margin-bottom:3px;}
+.nb-card-sub{font-size:10.5px;color:var(--text2);line-height:1.5;}
+.nb-card-actions{padding:12px 18px;display:flex;align-items:center;justify-content:space-between;}
+.nb-card-tag{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:4px;background:rgba(139,92,246,.18);color:#a78bfa;}
+.nb-card-tag.blue{background:rgba(0,141,212,.15);color:var(--blue);}
+.nb-card-tag.green{background:rgba(34,197,94,.12);color:var(--green);}
+.nb-card-tag.live{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:var(--green);animation:pulse 2s infinite;}
+.nb-coming{
+  opacity:.55;cursor:default;
+}
+.nb-coming:hover{transform:none;box-shadow:none;border-color:var(--border);}
+.nb-card-preview{width:100%;height:360px;background:var(--surface2);border:none;display:block;}
+.nb-preview-wrap{border-top:1px solid var(--border);}
+
+
+.nb-card-body{padding:14px 18px;border-bottom:1px solid var(--border);}
+.nb-card-desc{font-size:12px;color:var(--text2);line-height:1.7;margin-bottom:10px;}
+.nb-card-topics{display:flex;gap:6px;flex-wrap:wrap;}
+.nb-topic{font-size:10px;font-weight:600;padding:2px 9px;border-radius:10px;background:var(--surface2);color:var(--text3);border:1px solid var(--border);}
+
 </style>
 </head>
 <body>
@@ -516,8 +564,11 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
           <div class="sb-badge g">Live</div><span class="step-arrow">›</span>
         </div>
         <div class="sub-items" id="sub-nb">
-          <div class="sub-item" onclick="nav('notebook');closeMenu()">
-            <div class="sub-dot" style="background:var(--purple)"></div>byCerebro
+          <div class="sub-item" onclick="nav('notebook');switchNbTab('propios',document.querySelector('.nb-tab'));closeMenu()">
+            <div class="sub-dot" style="background:var(--blue)"></div>Soluciones Servinformación
+          </div>
+          <div class="sub-item" onclick="nav('notebook');switchNbTab('google',document.querySelectorAll('.nb-tab')[1]);closeMenu()">
+            <div class="sub-dot" style="background:var(--red)"></div>Soluciones Google
           </div>
         </div>
       </div>
@@ -751,22 +802,163 @@ body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(
 
       <!-- NOTEBOOK -->
       <section class="page" id="page-notebook">
-        <div class="ph"><div class="ph-title"><em>NotebookLM</em> · Inteligencia comercial</div></div>
-        <div class="nb-hero">
-          <div class="nb-brand"><div class="nb-logo">🧠</div><div><div class="nb-name">NotebookLM · Servinformación</div><div class="nb-sub">Cuadernos activos · Actualización semanal</div></div></div>
-          <div class="nb-books">
-            <div class="nb-book nb-featured">
-              <div class="nb-feat-head">
-                <div class="nb-feat-info"><div class="nb-feat-ico">🧠</div><div><div class="nb-feat-t">byCerebro · Cuaderno oficial</div><div class="nb-feat-s">Funcionalidades, casos de uso, precios y argumentarios</div></div></div>
-                <div class="nb-feat-actions"><span class="nb-live">● Live</span><button class="btn btn-ghost btn-sm" onclick="window.open('https://notebooklm.google.com/notebook/f4cac0e9-c08b-4289-9c8f-4d231751ea9c','_blank')">Abrir ↗</button></div>
-              </div>
-              <div class="nb-iframe-wrap"><iframe src="https://notebooklm.google.com/notebook/f4cac0e9-c08b-4289-9c8f-4d231751ea9c/preview" allow="clipboard-read;clipboard-write" title="byCerebro"></iframe></div>
-            </div>
-            <div class="nb-book" onclick="alert('Próximamente')"><div class="nb-book-ico">💰</div><div class="nb-book-t">Soluciones &amp; Precios</div><div class="nb-book-d">Listados por país.</div><div class="nb-tag">Próximamente</div></div>
-            <div class="nb-book" onclick="alert('Próximamente')"><div class="nb-book-ico">🛡️</div><div class="nb-book-t">Objeciones</div><div class="nb-book-d">40+ objeciones con respuestas.</div><div class="nb-tag">Próximamente</div></div>
-          </div>
-          <div class="nb-cta"><div class="nb-cta-txt"><strong>¿No encuentras lo que buscas?</strong> Pregunta al asistente →</div><button class="btn btn-ghost btn-sm" onclick="sendChip('Consulta NotebookLM')">Abrir asistente</button></div>
+        <div class="ph">
+          <div class="ph-title"><em>NotebookLM</em> · Inteligencia comercial</div>
+          <div class="ph-sub">Cuadernos de conocimiento por solución · Actualización continua</div>
         </div>
+
+        <!-- TABS -->
+        <div class="nb-tab-bar">
+          <button class="nb-tab active" onclick="switchNbTab('propios', this)">🔵 Soluciones Servinformación</button>
+          <button class="nb-tab"        onclick="switchNbTab('google',  this)">🔴 Soluciones Google</button>
+        </div>
+
+        <!-- PRODUCTOS PROPIOS -->
+        <div class="nb-section active" id="nb-propios">
+          <div class="nb-grid">
+
+            <div class="nb-card">
+              <div class="nb-card-header">
+                <div class="nb-card-ico purple">🧠</div>
+                <div>
+                  <div class="nb-card-title">byCerebro</div>
+                  <div class="nb-card-sub">Funcionalidades, casos de uso, precios y argumentarios de la plataforma</div>
+                </div>
+              </div>
+              <div class="nb-card-body">
+                <div class="nb-card-desc">Consulta todo sobre byCerebro: qué hace, cómo se vende, precios por país y respuestas a objeciones frecuentes.</div>
+                <div class="nb-card-topics">
+                  <span class="nb-topic">Funcionalidades</span>
+                  <span class="nb-topic">Precios</span>
+                  <span class="nb-topic">Argumentarios</span>
+                  <span class="nb-topic">Casos de uso</span>
+                </div>
+              </div>
+              <div class="nb-card-actions">
+                <span class="nb-card-tag live">● Live</span>
+                <button class="btn btn-primary btn-sm" onclick="window.open('https://notebooklm.google.com/notebook/f4cac0e9-c08b-4289-9c8f-4d231751ea9c','_blank')">
+                  Abrir cuaderno ↗
+                </button>
+              </div>
+            </div>
+
+            <div class="nb-card">
+              <div class="nb-card-header">
+                <div class="nb-card-ico teal">🚗</div>
+                <div>
+                  <div class="nb-card-title">ServiRoutes</div>
+                  <div class="nb-card-sub">Optimización de rutas, territorios y fuerza de ventas con datos geoespaciales</div>
+                </div>
+              </div>
+              <div class="nb-card-body">
+                <div class="nb-card-desc">Todo sobre ServiRoutes: planificación de rutas, asignación de territorios, KPIs de eficiencia y pitch comercial.</div>
+                <div class="nb-card-topics">
+                  <span class="nb-topic">Rutas</span>
+                  <span class="nb-topic">Territorios</span>
+                  <span class="nb-topic">KPIs</span>
+                  <span class="nb-topic">Pitch</span>
+                </div>
+              </div>
+              <div class="nb-card-actions">
+                <span class="nb-card-tag live">● Live</span>
+                <button class="btn btn-primary btn-sm" onclick="window.open('https://notebooklm.google.com/notebook/ad139e64-3b89-4f47-aa7c-d35c70cd179e','_blank')">
+                  Abrir cuaderno ↗
+                </button>
+              </div>
+            </div>
+
+            <div class="nb-card">
+              <div class="nb-card-header">
+                <div class="nb-card-ico blue">⚡</div>
+                <div>
+                  <div class="nb-card-title">Smart1</div>
+                  <div class="nb-card-sub">Inteligencia de localización y análisis de datos para decisiones comerciales</div>
+                </div>
+              </div>
+              <div class="nb-card-body">
+                <div class="nb-card-desc">Consulta Smart1: inteligencia de audiencias, análisis de afluencia, benchmarking y casos de uso por industria.</div>
+                <div class="nb-card-topics">
+                  <span class="nb-topic">Audiencias</span>
+                  <span class="nb-topic">Afluencia</span>
+                  <span class="nb-topic">Benchmark</span>
+                  <span class="nb-topic">Industrias</span>
+                </div>
+              </div>
+              <div class="nb-card-actions">
+                <span class="nb-card-tag live">● Live</span>
+                <button class="btn btn-primary btn-sm" onclick="window.open('https://notebooklm.google.com/notebook/c9171c9c-c907-4131-a8bd-cd0848b7d823','_blank')">
+                  Abrir cuaderno ↗
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- GOOGLE -->
+        <div class="nb-section" id="nb-google">
+          <div class="nb-grid">
+
+            <div class="nb-card nb-coming">
+              <div class="nb-card-header">
+                <div class="nb-card-ico blue">📧</div>
+                <div>
+                  <div class="nb-card-title">Google Workspace</div>
+                  <div class="nb-card-sub">Funcionalidades, licenciamiento, casos de uso y argumentarios de venta</div>
+                </div>
+              </div>
+              <div class="nb-card-body">
+                <div class="nb-card-desc">Próximamente: todo lo que necesitas para vender Google Workspace en LATAM.</div>
+              </div>
+              <div class="nb-card-actions">
+                <span class="nb-card-tag">Próximamente</span>
+                <button class="btn btn-ghost btn-sm" disabled style="opacity:.4">Abrir cuaderno ↗</button>
+              </div>
+            </div>
+
+            <div class="nb-card nb-coming">
+              <div class="nb-card-header">
+                <div class="nb-card-ico teal">🗺️</div>
+                <div>
+                  <div class="nb-card-title">Google Maps Platform</div>
+                  <div class="nb-card-sub">APIs de Maps, Routes, Places y casos de uso por industria</div>
+                </div>
+              </div>
+              <div class="nb-card-body">
+                <div class="nb-card-desc">Próximamente: guía completa de Google Maps Platform para el equipo comercial.</div>
+              </div>
+              <div class="nb-card-actions">
+                <span class="nb-card-tag">Próximamente</span>
+                <button class="btn btn-ghost btn-sm" disabled style="opacity:.4">Abrir cuaderno ↗</button>
+              </div>
+            </div>
+
+            <div class="nb-card nb-coming">
+              <div class="nb-card-header">
+                <div class="nb-card-ico red">☁️</div>
+                <div>
+                  <div class="nb-card-title">Google Cloud</div>
+                  <div class="nb-card-sub">Migración, infraestructura, IA y casos empresariales en la nube</div>
+                </div>
+              </div>
+              <div class="nb-card-body">
+                <div class="nb-card-desc">Próximamente: argumentarios y casos de uso de Google Cloud para LATAM.</div>
+              </div>
+              <div class="nb-card-actions">
+                <span class="nb-card-tag">Próximamente</span>
+                <button class="btn btn-ghost btn-sm" disabled style="opacity:.4">Abrir cuaderno ↗</button>
+              </div>
+            </div>
+
+          </div>
+          <div style="background:rgba(0,141,212,0.06);border:1px solid var(--border2);border-radius:var(--radius);padding:14px 18px;margin-top:4px;">
+            <div style="font-size:12px;color:var(--text2);line-height:1.7;">
+              <strong style="color:#fff">¿Tienes un cuaderno de Google listo?</strong>
+              Comparte el link con el administrador del Hub para agregarlo aquí.
+            </div>
+          </div>
+        </div>
+
       </section>
 
       <!-- CASOS -->
@@ -1723,6 +1915,16 @@ function cerrarDetalle() {
 // ═══════════════════════════════════════════════════
 // 5. CHAT
 // ═══════════════════════════════════════════════════
+
+function switchNbTab(tab, btn) {
+  // Tabs
+  document.querySelectorAll('.nb-tab').forEach(function(t){ t.classList.remove('active'); });
+  btn.classList.add('active');
+  // Sections
+  document.querySelectorAll('.nb-section').forEach(function(s){ s.classList.remove('active'); });
+  document.getElementById('nb-' + tab).classList.add('active');
+}
+
 function sendMsg() {
   var inp = document.getElementById('chatInp'), txt = inp.value.trim(); if(!txt) return;
   addMsg(txt, true); inp.value=''; inp.style.height='auto';
