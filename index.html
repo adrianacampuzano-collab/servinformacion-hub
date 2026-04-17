@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" id="html-root">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Hub Comercial · Servinformación</title>
+<title id="page-title">Hub Comercial · Servinformación</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -313,25 +313,25 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-1);m
      SIDEBAR
 ══════════════════════════════ -->
 <aside class="sidebar">
-  <div class="sb-logo">
-    <div class="lm"><em>Serv</em>información</div>
-    <div class="ls">Hub Comercial</div>
+  <div class="sb-logo" style="padding:16px 18px 14px">
+    <img src="data:image/png;base64,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" alt="Servinformación" style="width:152px;height:auto;display:block;margin-bottom:6px"/>
+    <div class="ls" data-i18n="hub_sub" style="font-size:10px;color:var(--text-3);font-weight:500;letter-spacing:.03em">Hub Comercial</div>
   </div>
   <nav class="sb-nav">
-    <div class="sb-sec">Principal</div>
-    <div class="sb-item act" data-page="dashboard" onclick="nav(this)"><span class="s-ico">🏠</span>Dashboard</div>
-    <div class="sb-item" data-page="casos" onclick="nav(this)"><span class="s-ico">⭐</span>Casos de éxito<span class="s-bdg">67</span></div>
-    <div class="sb-item" data-page="playbook" onclick="nav(this)"><span class="s-ico">📘</span>Sales Playbook</div>
-    <div class="sb-item" data-page="landings" onclick="nav(this)"><span class="s-ico">📊</span>Landing Pages</div>
-    <div class="sb-sec">Conocimiento</div>
+    <div class="sb-sec" data-i18n="nav_principal">Principal</div>
+    <div class="sb-item act" data-page="dashboard" onclick="nav(this)"><span class="s-ico">🏠</span><span data-i18n="nav_dashboard">Dashboard</span></div>
+    <div class="sb-item" data-page="casos" onclick="nav(this)"><span class="s-ico">⭐</span><span data-i18n="nav_casos">Casos de éxito</span><span class="s-bdg">67</span></div>
+    <div class="sb-item" data-page="playbook" onclick="nav(this)"><span class="s-ico">📘</span><span data-i18n="nav_playbook">Sales Playbook</span></div>
+    <div class="sb-item" data-page="landings" onclick="nav(this)"><span class="s-ico">📊</span><span data-i18n="nav_landings">Landing Pages</span></div>
+    <div class="sb-sec" data-i18n="nav_conocimiento">Conocimiento</div>
     <div class="sb-item" data-page="notebooklm" onclick="nav(this)"><span class="s-ico">🧠</span>NotebookLM</div>
-    <div class="sb-item" data-page="entrenamiento" onclick="nav(this)"><span class="s-ico">🎓</span>Entrenamiento</div>
-    <div class="sb-sec">Más recursos</div>
-    <div class="sb-item" data-page="recursos" onclick="nav(this)"><span class="s-ico">📎</span>Recursos adicionales</div>
+    <div class="sb-item" data-page="entrenamiento" onclick="nav(this)"><span class="s-ico">🎓</span><span data-i18n="nav_entrenamiento">Entrenamiento</span></div>
+    <div class="sb-sec" data-i18n="nav_recursos_sec">Más recursos</div>
+    <div class="sb-item" data-page="recursos" onclick="nav(this)"><span class="s-ico">📎</span><span data-i18n="nav_recursos">Recursos adicionales</span></div>
   </nav>
   <div class="sb-foot">
     <div class="ai-btn" onclick="nav(document.querySelector('[data-page=dashboard]'));setTimeout(()=>document.getElementById('ai-input').focus(),300)">
-      <span>🤖</span>Asistente IA<span class="live-dot"></span>
+      <span>🤖</span><span data-i18n="ai_btn">Asistente IA</span><span class="live-dot"></span>
     </div>
   </div>
 </aside>
@@ -345,11 +345,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-1);m
   <header class="topbar">
     <div class="search-box">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8a8f87" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input type="text" placeholder="Buscar casos, materiales, soluciones…"/>
+      <input type="text" id="search-input" placeholder="Buscar casos, materiales, soluciones…" data-i18n-ph="search_ph"/>
     </div>
     <div class="tb-right">
-      <span class="lang on">🌐 ES</span>
-      <span class="lang">BR PT</span>
+      <span class="lang on" id="lang-es" onclick="setLang('es')" title="Español">🌐 ES</span>
+      <span class="lang" id="lang-pt" onclick="setLang('pt')" title="Português">🇧🇷 PT</span>
       <div class="ava">AD</div>
     </div>
   </header>
@@ -360,31 +360,31 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-1);m
   <section class="page on" id="page-dashboard">
     <div class="pg-hd" style="margin-bottom:20px">
       <div>
-        <h1 style="font-size:22px">Hola, <em>Equipo Comercial</em> 👋</h1>
-        <p id="date-line">Hub Comercial · Servinformación · 20 soluciones · 7 países activos</p>
+        <h1 style="font-size:22px"><span data-i18n="dash_hello">Hola,</span> <em data-i18n="dash_team">Equipo Comercial</em> 👋</h1>
+        <p id="date-line"></p>
       </div>
     </div>
 
     <!-- KPIs -->
     <div class="kpi-grid">
-      <div class="kc"><div class="kc-top"><span class="kc-ico">🧩</span><span class="kc-trend">+2 este mes ↑</span></div><div class="kc-num">20</div><div class="kc-lbl">Soluciones activas</div><div class="kc-bar"><div class="kc-fill" style="width:80%"></div></div></div>
-      <div class="kc"><div class="kc-top"><span class="kc-ico">🌎</span><span class="kc-trend">+1 país ↑</span></div><div class="kc-num">7</div><div class="kc-lbl">Países con casos</div><div class="kc-bar"><div class="kc-fill" style="width:54%"></div></div></div>
-      <div class="kc"><div class="kc-top"><span class="kc-ico">📁</span><span class="kc-trend">+3 esta sem ↑</span></div><div class="kc-num">47</div><div class="kc-lbl">Materiales activos</div><div class="kc-bar"><div class="kc-fill" style="width:70%"></div></div></div>
-      <div class="kc"><div class="kc-top"><span class="kc-ico">⭐</span><span class="kc-trend" style="color:var(--text-2);background:var(--bg)">Meta: 100</span></div><div class="kc-num">67</div><div class="kc-lbl">Casos de éxito</div><div class="kc-bar"><div class="kc-fill" style="width:67%"></div></div></div>
+      <div class="kc"><div class="kc-top"><span class="kc-ico">🧩</span><span class="kc-trend" data-i18n="kpi_sol_trend">+2 este mes ↑</span></div><div class="kc-num">20</div><div class="kc-lbl" data-i18n="kpi_sol">Soluciones activas</div><div class="kc-bar"><div class="kc-fill" style="width:80%"></div></div></div>
+      <div class="kc"><div class="kc-top"><span class="kc-ico">🌎</span><span class="kc-trend" data-i18n="kpi_pais_trend">+1 país ↑</span></div><div class="kc-num">7</div><div class="kc-lbl" data-i18n="kpi_pais">Países con casos</div><div class="kc-bar"><div class="kc-fill" style="width:54%"></div></div></div>
+      <div class="kc"><div class="kc-top"><span class="kc-ico">📁</span><span class="kc-trend" data-i18n="kpi_mat_trend">+3 esta sem ↑</span></div><div class="kc-num">47</div><div class="kc-lbl" data-i18n="kpi_mat">Materiales activos</div><div class="kc-bar"><div class="kc-fill" style="width:70%"></div></div></div>
+      <div class="kc"><div class="kc-top"><span class="kc-ico">⭐</span><span class="kc-trend" style="color:var(--text-2);background:var(--bg)" data-i18n="kpi_casos_trend">Meta: 100</span></div><div class="kc-num">67</div><div class="kc-lbl" data-i18n="kpi_casos">Casos de éxito</div><div class="kc-bar"><div class="kc-fill" style="width:67%"></div></div></div>
     </div>
 
     <!-- Featured case -->
-    <div class="slbl">Caso destacado</div>
+    <div class="slbl" data-i18n="dash_featured">Caso destacado</div>
     <div class="featured">
       <div class="fc-inner">
         <div class="fc-accent"></div>
         <div class="fc-body">
           <div class="fc-top">
-            <div><div class="fc-tags"><span class="fc-tag ft-new">Nuevo</span><span class="fc-tag ft-cloud">Cloud</span></div></div>
-            <button class="btn btn-primary" onclick="nav(document.querySelector('[data-page=casos]'))">Ver casos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></button>
+            <div><div class="fc-tags"><span class="fc-tag ft-new" data-i18n="tag_new">Nuevo</span><span class="fc-tag ft-cloud">Cloud</span></div></div>
+            <button class="btn btn-primary" onclick="nav(document.querySelector('[data-page=casos]'))"><span data-i18n="btn_ver_casos">Ver casos</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></button>
           </div>
           <div class="fc-title">Banco de Bogotá – Data Warehouse</div>
-          <div class="fc-desc">Migración de 33 modelos analíticos a Google Cloud, reduciendo tiempos de procesamiento en 85%. Proyecto completado en 6 meses con el equipo de Analítica Predictiva.</div>
+          <div class="fc-desc" data-i18n="featured_desc">Migración de 33 modelos analíticos a Google Cloud, reduciendo tiempos de procesamiento en 85%. Proyecto completado en 6 meses con el equipo de Analítica Predictiva.</div>
           <div class="fc-meta">Oscar Bernal · VP Tecnología · Colombia · 2026</div>
         </div>
       </div>
@@ -393,16 +393,16 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-1);m
     <!-- Grid -->
     <div class="grid2">
       <div class="card">
-        <div class="card-hd"><span class="card-title">Acceso rápido</span></div>
+        <div class="card-hd"><span class="card-title" data-i18n="dash_quick">Acceso rápido</span></div>
         <div class="card-bd">
-          <div class="qn" onclick="nav(document.querySelector('[data-page=casos]'))"><div class="qn-ico" style="background:var(--info-bg)">⭐</div><div><div class="qn-name">Casos de éxito</div><div class="qn-sub">67 casos · 2021–2026 · 7 países</div></div><span class="qn-arr">›</span></div>
-          <div class="qn" onclick="nav(document.querySelector('[data-page=playbook]'))"><div class="qn-ico" style="background:var(--brand-light)">📘</div><div><div class="qn-name">Sales Playbook</div><div class="qn-sub">Paso a paso para cerrar deals</div></div><span class="qn-arr">›</span></div>
-          <div class="qn" onclick="nav(document.querySelector('[data-page=landings]'))"><div class="qn-ico" style="background:var(--warn-bg)">📊</div><div><div class="qn-name">Landing Pages</div><div class="qn-sub">Logística · Agénticas IA · MVP</div></div><span class="qn-arr">›</span></div>
-          <div class="qn" onclick="nav(document.querySelector('[data-page=entrenamiento]'))"><div class="qn-ico" style="background:var(--purple-bg)">🎓</div><div><div class="qn-name">Plan de entrenamiento</div><div class="qn-sub">Geomarketing · Sitidata · Datarutas</div></div><span class="qn-arr">›</span></div>
+          <div class="qn" onclick="nav(document.querySelector('[data-page=casos]'))"><div class="qn-ico" style="background:var(--info-bg)">⭐</div><div><div class="qn-name" data-i18n="nav_casos">Casos de éxito</div><div class="qn-sub" data-i18n="qn_casos_sub">67 casos · 2021–2026 · 7 países</div></div><span class="qn-arr">›</span></div>
+          <div class="qn" onclick="nav(document.querySelector('[data-page=playbook]'))"><div class="qn-ico" style="background:var(--brand-light)">📘</div><div><div class="qn-name" data-i18n="nav_playbook">Sales Playbook</div><div class="qn-sub" data-i18n="qn_play_sub">Paso a paso para cerrar deals</div></div><span class="qn-arr">›</span></div>
+          <div class="qn" onclick="nav(document.querySelector('[data-page=landings]'))"><div class="qn-ico" style="background:var(--warn-bg)">📊</div><div><div class="qn-name" data-i18n="nav_landings">Landing Pages</div><div class="qn-sub" data-i18n="qn_land_sub">Logística · Agénticas IA · MVP</div></div><span class="qn-arr">›</span></div>
+          <div class="qn" onclick="nav(document.querySelector('[data-page=entrenamiento]'))"><div class="qn-ico" style="background:var(--purple-bg)">🎓</div><div><div class="qn-name" data-i18n="qn_train">Plan de entrenamiento</div><div class="qn-sub" data-i18n="qn_train_sub">Geomarketing · Sitidata · Datarutas</div></div><span class="qn-arr">›</span></div>
         </div>
       </div>
       <div class="card">
-        <div class="card-hd"><span class="card-title">Casos recientes</span><button class="card-action" onclick="nav(document.querySelector('[data-page=casos]'))">Ver todos →</button></div>
+        <div class="card-hd"><span class="card-title" data-i18n="dash_recent">Casos recientes</span><button class="card-action" onclick="nav(document.querySelector('[data-page=casos]'))" data-i18n="btn_ver_todos">Ver todos →</button></div>
         <div class="card-bd">
           <div class="ci"><div class="ci-ico" style="background:var(--info-bg)">🏦</div><div><div class="ci-name">Banco de Bogotá – Data Warehouse</div><div class="ci-meta">Colombia · Analítica Predictiva · 2026</div><span class="ci-tag">Cloud · Enterprise</span></div></div>
           <div class="ci"><div class="ci-ico" style="background:var(--brand-light)">🚛</div><div><div class="ci-name">Mabe – Tracking de Entregas Google Cloud</div><div class="ci-meta">México · Manufactura · 2025</div><span class="ci-tag">Soluciones Cloud</span></div></div>
@@ -413,24 +413,24 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-1);m
 
     <div class="grid2">
       <div class="card">
-        <div class="card-hd"><span class="card-title">Actividad reciente</span></div>
+        <div class="card-hd"><span class="card-title" data-i18n="dash_activity">Actividad reciente</span></div>
         <div class="card-bd" style="padding-top:6px;padding-bottom:6px">
-          <div class="act-item"><div class="act-dot ad-g"></div><div style="flex:1"><div class="act-txt"><strong>67 casos de éxito</strong> cargados desde la base de datos oficial</div><div class="act-time">Hoy</div></div></div>
-          <div class="act-item"><div class="act-dot ad-g"></div><div style="flex:1"><div class="act-txt">Casos disponibles: <a onclick="nav(document.querySelector('[data-page=casos]'))">Colombia, Ecuador, México, Perú, Brasil, El Salvador, Guatemala</a></div><div class="act-time">Hoy</div></div></div>
-          <div class="act-item"><div class="act-dot ad-b"></div><div style="flex:1"><div class="act-txt"><strong>Carlos Rueda</strong> actualizó el Playbook de <a onclick="nav(document.querySelector('[data-page=playbook]'))">Localización Flota</a></div><div class="act-time">Hace 1 hora</div></div></div>
-          <div class="act-item"><div class="act-dot ad-br"></div><div style="flex:1"><div class="act-txt"><strong>NotebookLM byCerebro</strong> — cuaderno actualizado con nuevos casos</div><div class="act-time">Hace 2 horas</div></div></div>
+          <div class="act-item"><div class="act-dot ad-g"></div><div style="flex:1"><div class="act-txt"><strong>67 <span data-i18n="act_casos">casos de éxito</span></strong> <span data-i18n="act_loaded">cargados desde la base de datos oficial</span></div><div class="act-time" data-i18n="act_today">Hoy</div></div></div>
+          <div class="act-item"><div class="act-dot ad-g"></div><div style="flex:1"><div class="act-txt"><span data-i18n="act_avail">Casos disponibles:</span> <a onclick="nav(document.querySelector('[data-page=casos]'))">Colombia, Ecuador, México, Perú, Brasil, El Salvador, Guatemala</a></div><div class="act-time" data-i18n="act_today">Hoy</div></div></div>
+          <div class="act-item"><div class="act-dot ad-b"></div><div style="flex:1"><div class="act-txt"><strong>Carlos Rueda</strong> <span data-i18n="act_updated">actualizó el Playbook de</span> <a onclick="nav(document.querySelector('[data-page=playbook]'))">Localización Flota</a></div><div class="act-time" data-i18n="act_1h">Hace 1 hora</div></div></div>
+          <div class="act-item"><div class="act-dot ad-br"></div><div style="flex:1"><div class="act-txt"><strong>NotebookLM byCerebro</strong> — <span data-i18n="act_nb">cuaderno actualizado con nuevos casos</span></div><div class="act-time" data-i18n="act_2h">Hace 2 horas</div></div></div>
         </div>
       </div>
       <div class="ai-widget">
-        <div class="ai-hd"><div class="ai-hd-title"><span class="ai-live"></span>Asistente Comercial IA · Claude</div><span style="font-size:12px;color:var(--text-3)">Conectado</span></div>
+        <div class="ai-hd"><div class="ai-hd-title"><span class="ai-live"></span><span data-i18n="ai_title">Asistente Comercial IA · Claude</span></div><span style="font-size:12px;color:var(--text-3)" data-i18n="ai_connected">Conectado</span></div>
         <div class="ai-bd">
-          <div class="ai-msg">Soy tu <strong>Asistente Comercial</strong>. Puedo buscar casos por país o industria, ayudarte a crear propuestas y argumentar objeciones de precio.</div>
+          <div class="ai-msg" data-i18n="ai_intro">Soy tu <strong>Asistente Comercial</strong>. Puedo buscar casos por país o industria, ayudarte a crear propuestas y argumentar objeciones de precio.</div>
           <div class="chips">
-            <span class="chip">Presencia por país</span><span class="chip">Crear propuesta</span><span class="chip">Objeción precio</span><span class="chip">Casos en gobierno</span><span class="chip">Casos financiero CO</span><span class="chip">Recomendar solución logística</span>
+            <span class="chip" data-i18n="chip_1">Presencia por país</span><span class="chip" data-i18n="chip_2">Crear propuesta</span><span class="chip" data-i18n="chip_3">Objeción precio</span><span class="chip" data-i18n="chip_4">Casos en gobierno</span><span class="chip" data-i18n="chip_5">Casos financiero CO</span><span class="chip" data-i18n="chip_6">Recomendar solución logística</span>
           </div>
         </div>
         <div class="ai-ft">
-          <input id="ai-input" class="ai-input" type="text" placeholder="Escribe tu consulta…"/>
+          <input id="ai-input" class="ai-input" type="text" data-i18n-ph="ai_ph"/>
           <button class="ai-send" aria-label="Enviar">↑</button>
         </div>
       </div>
@@ -441,49 +441,112 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-1);m
        PAGE: CASOS DE ÉXITO
   ══════════════════════════ -->
   <section class="page" id="page-casos">
-    <nav class="bc"><button class="bc-link" onclick="nav(document.querySelector('[data-page=dashboard]'))">🏠 Inicio</button><span class="bc-sep">›</span><span class="bc-cur">Casos de éxito</span></nav>
-    <div class="pg-hd"><div><h1>Casos de <em>Éxito</em></h1><p>67 casos documentados · 2021–2026 · 7 países · Haz clic en cualquier caso para ver la ficha completa</p></div><button class="btn btn-primary">+ Agregar caso</button></div>
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-sm)">
-      <iframe src="https://adrianacampuzano-collab.github.io/servinformacion-hub/#casos" style="width:100%;height:700px;border:none;display:block" title="Casos de éxito"></iframe>
-      <div style="padding:20px;text-align:center;border-top:1px solid var(--border)">
-        <p style="font-size:13px;color:var(--text-3);margin-bottom:12px">¿Problemas para cargar los casos? Ábrelos directamente en el hub original</p>
-        <a href="https://adrianacampuzano-collab.github.io/servinformacion-hub/" target="_blank" class="btn btn-secondary">Abrir hub completo ↗</a>
-      </div>
+    <nav class="bc"><button class="bc-link" onclick="nav(document.querySelector('[data-page=dashboard]'))">🏠 <span data-i18n="bc_home">Inicio</span></button><span class="bc-sep">›</span><span class="bc-cur" data-i18n="nav_casos">Casos de éxito</span></nav>
+    <div class="pg-hd">
+      <div><h1>Casos de <em data-i18n="casos_title_em">Éxito</em></h1><p data-i18n="casos_sub">67 casos documentados · 2021–2026 · 7 países · Haz clic en cualquier caso para ver la ficha completa</p></div>
+      <button class="btn btn-primary" onclick="alert(T('soon'))" data-i18n="btn_add_caso">+ Agregar caso</button>
+    </div>
+
+    <!-- Filtros -->
+    <div id="casos-filters" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;align-items:center">
+      <select id="f-year" onchange="renderCasos()" style="padding:7px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;background:var(--surface);color:var(--text-1);font-family:'DM Sans',sans-serif;cursor:pointer;outline:none">
+        <option value="" data-i18n="f_all_years">📅 Todos los años</option>
+        <option value="2026">2026</option><option value="2025">2025</option><option value="2024">2024</option>
+        <option value="2023">2023</option><option value="2022">2022</option><option value="2021">2021</option>
+      </select>
+      <select id="f-country" onchange="renderCasos()" style="padding:7px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;background:var(--surface);color:var(--text-1);font-family:'DM Sans',sans-serif;cursor:pointer;outline:none">
+        <option value="" data-i18n="f_all_countries">🌎 Todos los países</option>
+        <option value="Colombia">Colombia</option><option value="Ecuador">Ecuador</option>
+        <option value="México">México</option><option value="Perú">Perú</option>
+        <option value="Brasil">Brasil</option><option value="El Salvador">El Salvador</option>
+        <option value="Guatemala">Guatemala</option>
+      </select>
+      <select id="f-industry" onchange="renderCasos()" style="padding:7px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;background:var(--surface);color:var(--text-1);font-family:'DM Sans',sans-serif;cursor:pointer;outline:none">
+        <option value="" data-i18n="f_industry">🏭 Industria</option>
+        <option value="Financiero" data-i18n="ind_fin">Financiero</option>
+        <option value="Retail">Retail</option>
+        <option value="Educación" data-i18n="ind_edu">Educación</option>
+        <option value="Salud" data-i18n="ind_sal">Salud</option>
+        <option value="Gobierno" data-i18n="ind_gov">Gobierno</option>
+        <option value="Tecnología" data-i18n="ind_tec">Tecnología</option>
+        <option value="Logística" data-i18n="ind_log">Logística</option>
+        <option value="Agro">Agro</option>
+        <option value="Energía y Utilities" data-i18n="ind_ene">Energía y Utilities</option>
+        <option value="Manufactura" data-i18n="ind_mfg">Manufactura</option>
+        <option value="Telecomunicaciones" data-i18n="ind_tel">Telecomunicaciones</option>
+      </select>
+      <select id="f-segment" onchange="renderCasos()" style="padding:7px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;background:var(--surface);color:var(--text-1);font-family:'DM Sans',sans-serif;cursor:pointer;outline:none">
+        <option value="" data-i18n="f_segment">🏷 Segmento</option>
+        <option value="Enterprise">Enterprise</option><option value="SMB">SMB</option>
+        <option value="Gobierno" data-i18n="ind_gov">Gobierno</option>
+      </select>
+      <select id="f-sol" onchange="renderCasos()" style="padding:7px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;background:var(--surface);color:var(--text-1);font-family:'DM Sans',sans-serif;cursor:pointer;outline:none">
+        <option value="" data-i18n="f_solution">⚙️ Solución</option>
+        <option value="Analítica Predictiva">Analítica Predictiva</option>
+        <option value="Soluciones Cloud">Soluciones Cloud</option>
+        <option value="Google Workspace">Google Workspace</option>
+        <option value="Localización Inteligente">Localización Inteligente</option>
+        <option value="Migración a la nube" data-i18n="sol_mig">Migración a la nube</option>
+        <option value="Soluciones Gobierno" data-i18n="sol_gov">Soluciones Gobierno</option>
+        <option value="Cibersecurity">Cibersecurity</option>
+      </select>
+      <button id="btn-clear-casos" onclick="clearCasosFilters()" style="padding:7px 14px;border:1px solid var(--border);border-radius:8px;font-size:13px;background:var(--surface);color:var(--text-3);font-family:'DM Sans',sans-serif;cursor:pointer;display:flex;align-items:center;gap:5px" data-i18n="btn_clear">✕ Limpiar</button>
+      <span id="casos-count" style="margin-left:auto;font-size:13px;color:var(--text-3)"></span>
+    </div>
+
+    <!-- Grid de casos -->
+    <div id="casos-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px"></div>
+
+    <!-- Empty state -->
+    <div id="casos-empty" style="display:none;text-align:center;padding:60px 20px">
+      <div style="font-size:40px;margin-bottom:12px">🔍</div>
+      <p style="font-size:15px;font-weight:500;color:var(--text-1);margin-bottom:6px" data-i18n="empty_title">Sin resultados</p>
+      <p style="font-size:13px;color:var(--text-3)" data-i18n="empty_sub">Intenta con otros filtros</p>
+      <button onclick="clearCasosFilters()" class="btn btn-secondary" style="margin-top:16px" data-i18n="btn_clear_filters">Limpiar filtros</button>
     </div>
   </section>
+
+  <!-- ══════════════════════════
+       MODAL CASO DE ÉXITO
+  ══════════════════════════ -->
+  <div id="caso-modal" onclick="closeCasoModal(event)" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:100;overflow-y:auto;padding:32px 16px">
+    <div id="caso-modal-inner" style="background:var(--surface);border-radius:var(--r-lg);max-width:720px;margin:0 auto;overflow:hidden;box-shadow:var(--shadow-md)" onclick="event.stopPropagation()">
+      <div id="caso-modal-content"></div>
+    </div>
+  </div>
 
   <!-- ══════════════════════════
        PAGE: SALES PLAYBOOK
   ══════════════════════════ -->
   <section class="page" id="page-playbook">
-    <nav class="bc"><button class="bc-link" onclick="nav(document.querySelector('[data-page=dashboard]'))">🏠 Inicio</button><span class="bc-sep">›</span><span class="bc-cur">Sales Playbook</span></nav>
+    <nav class="bc"><button class="bc-link" onclick="nav(document.querySelector('[data-page=dashboard]'))">🏠 <span data-i18n="bc_home">Inicio</span></button><span class="bc-sep">›</span><span class="bc-cur" data-i18n="nav_playbook">Sales Playbook</span></nav>
     <div class="pg-hd">
-      <div><h1>Sales <em>Playbook</em></h1><p>Guías y templates para cerrar deals · Abre directamente en Google Slides</p></div>
+      <div><h1>Sales <em>Playbook</em></h1><p data-i18n="play_sub">Guías y templates para cerrar deals · Abre directamente en Google Slides</p></div>
       <a href="https://drive.google.com/drive/folders/1Y1X7L6Rhum" target="_blank" rel="noopener" class="btn btn-secondary">
         <svg width="14" height="14" viewBox="0 0 87.3 78" xmlns="http://www.w3.org/2000/svg"><path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/><path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0 -1.2 4.5h27.5z" fill="#00ac47"/><path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/><path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d"/><path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc"/><path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 27h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/></svg>
-        Ver todos en Drive
+        <span data-i18n="play_drive">Ver todos en Drive</span>
       </a>
     </div>
     <div class="stats-bar">
-      <div class="stat-it"><div class="stat-dot sd-on"></div><strong>3</strong> playbooks disponibles</div>
+      <div class="stat-it"><div class="stat-dot sd-on"></div><strong>3</strong> <span data-i18n="play_avail">disponibles</span></div>
       <div class="stat-div"></div>
-      <div class="stat-it"><div class="stat-dot sd-off"></div><strong>5</strong> próximamente</div>
+      <div class="stat-it"><div class="stat-dot sd-off"></div><strong>5</strong> <span data-i18n="play_soon_count">próximamente</span></div>
       <div class="stat-div"></div>
-      <div class="stat-it">📑 Formato Google Slides · Abre en nueva pestaña</div>
+      <div class="stat-it">📑 <span data-i18n="play_fmt">Formato Google Slides · Abre en nueva pestaña</span></div>
     </div>
-    <div class="slbl">Disponibles ahora</div>
+    <div class="slbl" data-i18n="play_avail_lbl">Disponibles ahora</div>
     <div class="pb-grid">
-      <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,var(--brand),var(--brand-mid))"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--brand-light)">🧠</div><span class="pb-badge-live">Disponible</span></div><div><div class="pb-name">byCerebro</div><div class="pb-desc">Funcionalidades, precios por país y argumentarios para cerrar con el pitch correcto.</div></div><div class="pb-tags"><span class="pb-tag">Funcionalidades</span><span class="pb-tag">Precios</span><span class="pb-tag">Argumentarios</span><span class="pb-tag">Casos de uso</span></div></div><div class="pb-ft"><span class="pb-filetype">Google Slides</span><a href="https://docs.google.com/presentation/d/1DgOaPOp1mZDG2gqaPEkHLnViE52JSTsozqb50l9sXxY/edit?usp=drive_link" target="_blank" rel="noopener" class="pb-open">Abrir playbook ↗</a></div></div>
-      <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,var(--info),#4285f4)"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--info-bg)">💬</div><span class="pb-badge-live">Disponible</span></div><div><div class="pb-name">LicitChat</div><div class="pb-desc">Guía de venta para oportunidades en licitaciones y sector público.</div></div><div class="pb-tags"><span class="pb-tag">Sector público</span><span class="pb-tag">Licitaciones</span><span class="pb-tag">Pitch</span></div></div><div class="pb-ft"><span class="pb-filetype">Google Slides</span><a href="https://docs.google.com/presentation/d/1mHkNn-j2r6NZj_1trMbo_B6F6DOS5UeeOKgC9VdPlMQ/edit?usp=drive_link" target="_blank" rel="noopener" class="pb-open">Abrir playbook ↗</a></div></div>
-      <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,#1a73e8,#34a853)"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--info-bg)">⚡</div><span class="pb-badge-live">Disponible</span></div><div><div class="pb-name">Smart1</div><div class="pb-desc">Inteligencia de audiencias, análisis de afluencia y benchmarking competitivo.</div></div><div class="pb-tags"><span class="pb-tag">Audiencias</span><span class="pb-tag">Afluencia</span><span class="pb-tag">Benchmark</span></div></div><div class="pb-ft"><span class="pb-filetype">Google Slides</span><a href="https://docs.google.com/presentation/d/1mHkNn-j2r6NZj_1trMbo_B6F6DOS5UeeOKgC9VdPlMQ/edit?usp=drive_link" target="_blank" rel="noopener" class="pb-open">Abrir playbook ↗</a></div></div>
+      <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,var(--brand),var(--brand-mid))"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--brand-light)">🧠</div><span class="pb-badge-live" data-i18n="play_badge_live">Disponible</span></div><div><div class="pb-name">byCerebro</div><div class="pb-desc">Funcionalidades, precios por país y argumentarios para cerrar con el pitch correcto.</div></div><div class="pb-tags"><span class="pb-tag">Funcionalidades</span><span class="pb-tag">Precios</span><span class="pb-tag">Argumentarios</span><span class="pb-tag">Casos de uso</span></div></div><div class="pb-ft"><span class="pb-filetype">Google Slides</span><a href="https://docs.google.com/presentation/d/1DgOaPOp1mZDG2gqaPEkHLnViE52JSTsozqb50l9sXxY/edit?usp=drive_link" target="_blank" rel="noopener" class="pb-open" data-i18n="play_open">Abrir playbook ↗</a></div></div>
+      <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,var(--info),#4285f4)"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--info-bg)">💬</div><span class="pb-badge-live" data-i18n="play_badge_live">Disponible</span></div><div><div class="pb-name">LicitChat</div><div class="pb-desc">Guía de venta para oportunidades en licitaciones y sector público.</div></div><div class="pb-tags"><span class="pb-tag">Sector público</span><span class="pb-tag">Licitaciones</span><span class="pb-tag">Pitch</span></div></div><div class="pb-ft"><span class="pb-filetype">Google Slides</span><a href="https://docs.google.com/presentation/d/1mHkNn-j2r6NZj_1trMbo_B6F6DOS5UeeOKgC9VdPlMQ/edit?usp=drive_link" target="_blank" rel="noopener" class="pb-open" data-i18n="play_open">Abrir playbook ↗</a></div></div>
+      <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,#1a73e8,#34a853)"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--info-bg)">⚡</div><span class="pb-badge-live" data-i18n="play_badge_live">Disponible</span></div><div><div class="pb-name">Smart1</div><div class="pb-desc">Inteligencia de audiencias, análisis de afluencia y benchmarking competitivo.</div></div><div class="pb-tags"><span class="pb-tag">Audiencias</span><span class="pb-tag">Afluencia</span><span class="pb-tag">Benchmark</span></div></div><div class="pb-ft"><span class="pb-filetype">Google Slides</span><a href="https://docs.google.com/presentation/d/1mHkNn-j2r6NZj_1trMbo_B6F6DOS5UeeOKgC9VdPlMQ/edit?usp=drive_link" target="_blank" rel="noopener" class="pb-open" data-i18n="play_open">Abrir playbook ↗</a></div></div>
     </div>
-    <div class="slbl">Próximamente</div>
+    <div class="slbl" data-i18n="play_soon_lbl">Próximamente</div>
     <div class="pb-grid">
-      <div class="pb-card soon"><div class="pb-accent" style="background:#e0e2de"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:#ebebeb">🗺️</div><span class="pb-badge-soon">Próximamente</span></div><div><div class="pb-name">Datarutas</div><div class="pb-desc">Optimización de rutas de distribución y gestión de territorios de ventas.</div></div><div class="pb-tags"><span class="pb-tag">Rutas</span><span class="pb-tag">Territorios</span></div></div><div class="pb-ft"><span class="pb-soon-msg">En preparación</span></div></div>
-      <div class="pb-card soon"><div class="pb-accent" style="background:#e0e2de"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:#ebebeb">📋</div><span class="pb-badge-soon">Próximamente</span></div><div><div class="pb-name">ServiForms</div><div class="pb-desc">Automatización de formularios y captura de datos para procesos comerciales.</div></div><div class="pb-tags"><span class="pb-tag">Formularios</span></div></div><div class="pb-ft"><span class="pb-soon-msg">En preparación</span></div></div>
-      <div class="pb-card soon"><div class="pb-accent" style="background:#e0e2de"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:#ebebeb">🤖</div><span class="pb-badge-soon">Próximamente</span></div><div><div class="pb-name">IAManager</div><div class="pb-desc">Gestión inteligente de equipos y procesos comerciales con IA.</div></div><div class="pb-tags"><span class="pb-tag">IA</span><span class="pb-tag">Gestión</span></div></div><div class="pb-ft"><span class="pb-soon-msg">En preparación</span></div></div>
-      <div class="pb-card soon"><div class="pb-accent" style="background:#e0e2de"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:#ebebeb">📍</div><span class="pb-badge-soon">Próximamente</span></div><div><div class="pb-name">Sitidata</div><div class="pb-desc">Análisis de audiencias, afluencia e inteligencia competitiva.</div></div><div class="pb-tags"><span class="pb-tag">Audiencias</span><span class="pb-tag">Movilidad</span></div></div><div class="pb-ft"><span class="pb-soon-msg">En preparación</span></div></div>
-      <div class="pb-card soon"><div class="pb-accent" style="background:#e0e2de"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:#ebebeb">🌐</div><span class="pb-badge-soon">Próximamente</span></div><div><div class="pb-name">Geomarketing</div><div class="pb-desc">Identificación de zonas de alto potencial comercial con datos de localización.</div></div><div class="pb-tags"><span class="pb-tag">Geolocalización</span></div></div><div class="pb-ft"><span class="pb-soon-msg">En preparación</span></div></div>
+      <div class="pb-card soon"><div class="pb-accent" style="background:#e0e2de"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:#ebebeb">🗺️</div><span class="pb-badge-soon" data-i18n="play_badge_soon">Próximamente</span></div><div><div class="pb-name">Datarutas</div><div class="pb-desc">Optimización de rutas de distribución y gestión de territorios de ventas.</div></div><div class="pb-tags"><span class="pb-tag">Rutas</span><span class="pb-tag">Territorios</span></div></div><div class="pb-ft"><span class="pb-soon-msg" data-i18n="play_soon_msg">En preparación</span></div></div>
+      <div class="pb-card soon"><div class="pb-accent" style="background:#e0e2de"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:#ebebeb">📋</div><span class="pb-badge-soon" data-i18n="play_badge_soon">Próximamente</span></div><div><div class="pb-name">ServiForms</div><div class="pb-desc">Automatización de formularios y captura de datos para procesos comerciales.</div></div><div class="pb-tags"><span class="pb-tag">Formularios</span></div></div><div class="pb-ft"><span class="pb-soon-msg" data-i18n="play_soon_msg">En preparación</span></div></div>
+      <div class="pb-card soon"><div class="pb-accent" style="background:#e0e2de"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:#ebebeb">🤖</div><span class="pb-badge-soon" data-i18n="play_badge_soon">Próximamente</span></div><div><div class="pb-name">IAManager</div><div class="pb-desc">Gestión inteligente de equipos y procesos comerciales con IA.</div></div><div class="pb-tags"><span class="pb-tag">IA</span><span class="pb-tag">Gestión</span></div></div><div class="pb-ft"><span class="pb-soon-msg" data-i18n="play_soon_msg">En preparación</span></div></div>
+      <div class="pb-card soon"><div class="pb-accent" style="background:#e0e2de"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:#ebebeb">📍</div><span class="pb-badge-soon" data-i18n="play_badge_soon">Próximamente</span></div><div><div class="pb-name">Sitidata</div><div class="pb-desc">Análisis de audiencias, afluencia e inteligencia competitiva.</div></div><div class="pb-tags"><span class="pb-tag">Audiencias</span><span class="pb-tag">Movilidad</span></div></div><div class="pb-ft"><span class="pb-soon-msg" data-i18n="play_soon_msg">En preparación</span></div></div>
+      <div class="pb-card soon"><div class="pb-accent" style="background:#e0e2de"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:#ebebeb">🌐</div><span class="pb-badge-soon" data-i18n="play_badge_soon">Próximamente</span></div><div><div class="pb-name">Geomarketing</div><div class="pb-desc">Identificación de zonas de alto potencial comercial con datos de localización.</div></div><div class="pb-tags"><span class="pb-tag">Geolocalización</span></div></div><div class="pb-ft"><span class="pb-soon-msg" data-i18n="play_soon_msg">En preparación</span></div></div>
     </div>
     <div class="help-banner"><div class="help-ico">🤖</div><div class="help-txt"><strong>¿No sabes cuál playbook usar?</strong> Cuéntale al Asistente Comercial IA la industria y el tamaño del cliente — te recomienda el enfoque y los argumentarios más efectivos.</div></div>
   </section>
@@ -492,8 +555,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-1);m
        PAGE: LANDING PAGES
   ══════════════════════════ -->
   <section class="page" id="page-landings">
-    <nav class="bc"><button class="bc-link" onclick="nav(document.querySelector('[data-page=dashboard]'))">🏠 Inicio</button><span class="bc-sep">›</span><span class="bc-cur">Landing Pages</span></nav>
-    <div class="pg-hd"><div><h1>Landing <em>Pages</em></h1><p>Páginas de producto para compartir con prospectos · Selecciona una categoría</p></div></div>
+    <nav class="bc"><button class="bc-link" onclick="nav(document.querySelector('[data-page=dashboard]'))">🏠 <span data-i18n="bc_home">Inicio</span></button><span class="bc-sep">›</span><span class="bc-cur" data-i18n="nav_landings">Landing Pages</span></nav>
+    <div class="pg-hd"><div><h1>Landing <em>Pages</em></h1><p data-i18n="land_sub">Páginas de producto para compartir con prospectos · Selecciona una categoría</p></div></div>
     <div class="tabs-row">
       <button class="tab-btn on" onclick="switchTab('lp','logistica',this)">🚛 Logística y Transporte<span class="tab-count">6</span></button>
       <button class="tab-btn" onclick="switchTab('lp','agentias',this)">🤖 Soluciones Agénticas IA<span class="tab-count">4</span></button>
@@ -501,25 +564,25 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-1);m
     </div>
     <div class="tab-panel on" id="lp-logistica">
       <div class="pb-grid">
-        <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,var(--brand),var(--brand-mid))"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--brand-light)">🚛</div><span class="pb-badge-live">Activa</span></div><div><div class="pb-name">Logística y Transporte</div><div class="pb-desc">Soluciones completas para logística, transporte y distribución Servinformación.</div></div></div><div class="pb-ft"><span class="pb-filetype">servinformacionlogistica.lovable.app</span><a href="https://servinformacionlogistica.lovable.app/" target="_blank" rel="noopener" class="pb-open">Abrir ↗</a></div></div>
-        <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,var(--info),#4285f4)"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--info-bg)">⚡</div><span class="pb-badge-live">Activa</span></div><div><div class="pb-name">Smart1</div><div class="pb-desc">Inteligencia de audiencias, afluencia y análisis de datos para decisiones comerciales.</div></div></div><div class="pb-ft"><span class="pb-filetype">smart1-logistica.lovable.app</span><a href="https://smart1-logistica.lovable.app" target="_blank" rel="noopener" class="pb-open">Abrir ↗</a></div></div>
-        <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,#0f6e56,#27c93f)"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--brand-light)">🗺️</div><span class="pb-badge-live">Activa</span></div><div><div class="pb-name">ServiRoutes</div><div class="pb-desc">Optimización de rutas, asignación de territorios y KPIs de eficiencia.</div></div></div><div class="pb-ft"><span class="pb-filetype">serviroutes.lovable.app</span><a href="https://serviroutes.lovable.app" target="_blank" rel="noopener" class="pb-open">Abrir ↗</a></div></div>
-        <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,var(--warn),#e09320)"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--warn-bg)">📍</div><span class="pb-badge-live">Activa</span></div><div><div class="pb-name">DataRutas</div><div class="pb-desc">Gestión de territorios de ventas con datos geoespaciales.</div></div></div><div class="pb-ft"><span class="pb-filetype">datarutas.lovable.app</span><a href="https://datarutas.lovable.app/" target="_blank" rel="noopener" class="pb-open">Abrir ↗</a></div></div>
-        <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,var(--purple),#9333ea)"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--purple-bg)">📋</div><span class="pb-badge-live">Activa</span></div><div><div class="pb-name">ServiForms</div><div class="pb-desc">Automatización de formularios y captura de datos para procesos comerciales.</div></div></div><div class="pb-ft"><span class="pb-filetype">serviforms.lovable.app</span><a href="https://serviforms.lovable.app" target="_blank" rel="noopener" class="pb-open">Abrir ↗</a></div></div>
-        <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,var(--info),#34a853)"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--info-bg)">🌐</div><span class="pb-badge-live">Activa</span></div><div><div class="pb-name">Google Maps Platform</div><div class="pb-desc">Productos y APIs de mapas para soluciones de movilidad y geolocalización.</div></div></div><div class="pb-ft"><span class="pb-filetype">mapsplatform.google.com</span><a href="https://mapsplatform.google.com/maps-products/" target="_blank" rel="noopener" class="pb-open">Abrir ↗</a></div></div>
+        <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,var(--brand),var(--brand-mid))"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--brand-light)">🚛</div><span class="pb-badge-live" data-i18n="land_badge_live">Activa</span></div><div><div class="pb-name">Logística y Transporte</div><div class="pb-desc">Soluciones completas para logística, transporte y distribución Servinformación.</div></div></div><div class="pb-ft"><span class="pb-filetype">servinformacionlogistica.lovable.app</span><a href="https://servinformacionlogistica.lovable.app/" target="_blank" rel="noopener" class="pb-open" data-i18n="land_open">Abrir ↗</a></div></div>
+        <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,var(--info),#4285f4)"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--info-bg)">⚡</div><span class="pb-badge-live" data-i18n="land_badge_live">Activa</span></div><div><div class="pb-name">Smart1</div><div class="pb-desc">Inteligencia de audiencias, afluencia y análisis de datos para decisiones comerciales.</div></div></div><div class="pb-ft"><span class="pb-filetype">smart1-logistica.lovable.app</span><a href="https://smart1-logistica.lovable.app" target="_blank" rel="noopener" class="pb-open" data-i18n="land_open">Abrir ↗</a></div></div>
+        <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,#0f6e56,#27c93f)"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--brand-light)">🗺️</div><span class="pb-badge-live" data-i18n="land_badge_live">Activa</span></div><div><div class="pb-name">ServiRoutes</div><div class="pb-desc">Optimización de rutas, asignación de territorios y KPIs de eficiencia.</div></div></div><div class="pb-ft"><span class="pb-filetype">serviroutes.lovable.app</span><a href="https://serviroutes.lovable.app" target="_blank" rel="noopener" class="pb-open" data-i18n="land_open">Abrir ↗</a></div></div>
+        <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,var(--warn),#e09320)"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--warn-bg)">📍</div><span class="pb-badge-live" data-i18n="land_badge_live">Activa</span></div><div><div class="pb-name">DataRutas</div><div class="pb-desc">Gestión de territorios de ventas con datos geoespaciales.</div></div></div><div class="pb-ft"><span class="pb-filetype">datarutas.lovable.app</span><a href="https://datarutas.lovable.app/" target="_blank" rel="noopener" class="pb-open" data-i18n="land_open">Abrir ↗</a></div></div>
+        <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,var(--purple),#9333ea)"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--purple-bg)">📋</div><span class="pb-badge-live" data-i18n="land_badge_live">Activa</span></div><div><div class="pb-name">ServiForms</div><div class="pb-desc">Automatización de formularios y captura de datos para procesos comerciales.</div></div></div><div class="pb-ft"><span class="pb-filetype">serviforms.lovable.app</span><a href="https://serviforms.lovable.app" target="_blank" rel="noopener" class="pb-open" data-i18n="land_open">Abrir ↗</a></div></div>
+        <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,var(--info),#34a853)"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--info-bg)">🌐</div><span class="pb-badge-live" data-i18n="land_badge_live">Activa</span></div><div><div class="pb-name">Google Maps Platform</div><div class="pb-desc">Productos y APIs de mapas para soluciones de movilidad y geolocalización.</div></div></div><div class="pb-ft"><span class="pb-filetype">mapsplatform.google.com</span><a href="https://mapsplatform.google.com/maps-products/" target="_blank" rel="noopener" class="pb-open" data-i18n="land_open">Abrir ↗</a></div></div>
       </div>
     </div>
     <div class="tab-panel" id="lp-agentias">
       <div class="pb-grid">
-        <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,var(--purple),#9333ea)"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--purple-bg)">🧠</div><span class="pb-badge-live">Activa</span></div><div><div class="pb-name">byCerebro</div><div class="pb-desc">Plataforma de inteligencia comercial con IA para equipos de ventas.</div></div></div><div class="pb-ft"><span class="pb-filetype">bycerebro.com</span><a href="https://bycerebro.com/" target="_blank" rel="noopener" class="pb-open">Abrir ↗</a></div></div>
-        <div class="pb-card soon"><div class="pb-accent" style="background:#e0e2de"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:#ebebeb">💬</div><span class="pb-badge-soon">Próximamente</span></div><div><div class="pb-name">LicitChat</div><div class="pb-desc">Asistente IA para oportunidades de licitación y sector público.</div></div></div><div class="pb-ft"><span class="pb-soon-msg">En preparación</span></div></div>
-        <div class="pb-card soon"><div class="pb-accent" style="background:#e0e2de"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:#ebebeb">🤖</div><span class="pb-badge-soon">Próximamente</span></div><div><div class="pb-name">IAManager</div><div class="pb-desc">Gestión inteligente de equipos y procesos comerciales con IA.</div></div></div><div class="pb-ft"><span class="pb-soon-msg">En preparación</span></div></div>
-        <div class="pb-card soon"><div class="pb-accent" style="background:#e0e2de"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:#ebebeb">🔵</div><span class="pb-badge-soon">Próximamente</span></div><div><div class="pb-name">DotServiPunto</div><div class="pb-desc">Solución agéntica para puntos de venta y distribución.</div></div></div><div class="pb-ft"><span class="pb-soon-msg">En preparación</span></div></div>
+        <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,var(--purple),#9333ea)"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--purple-bg)">🧠</div><span class="pb-badge-live" data-i18n="land_badge_live">Activa</span></div><div><div class="pb-name">byCerebro</div><div class="pb-desc">Plataforma de inteligencia comercial con IA para equipos de ventas.</div></div></div><div class="pb-ft"><span class="pb-filetype">bycerebro.com</span><a href="https://bycerebro.com/" target="_blank" rel="noopener" class="pb-open" data-i18n="land_open">Abrir ↗</a></div></div>
+        <div class="pb-card soon"><div class="pb-accent" style="background:#e0e2de"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:#ebebeb">💬</div><span class="pb-badge-soon" data-i18n="play_badge_soon">Próximamente</span></div><div><div class="pb-name">LicitChat</div><div class="pb-desc">Asistente IA para oportunidades de licitación y sector público.</div></div></div><div class="pb-ft"><span class="pb-soon-msg" data-i18n="play_soon_msg">En preparación</span></div></div>
+        <div class="pb-card soon"><div class="pb-accent" style="background:#e0e2de"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:#ebebeb">🤖</div><span class="pb-badge-soon" data-i18n="play_badge_soon">Próximamente</span></div><div><div class="pb-name">IAManager</div><div class="pb-desc">Gestión inteligente de equipos y procesos comerciales con IA.</div></div></div><div class="pb-ft"><span class="pb-soon-msg" data-i18n="play_soon_msg">En preparación</span></div></div>
+        <div class="pb-card soon"><div class="pb-accent" style="background:#e0e2de"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:#ebebeb">🔵</div><span class="pb-badge-soon" data-i18n="play_badge_soon">Próximamente</span></div><div><div class="pb-name">DotServiPunto</div><div class="pb-desc">Solución agéntica para puntos de venta y distribución.</div></div></div><div class="pb-ft"><span class="pb-soon-msg" data-i18n="play_soon_msg">En preparación</span></div></div>
       </div>
     </div>
     <div class="tab-panel" id="lp-mvp">
       <div class="pb-grid">
-        <div class="pb-card soon"><div class="pb-accent" style="background:#e0e2de"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:#ebebeb">🌱</div><span class="pb-badge-soon">Próximamente</span></div><div><div class="pb-name">IARaíz</div><div class="pb-desc">Solución MVP de inteligencia artificial para el sector agro y cadena de suministro.</div></div></div><div class="pb-ft"><span class="pb-soon-msg">En preparación</span></div></div>
+        <div class="pb-card soon"><div class="pb-accent" style="background:#e0e2de"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:#ebebeb">🌱</div><span class="pb-badge-soon" data-i18n="play_badge_soon">Próximamente</span></div><div><div class="pb-name">IARaíz</div><div class="pb-desc">Solución MVP de inteligencia artificial para el sector agro y cadena de suministro.</div></div></div><div class="pb-ft"><span class="pb-soon-msg" data-i18n="play_soon_msg">En preparación</span></div></div>
       </div>
     </div>
   </section>
@@ -528,22 +591,22 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-1);m
        PAGE: NOTEBOOKLM
   ══════════════════════════ -->
   <section class="page" id="page-notebooklm">
-    <nav class="bc"><button class="bc-link" onclick="nav(document.querySelector('[data-page=dashboard]'))">🏠 Inicio</button><span class="bc-sep">›</span><span class="bc-cur">NotebookLM · Inteligencia comercial</span></nav>
-    <div class="pg-hd"><div><h1>NotebookLM · <em>Inteligencia comercial</em></h1><p>Cuadernos de conocimiento por solución · Actualización continua · Abre en nueva pestaña</p></div></div>
+    <nav class="bc"><button class="bc-link" onclick="nav(document.querySelector('[data-page=dashboard]'))">🏠 <span data-i18n="bc_home">Inicio</span></button><span class="bc-sep">›</span><span class="bc-cur">NotebookLM</span></nav>
+    <div class="pg-hd"><div><h1>NotebookLM · <em data-i18n="nav_conocimiento">Conocimiento</em></h1><p data-i18n="nb_sub">Cuadernos de conocimiento por solución · Actualización continua · Abre en nueva pestaña</p></div></div>
     <div class="tabs-row">
-      <button class="tab-btn on" onclick="switchTab('nb','servi',this)">Soluciones Servinformación<span class="tab-count">3</span></button>
-      <button class="tab-btn" onclick="switchTab('nb','google',this)">Soluciones Google<span class="tab-count">1</span></button>
+      <button class="tab-btn on" onclick="switchTab('nb','servi',this)"><span data-i18n="nb_tab1">Soluciones Servinformación</span><span class="tab-count">3</span></button>
+      <button class="tab-btn" onclick="switchTab('nb','google',this)"><span data-i18n="nb_tab2">Soluciones Google</span><span class="tab-count">1</span></button>
     </div>
     <div class="tab-panel on" id="nb-servi">
       <div class="pb-grid">
-        <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,var(--purple),#9333ea)"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--purple-bg)">🧠</div><span class="pb-badge-live">LIVE</span></div><div><div class="pb-name">byCerebro</div><div class="pb-desc">Funcionalidades, casos de uso, precios y argumentarios de la plataforma.</div></div><div class="pb-tags"><span class="nb-tag-btn">Funcionalidades</span><span class="nb-tag-btn">Precios</span><span class="nb-tag-btn">Argumentarios</span><span class="nb-tag-btn">Casos de uso</span></div></div><div class="pb-ft"><span class="pb-filetype">IA Comercial</span><a href="https://notebooklm.google.com/notebook/f4cac0e9-c08b-4289-9c8f-4d231751ea9c/preview" target="_blank" rel="noopener" class="pb-open">Abrir cuaderno ↗</a></div></div>
-        <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,var(--brand),var(--brand-mid))"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--brand-light)">🗺️</div><span class="pb-badge-live">LIVE</span></div><div><div class="pb-name">ServiRoutes</div><div class="pb-desc">Optimización de rutas, territorios y fuerza de ventas con datos geoespaciales.</div></div><div class="pb-tags"><span class="nb-tag-btn">Rutas</span><span class="nb-tag-btn">Territorios</span><span class="nb-tag-btn">KPIs</span><span class="nb-tag-btn">Pitch</span></div></div><div class="pb-ft"><span class="pb-filetype">Logística</span><a href="https://notebooklm.google.com/notebook/ad139e64-3b89-4f47-aa7c-d35c70cd179e/preview" target="_blank" rel="noopener" class="pb-open">Abrir cuaderno ↗</a></div></div>
-        <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,var(--info),#4285f4)"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--info-bg)">💬</div><span class="pb-badge-live">LIVE</span></div><div><div class="pb-name">LicitChat</div><div class="pb-desc">Argumentarios para licitaciones, manejo de objeciones y sector público.</div></div><div class="pb-tags"><span class="nb-tag-btn">Licitaciones</span><span class="nb-tag-btn">Sector público</span><span class="nb-tag-btn">Objeciones</span></div></div><div class="pb-ft"><span class="pb-filetype">Gobierno</span><a href="https://notebooklm.google.com/notebook/16115a02-7104-4f86-84b0-7f9bbdbca6d7/preview" target="_blank" rel="noopener" class="pb-open">Abrir cuaderno ↗</a></div></div>
+        <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,var(--purple),#9333ea)"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--purple-bg)">🧠</div><span class="pb-badge-live" data-i18n="nb_badge">LIVE</span></div><div><div class="pb-name">byCerebro</div><div class="pb-desc">Funcionalidades, casos de uso, precios y argumentarios de la plataforma.</div></div><div class="pb-tags"><span class="nb-tag-btn">Funcionalidades</span><span class="nb-tag-btn">Precios</span><span class="nb-tag-btn">Argumentarios</span><span class="nb-tag-btn">Casos de uso</span></div></div><div class="pb-ft"><span class="pb-filetype">IA Comercial</span><a href="https://notebooklm.google.com/notebook/f4cac0e9-c08b-4289-9c8f-4d231751ea9c/preview" target="_blank" rel="noopener" class="pb-open" data-i18n="nb_open">Abrir cuaderno ↗</a></div></div>
+        <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,var(--brand),var(--brand-mid))"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--brand-light)">🗺️</div><span class="pb-badge-live" data-i18n="nb_badge">LIVE</span></div><div><div class="pb-name">ServiRoutes</div><div class="pb-desc">Optimización de rutas, territorios y fuerza de ventas con datos geoespaciales.</div></div><div class="pb-tags"><span class="nb-tag-btn">Rutas</span><span class="nb-tag-btn">Territorios</span><span class="nb-tag-btn">KPIs</span><span class="nb-tag-btn">Pitch</span></div></div><div class="pb-ft"><span class="pb-filetype">Logística</span><a href="https://notebooklm.google.com/notebook/ad139e64-3b89-4f47-aa7c-d35c70cd179e/preview" target="_blank" rel="noopener" class="pb-open" data-i18n="nb_open">Abrir cuaderno ↗</a></div></div>
+        <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,var(--info),#4285f4)"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--info-bg)">💬</div><span class="pb-badge-live" data-i18n="nb_badge">LIVE</span></div><div><div class="pb-name">LicitChat</div><div class="pb-desc">Argumentarios para licitaciones, manejo de objeciones y sector público.</div></div><div class="pb-tags"><span class="nb-tag-btn">Licitaciones</span><span class="nb-tag-btn">Sector público</span><span class="nb-tag-btn">Objeciones</span></div></div><div class="pb-ft"><span class="pb-filetype">Gobierno</span><a href="https://notebooklm.google.com/notebook/16115a02-7104-4f86-84b0-7f9bbdbca6d7/preview" target="_blank" rel="noopener" class="pb-open" data-i18n="nb_open">Abrir cuaderno ↗</a></div></div>
       </div>
     </div>
     <div class="tab-panel" id="nb-google">
       <div class="pb-grid">
-        <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,var(--info),#34a853)"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--info-bg)">⚡</div><span class="pb-badge-live">LIVE</span></div><div><div class="pb-name">Smart1</div><div class="pb-desc">Inteligencia de localización y análisis de datos para decisiones comerciales.</div></div><div class="pb-tags"><span class="nb-tag-btn">Audiencias</span><span class="nb-tag-btn">Afluencia</span><span class="nb-tag-btn">Benchmark</span><span class="nb-tag-btn">Industrias</span></div></div><div class="pb-ft"><span class="pb-filetype">Google · Analítica</span><a href="https://notebooklm.google.com/notebook/c9171c9c-c907-4131-a8bd-cd0848b7d823/preview" target="_blank" rel="noopener" class="pb-open">Abrir cuaderno ↗</a></div></div>
+        <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,var(--info),#34a853)"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--info-bg)">⚡</div><span class="pb-badge-live" data-i18n="nb_badge">LIVE</span></div><div><div class="pb-name">Smart1</div><div class="pb-desc">Inteligencia de localización y análisis de datos para decisiones comerciales.</div></div><div class="pb-tags"><span class="nb-tag-btn">Audiencias</span><span class="nb-tag-btn">Afluencia</span><span class="nb-tag-btn">Benchmark</span><span class="nb-tag-btn">Industrias</span></div></div><div class="pb-ft"><span class="pb-filetype">Google · Analítica</span><a href="https://notebooklm.google.com/notebook/c9171c9c-c907-4131-a8bd-cd0848b7d823/preview" target="_blank" rel="noopener" class="pb-open" data-i18n="nb_open">Abrir cuaderno ↗</a></div></div>
       </div>
     </div>
   </section>
@@ -552,13 +615,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-1);m
        PAGE: ENTRENAMIENTO
   ══════════════════════════ -->
   <section class="page" id="page-entrenamiento">
-    <nav class="bc"><button class="bc-link" onclick="nav(document.querySelector('[data-page=dashboard]'))">🏠 Inicio</button><span class="bc-sep">›</span><span class="bc-cur">Plan de Entrenamiento</span></nav>
-    <div class="pg-hd"><div><h1>Plan de <em>Entrenamiento</em></h1><p>Selecciona un curso para acceder a Google Classroom · Registra tu avance ahí mismo</p></div></div>
-    <div class="prog-summary"><p><strong>3 cursos disponibles</strong> · Registra tu avance directamente en Google Classroom</p><div class="prog-bar-wrap"><div class="prog-bar-fill" style="width:33%"></div></div><span style="font-size:12px;font-weight:600;color:var(--brand);flex-shrink:0">1 de 3</span></div>
+    <nav class="bc"><button class="bc-link" onclick="nav(document.querySelector('[data-page=dashboard]'))">🏠 <span data-i18n="bc_home">Inicio</span></button><span class="bc-sep">›</span><span class="bc-cur" data-i18n="nav_entrenamiento">Entrenamiento</span></nav>
+    <div class="pg-hd"><div><h1><span data-i18n="qn_train">Plan de entrenamiento</span></h1><p data-i18n="train_sub">Selecciona un curso para acceder a Google Classroom · Registra tu avance ahí mismo</p></div></div>
+    <div class="prog-summary"><p><strong>3 <span data-i18n="train_summary">cursos disponibles · Registra tu avance directamente en Google Classroom</span></strong></p><div class="prog-bar-wrap"><div class="prog-bar-fill" style="width:33%"></div></div><span style="font-size:12px;font-weight:600;color:var(--brand);flex-shrink:0">1 de 3</span></div>
     <div class="course-list">
-      <div class="course-card"><div class="course-side" style="background:var(--brand)"></div><div class="course-body"><div class="course-ico" style="background:var(--brand-light)">📍</div><div class="course-info"><div class="course-name">Geomarketing</div><div class="course-desc">Aprende a identificar zonas de alto potencial comercial con datos de localización. Análisis de áreas de influencia, heatmaps y segmentación geográfica.</div><a href="https://classroom.google.com/c/Nzg1MTM2MDA3MzQz" target="_blank" rel="noopener" class="course-link">Ir a Google Classroom ↗</a></div><div class="course-prog"><div class="prog-pct p-done">100%</div><div class="prog-track"><div class="prog-fill pf-done" style="width:100%"></div></div><div class="prog-status">Completado</div></div></div></div>
-      <div class="course-card"><div class="course-side" style="background:#e09320"></div><div class="course-body"><div class="course-ico" style="background:var(--warn-bg)">🤖</div><div class="course-info"><div class="course-name">Sitidata</div><div class="course-desc">Analiza audiencias, afluencia e inteligencia competitiva con datos de movilidad. Benchmarking de ubicaciones y análisis de catchment areas.</div><a href="https://classroom.google.com/c/NjgyMzI3NDAxOTYx" target="_blank" rel="noopener" class="course-link">Continuar en Classroom ↗</a></div><div class="course-prog"><div class="prog-pct p-mid">40%</div><div class="prog-track"><div class="prog-fill pf-mid" style="width:40%"></div></div><div class="prog-status">En progreso</div></div></div></div>
-      <div class="course-card"><div class="course-side" style="background:var(--border-mid)"></div><div class="course-body"><div class="course-ico" style="background:var(--bg)">🚗</div><div class="course-info"><div class="course-name">Datarutas</div><div class="course-desc">Optimiza rutas de distribución y gestiona territorios de ventas con datos geoespaciales. Asignación de zonas y KPIs de eficiencia de flota.</div><a href="https://classroom.google.com/c/NjgyMjgyOTU3MzU4" target="_blank" rel="noopener" class="course-link">Empezar en Classroom ↗</a></div><div class="course-prog"><div class="prog-pct p-none">0%</div><div class="prog-track"><div class="prog-fill pf-none" style="width:0%"></div></div><div class="prog-status">No iniciado</div></div></div></div>
+      <div class="course-card"><div class="course-side" style="background:var(--brand)"></div><div class="course-body"><div class="course-ico" style="background:var(--brand-light)">📍</div><div class="course-info"><div class="course-name">Geomarketing</div><div class="course-desc">Aprende a identificar zonas de alto potencial comercial con datos de localización. Análisis de áreas de influencia, heatmaps y segmentación geográfica.</div><a href="https://classroom.google.com/c/Nzg1MTM2MDA3MzQz" target="_blank" rel="noopener" class="course-link"data-i18n="train_link">Ir a Google Classroom ↗</a></div><div class="course-prog"><div class="prog-pct p-done">100%</div><div class="prog-track"><div class="prog-fill pf-done" style="width:100%"></div></div><div class="prog-status" data-i18n="train_done">Completado</div></div></div></div>
+      <div class="course-card"><div class="course-side" style="background:#e09320"></div><div class="course-body"><div class="course-ico" style="background:var(--warn-bg)">🤖</div><div class="course-info"><div class="course-name">Sitidata</div><div class="course-desc">Analiza audiencias, afluencia e inteligencia competitiva con datos de movilidad. Benchmarking de ubicaciones y análisis de catchment areas.</div><a href="https://classroom.google.com/c/NjgyMzI3NDAxOTYx" target="_blank" rel="noopener" class="course-link"data-i18n="train_cont">Continuar en Classroom ↗</a></div><div class="course-prog"><div class="prog-pct p-mid">40%</div><div class="prog-track"><div class="prog-fill pf-mid" style="width:40%"></div></div><div class="prog-status" data-i18n="train_prog">En progreso</div></div></div></div>
+      <div class="course-card"><div class="course-side" style="background:var(--border-mid)"></div><div class="course-body"><div class="course-ico" style="background:var(--bg)">🚗</div><div class="course-info"><div class="course-name">Datarutas</div><div class="course-desc">Optimiza rutas de distribución y gestiona territorios de ventas con datos geoespaciales. Asignación de zonas y KPIs de eficiencia de flota.</div><a href="https://classroom.google.com/c/NjgyMjgyOTU3MzU4" target="_blank" rel="noopener" class="course-link"data-i18n="train_start">Empezar en Classroom ↗</a></div><div class="course-prog"><div class="prog-pct p-none">0%</div><div class="prog-track"><div class="prog-fill pf-none" style="width:0%"></div></div><div class="prog-status" data-i18n="train_none">No iniciado</div></div></div></div>
     </div>
     <div class="help-banner"><div class="help-ico">💡</div><div class="help-txt"><strong>¿No sabes por dónde empezar?</strong> El Asistente IA puede recomendarte cuál curso priorizar según tu territorio y las soluciones que más vendes.</div></div>
   </section>
@@ -567,21 +630,21 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-1);m
        PAGE: RECURSOS ADICIONALES
   ══════════════════════════ -->
   <section class="page" id="page-recursos">
-    <nav class="bc"><button class="bc-link" onclick="nav(document.querySelector('[data-page=dashboard]'))">🏠 Inicio</button><span class="bc-sep">›</span><span class="bc-cur">Recursos adicionales</span></nav>
-    <div class="pg-hd"><div><h1>Recursos <em>adicionales</em></h1><p>Herramientas y plataformas del ecosistema Servinformación · Abre en nueva pestaña</p></div></div>
+    <nav class="bc"><button class="bc-link" onclick="nav(document.querySelector('[data-page=dashboard]'))">🏠 <span data-i18n="bc_home">Inicio</span></button><span class="bc-sep">›</span><span class="bc-cur" data-i18n="nav_recursos">Recursos adicionales</span></nav>
+    <div class="pg-hd"><div><h1>Recursos <em>adicionales</em></h1><p data-i18n="rec_sub">Herramientas y plataformas del ecosistema Servinformación · Abre en nueva pestaña</p></div></div>
     <div class="res-group">
-      <div class="res-group-hd"><div class="res-group-title">Plataformas internas</div></div>
-      <a href="https://servicios.hil.com.co/" target="_blank" rel="noopener" class="res-item"><div class="res-ico" style="background:#f0f4ff">⚙️</div><div class="res-info"><div class="res-name">Servicios Profesionales</div><div class="res-desc">Portal de servicios HIL — metodologías de implementación y alcances por proyecto</div></div><div class="res-right"><span class="res-badge rb-web">Web</span><span class="res-arrow">↗</span></div></a>
-      <a href="https://entrenate.servinformacion.com/inicio" target="_blank" rel="noopener" class="res-item"><div class="res-ico" style="background:var(--brand-light)">🎯</div><div class="res-info"><div class="res-name">Servi te enseña</div><div class="res-desc">Plataforma de capacitación interna — tutoriales, videos y rutas de aprendizaje</div></div><div class="res-right"><span class="res-badge rb-web">Web</span><span class="res-arrow">↗</span></div></a>
-      <a href="https://odoo.sitimapa.co/" target="_blank" rel="noopener" class="res-item"><div class="res-ico" style="background:var(--info-bg)">🔧</div><div class="res-info"><div class="res-name">Odoo</div><div class="res-desc">ERP — gestión de proyectos, CRM y operaciones internas de Servinformación</div></div><div class="res-right"><span class="res-badge rb-plat">Plataforma</span><span class="res-arrow">↗</span></div></a>
+      <div class="res-group-hd"><div class="res-group-title" data-i18n="rec_grp1">Plataformas internas</div></div>
+      <a href="https://servicios.hil.com.co/" target="_blank" rel="noopener" class="res-item"><div class="res-ico" style="background:#f0f4ff">⚙️</div><div class="res-info"><div class="res-name" data-i18n="rec_serv_name">Servicios Profesionales</div><div class="res-desc">Portal de servicios HIL — metodologías de implementación y alcances por proyecto</div></div><div class="res-right"><span class="res-badge rb-web">Web</span><span class="res-arrow">↗</span></div></a>
+      <a href="https://entrenate.servinformacion.com/inicio" target="_blank" rel="noopener" class="res-item"><div class="res-ico" style="background:var(--brand-light)">🎯</div><div class="res-info"><div class="res-name" data-i18n="rec_ens_name">Servi te enseña</div><div class="res-desc">Plataforma de capacitación interna — tutoriales, videos y rutas de aprendizaje</div></div><div class="res-right"><span class="res-badge rb-web">Web</span><span class="res-arrow">↗</span></div></a>
+      <a href="https://odoo.sitimapa.co/" target="_blank" rel="noopener" class="res-item"><div class="res-ico" style="background:var(--info-bg)">🔧</div><div class="res-info"><div class="res-name" data-i18n="rec_odoo_name">Odoo</div><div class="res-desc">ERP — gestión de proyectos, CRM y operaciones internas de Servinformación</div></div><div class="res-right"><span class="res-badge rb-plat">Plataforma</span><span class="res-arrow">↗</span></div></a>
     </div>
     <div class="res-group">
-      <div class="res-group-hd"><div class="res-group-title">Solicitudes y formularios</div></div>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1oT6PBvDBd0f1stgTTHKrwK3DQdmK1qasaoPRPVS4J6VSQw/viewform" target="_blank" rel="noopener" class="res-item"><div class="res-ico" style="background:var(--brand-light)">📋</div><div class="res-info"><div class="res-name">Brief de Marketing</div><div class="res-desc">Solicita piezas gráficas, contenido o campañas al equipo de marketing</div></div><div class="res-right"><span class="res-badge rb-form">Formulario</span><span class="res-arrow">↗</span></div></a>
+      <div class="res-group-hd"><div class="res-group-title" data-i18n="rec_grp2">Solicitudes y formularios</div></div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1oT6PBvDBd0f1stgTTHKrwK3DQdmK1qasaoPRPVS4J6VSQw/viewform" target="_blank" rel="noopener" class="res-item"><div class="res-ico" style="background:var(--brand-light)">📋</div><div class="res-info"><div class="res-name" data-i18n="rec_mkt_name">Brief de Marketing</div><div class="res-desc">Solicita piezas gráficas, contenido o campañas al equipo de marketing</div></div><div class="res-right"><span class="res-badge rb-form">Formulario</span><span class="res-arrow">↗</span></div></a>
     </div>
     <div class="res-group">
-      <div class="res-group-hd"><div class="res-group-title">Seguridad y compliance</div></div>
-      <a href="https://sites.google.com/servinformacion.com/cybersecuritysite-comercial/inicio" target="_blank" rel="noopener" class="res-item"><div class="res-ico" style="background:var(--danger-bg)">🔒</div><div class="res-info"><div class="res-name">Ciberseguridad</div><div class="res-desc">Guías de posicionamiento para clientes en sectores regulados — banca, salud, gobierno</div></div><div class="res-right"><span class="res-badge rb-site">Google Sites</span><span class="res-arrow">↗</span></div></a>
+      <div class="res-group-hd"><div class="res-group-title" data-i18n="rec_grp3">Seguridad y compliance</div></div>
+      <a href="https://sites.google.com/servinformacion.com/cybersecuritysite-comercial/inicio" target="_blank" rel="noopener" class="res-item"><div class="res-ico" style="background:var(--danger-bg)">🔒</div><div class="res-info"><div class="res-name" data-i18n="rec_cyb_name">Ciberseguridad</div><div class="res-desc">Guías de posicionamiento para clientes en sectores regulados — banca, salud, gobierno</div></div><div class="res-right"><span class="res-badge rb-site">Google Sites</span><span class="res-arrow">↗</span></div></a>
     </div>
   </section>
 
@@ -589,7 +652,207 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-1);m
 </div><!-- /shell -->
 
 <script>
-// ── Navegación SPA ──
+// ══════════════════════════════════════
+// BASE DE DATOS — 67 casos
+// ══════════════════════════════════════
+var DB=[
+{id:1,ini:'BD',n:'Banco de Bogotá – Modernización Datawarehouse',co:'Colombia',y:'2026',ind:'Financiero',se:'Enterprise',pr:'Analítica Predictiva',de:'El Data Warehouse on-premise del banco debía evolucionar para responder a nuevas demandas de negocio. Sus procesos eran extensos y limitaban la agilidad requerida para tomar decisiones oportunas.',so:'Se implementó una solución serverless en Google Cloud con BigQuery como núcleo y herramientas como Data Fusion y Cloud Composer para los pipelines. Se migraron modelos analíticos e integraron con Power BI.',rs:'Se migraron 33 modelos analíticos a un Data Warehouse moderno en Google Cloud, reduciendo los tiempos de procesamiento en un 85%.',te:'En el Banco de Bogotá innovamos para transformar el uso de los datos. La migración redujo en 85% los tiempos de procesamiento. — Óscar Bernal, VP Tecnología, Banco de Bogotá',img:'https://servinformacion.com/wp-content/uploads/2026/01/Banco-de-Bogota-1-300x294.png.webp',url:'https://servinformacion.com/estudios-de-caso/banco-de-bogota-modernizacion-datawarehouse/'},
+{id:2,ini:'NO',n:'Novaventa – Servicios Administrados de Nube',co:'Colombia',y:'2025',ind:'Retail',se:'Enterprise',pr:'Soluciones Cloud',de:'Novaventa afrontaba desafíos en la gestión de costos, seguridad de aplicaciones y eficiencia operativa en la nube.',so:'Servinformación y Google Cloud brindaron a Novaventa Security Command Center, Cloud Build, Cloud Run y Serverless VPC Access.',rs:'Novaventa optimizó la disponibilidad, aprovechó la seguridad y conveniencia de la nube, redujo tareas operativas y amplió funcionalidades.',te:'La unión con Servinformación impulsó nuestro éxito. Optimizamos disponibilidad, reduciendo tareas operativas. — Daniel Betancur López, Arquitecto de Datos, Novaventa',img:'https://servinformacion.com/wp-content/uploads/2025/12/novaventa-300x294.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-novaventa/'},
+{id:3,ini:'SA',n:'SAPIENCIA – Operación Optimizada con Servicios en Nube',co:'Colombia',y:'2025',ind:'Educación',se:'Gobierno',pr:'Soluciones Cloud',de:'Sapiencia requería modernizar su operación tecnológica para mejorar la gestión de programas de educación postsecundaria.',so:'Servinformación implementó servicios administrados de Google Cloud para Sapiencia asegurando disponibilidad y seguridad.',rs:'Mejora en la disponibilidad y rendimiento de los servicios digitales, reducción de incidentes operativos.',te:'Gracias al apoyo de Servinformación como MSP, garantizamos la disponibilidad de los servicios que miles de estudiantes necesitan. — Equipo Directivo, Sapiencia',img:'https://servinformacion.com/wp-content/uploads/2025/11/sapiencia-38-300x294.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-sapiencia/'},
+{id:4,ini:'MI',n:'MiDocOnline – IA para Recomendación de Medicamentos',co:'México',y:'2025',ind:'Salud',se:'SMB',pr:'Analítica Predictiva',de:'El reto era suministrar analítica avanzada para que los médicos tomaran decisiones más informadas al recomendar medicamentos.',so:'Servinformación utilizó Vertex AI, BigQuery y Looker Studio integrando todo en una solución escalable y segura.',rs:'Mayor precisión en la recomendación de medicamentos y disminución en errores de prescripción.',te:'Logramos desarrollar un agente de IA que recomienda medicamentos con mayor precisión. — Francisco Fructuoso, Head of IT, MiDocOnline',img:'https://servinformacion.com/wp-content/uploads/2025/10/docOnline-300x294.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-midoconline/'},
+{id:5,ini:'HÁ',n:'Hospital Ángeles Health System – Migración a BigQuery',co:'México',y:'2025',ind:'Salud',se:'Enterprise',pr:'Analítica Predictiva',de:'Hospital Ángeles requería una solución cloud escalable que centralice información de 27 hospitales.',so:'Servinformación lideró la migración a BigQuery creando un Data Lakehouse con niveles Bronze, Silver y Gold.',rs:'Migración exitosa de 456 elementos de datos (~903 GB) con arquitectura escalable en BigQuery.',te:'El cambio a BigQuery transformó a la organización. Ahora contamos con velocidad, trazabilidad y gobierno de datos. — Juan Sañudo Gavaldón, BI, Hospital Ángeles',img:'https://servinformacion.com/wp-content/uploads/2025/10/Hospital-Angeles-22-300x294.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-hospital-angeles/'},
+{id:6,ini:'EL',n:'Ediciones Legales Ecuador – Agente IA para Consultas Legales',co:'Ecuador',y:'2025',ind:'Tecnología',se:'SMB',pr:'Analítica Predictiva',de:'Ediciones Legales requería un modelo propio para mejorar la interacción con clientes y dar autonomía al equipo de TI.',so:'Usando Cloud Functions, Cloud Storage, DataFlow y Vertex AI se implementó una solución que procesa preguntas y entrega respuestas sobre legislación ecuatoriana.',rs:'Reducción del tiempo de respuesta, alta precisión en interpretación de preguntas e incremento en satisfacción del usuario.',te:'Implementamos un Agente de IA con tecnología generativa que transformó la manera en que atendemos consultas legales. — Daniel Zapata, VP Desarrollo, Ediciones Legales',img:'https://servinformacion.com/wp-content/uploads/2025/10/Ediciones-Legales-EC-300x294.png.webp',url:'https://servinformacion.com/estudios-de-caso/ediciones-legales-implementa-agente-ia/'},
+{id:7,ini:'MD',n:'Observatorio Digital MIVI – Vivienda y Hábitat El Salvador',co:'El Salvador',y:'2025',ind:'Gobierno',se:'Gobierno',pr:'Soluciones Gobierno',de:'El reto fue integrar y publicar información del Sistema de Vivienda de El Salvador consolidando datos, normativas y servicios.',so:'Servinformación desarrolló solución cloud-native en Google Cloud con App Engine, Firestore, BigQuery y Looker.',rs:'Consolidación de datos institucionales en BigQuery, tableros analíticos y geovisor dinámico con múltiples capas temáticas.',te:'El Observatorio reúne en un portal la información del FONAVIPO, FSV y Ministerio, impulsando la modernización. — Michelle Sol, Ministra de Vivienda, El Salvador',img:'https://servinformacion.com/wp-content/uploads/2025/09/minvivienda-Salvador-42-300x294.png.webp',url:'https://servinformacion.com/estudios-de-caso/ministerio-de-vivienda-el-salvador/'},
+{id:8,ini:'CM',n:'Mabe – Tracking de Entregas con Google Cloud',co:'México',y:'2025',ind:'Manufactura',se:'Enterprise',pr:'Soluciones Cloud',de:'Mabe buscaba modernizar su modelo de entregas para ofrecer mayor trazabilidad y eficiencia operativa.',so:'Se creó Mabe Tracking: portal web y app móvil que conectan en tiempo real con operadores logísticos mediante APIs en Google Cloud.',rs:'Mejora en trazabilidad en tiempo real, reducción de tiempos de respuesta y mejor visibilidad del estado de pedidos.',te:'La nueva página Mabe Tracking permite seguimiento de pedidos y brinda mayor transparencia. — Isaac González, Gerente Tecnología CDV, MABE',img:'https://servinformacion.com/wp-content/uploads/2025/07/Mabe-1.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-mabe-mexico/'},
+{id:9,ini:'M/',n:'Geovisor AntonIA – Turismo de Boyacá (MinTIC)',co:'Colombia',y:'2025',ind:'Gobierno',se:'Gobierno',pr:'Analítica Predictiva',de:'El reto era crear una plataforma digital para promover el turismo en Boyacá, integrar bases de datos turísticas y romper barreras de idioma.',so:'Solución en GCP con Cloud Run, Firestore, BigQuery, Vertex AI y Gemini para el agente conversacional AntonIA con Google Maps.',rs:'El geovisor AntonIA fortaleció la promoción turística convirtiéndose en herramienta accesible y multilingüe.',te:'Hoy contamos con una herramienta que permite conocer la oferta turística de Boyacá de forma dinámica. — Sandra Urrutia, Secretaria TIC, Gobernación de Boyacá',img:'https://servinformacion.com/wp-content/uploads/2025/07/tic-39.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-mintic/'},
+{id:10,ini:'SE',n:'SEMEXE Brasil – Migración de AWS a Google Cloud',co:'Brasil',y:'2025',ind:'Tecnología',se:'SMB',pr:'Migración a la nube',de:'SEMEXE tenía una infraestructura limitada. Necesitaba mejorar rendimiento, seguridad y eficiencia operativa.',so:'Migración exitosa de AWS a Google Cloud garantizando continuidad del servicio y seguridad reforzada.',rs:'Migración sin interrupciones, seguridad mejorada y monitoreo proactivo para identificar problemas de rendimiento.',te:'Su experiencia permitió una transición eficiente, fortaleciendo la seguridad y optimizando costos. — Leandro Manzan Ribeiro, CTO, Semexe',img:'https://servinformacion.com/wp-content/uploads/2025/06/Semexe.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-semexe/'},
+{id:11,ini:'EL',n:'Ediciones Legales Ecuador – Migración de Infraestructura Cloud',co:'Ecuador',y:'2025',ind:'Tecnología',se:'SMB',pr:'Migración a la nube',de:'El reto fue ejecutar migración de Azure a Google Cloud sin afectar la experiencia del cliente.',so:'Se migraron servidores de Azure a Google Cloud con Migrate to Virtual Machines asegurando continuidad operativa.',rs:'Reducción de costos de infraestructura y mejora en el rendimiento y tiempos de respuesta.',te:'Mejoramos la eficiencia operativa, redujimos costos y ofrecemos una experiencia más rápida y escalable. — Daniel Zapata, VP Desarrollo, Ediciones Legales',img:'https://servinformacion.com/wp-content/uploads/2025/06/EdicionesLegales.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-ediciones-legales/'},
+{id:12,ini:'SO',n:'Sopesa S.A. E.S.P. – Localización Inteligente Guatemala',co:'Guatemala',y:'2025',ind:'Energía y Utilities',se:'Enterprise',pr:'Localización Inteligente',de:'Sopesa necesitaba mejorar la gestión de su red de distribución mediante tecnología geoespacial en Guatemala.',so:'Implementación de soluciones de localización inteligente con Google Maps para optimizar la gestión de la red.',rs:'Mejora en eficiencia operativa y reducción de tiempos de respuesta ante fallas del servicio.',te:'Las soluciones de localización nos han permitido optimizar la gestión de nuestra red de distribución. — Equipo Directivo, Sopesa',img:'https://servinformacion.com/wp-content/uploads/2025/06/Sopesa-36.png.webp',url:'https://servinformacion.com/estudios-de-caso/sopesa-s-a-e-s-p/'},
+{id:13,ini:'KO',n:'Konvex – Analítica Predictiva',co:'Colombia',y:'2025',ind:'Tecnología',se:'SMB',pr:'Analítica Predictiva',de:'Konvex necesitaba implementar capacidades de analítica avanzada para potenciar su plataforma.',so:'Implementación de analítica predictiva y machine learning con Google Cloud y Vertex AI.',rs:'Nuevas capacidades de analítica y mayor precisión en las recomendaciones.',te:'Servinformación nos acompañó en el desarrollo de capacidades que transformaron nuestra plataforma. — Equipo Directivo, Konvex',img:'https://servinformacion.com/wp-content/uploads/2025/05/konvex-35.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-konvex/'},
+{id:14,ini:'CO',n:'Colfuturo – Google Workspace',co:'Colombia',y:'2025',ind:'Educación',se:'Enterprise',pr:'Google Workspace',de:'Colfuturo necesitaba modernizar sus herramientas para mejorar la gestión de becas y la comunicación con becarios.',so:'Implementación de Google Workspace para mejorar colaboración interna y gestión con más de 10.000 becarios.',rs:'Mayor eficiencia en gestión de becas y reducción de tiempos en procesos de selección.',te:'La implementación de Google Workspace transformó la manera en que gestionamos la información. — Equipo Directivo, Colfuturo',img:'https://servinformacion.com/wp-content/uploads/2025/05/colfuturo.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-colfuturo/'},
+{id:15,ini:'MI',n:'MinTIC – Transformación Digital del Estado Colombiano',co:'Colombia',y:'2025',ind:'Gobierno',se:'Gobierno',pr:'Soluciones Gobierno',de:'MinTIC necesitaba liderar la transformación digital del Estado colombiano.',so:'Implementación de Google Cloud y Google Workspace for Government para modernizar procesos del ministerio.',rs:'Modernización de procesos internos y establecimiento de modelo de referencia para el Estado.',te:'Hemos avanzado en la transformación digital del Estado implementando soluciones que mejoran la eficiencia. — Equipo MinTIC',img:'https://servinformacion.com/wp-content/uploads/2025/03/mintic-32.png.webp',url:'https://servinformacion.com/estudios-de-caso/mintic/'},
+{id:16,ini:'DE',n:'Detektor – Managed Service Provider (MSP)',co:'Colombia',y:'2025',ind:'Tecnología',se:'SMB',pr:'Cibersecurity',de:'Detektor necesitaba escalar sus servicios gestionados y mejorar la seguridad cloud de sus clientes.',so:'Implementación de modelo MSP con Google Cloud incluyendo monitoreo y gestión de seguridad.',rs:'Modelo MSP exitoso que permitió escalar servicios y generar ingresos recurrentes.',te:'Hemos construido un modelo MSP sólido que nos permite ofrecer seguridad cloud de clase mundial. — Equipo Directivo, Detektor',img:'https://servinformacion.com/wp-content/uploads/2025/03/DETEKTOR-MSP.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-detektor-msp/'},
+{id:17,ini:'FC',n:'Farmatodo Colombia – Analítica de Datos',co:'Colombia',y:'2024',ind:'Retail',se:'Enterprise',pr:'Analítica Predictiva',de:'Farmatodo necesitaba mejorar su análisis de datos para optimizar inventarios y mejorar la experiencia del cliente.',so:'Implementación de plataforma de analítica con BigQuery y Looker para análisis en tiempo real.',rs:'Mejora en gestión de inventarios y reducción de roturas de stock.',te:'Ahora tomamos decisiones de inventario más rápidas y precisas. — Equipo Directivo, Farmatodo Colombia',img:'https://servinformacion.com/wp-content/uploads/2024/10/farmatodo-2.png.webp',url:'https://servinformacion.com/estudios-de-caso/farmatodo-colombia/'},
+{id:18,ini:'GA',n:'Riopaila – Inteligencia Artificial en el Agro',co:'Colombia',y:'2025',ind:'Agro',se:'Enterprise',pr:'Analítica Predictiva',de:'Riopaila necesitaba implementar IA para optimizar procesos de producción de caña de azúcar.',so:'Implementación de IA generativa con Vertex AI para analizar datos de producción y predecir rendimientos.',rs:'Reducción de costos operativos y mejora en rendimientos de producción.',te:'La IA en nuestros procesos ha sido un hito en la transformación digital de Riopaila. — Equipo Directivo, Riopaila',img:'https://servinformacion.com/wp-content/uploads/2025/02/riopaila-caso-de-exito.png.webp',url:'https://servinformacion.com/estudios-de-caso/dulce-inteligencia-artificial-del-grupo-agroindustrial-riopaila/'},
+{id:19,ini:'GD',n:'Gobernación del Valle – Google Cloud',co:'Colombia',y:'2024',ind:'Gobierno',se:'Gobierno',pr:'Soluciones Gobierno',de:'La Gobernación del Valle necesitaba modernizar su infraestructura para mejorar la prestación de servicios ciudadanos.',so:'Implementación de Google Cloud y Google Workspace for Government para digitalizar procesos.',rs:'Modernización de procesos gubernamentales y reducción de costos operativos.',te:'Hemos dado un salto significativo en la modernización de los servicios del Valle del Cauca. — Equipo Directivo, Gobernación del Valle',img:'https://servinformacion.com/wp-content/uploads/2024/10/gobernacion-valle.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-gobernacion-del-valle/'},
+{id:20,ini:'LD',n:'Línea Directa Eledé – Analítica Predictiva',co:'Colombia',y:'2024',ind:'Financiero',se:'Enterprise',pr:'Analítica Predictiva',de:'Línea Directa necesitaba modernizar su analítica para mejorar la gestión de riesgos y suscripción de pólizas.',so:'Plataforma de analítica avanzada con BigQuery y ML para modelación de riesgos.',rs:'Mejora en modelos de riesgo, reducción en siniestralidad y mayor capacidad de personalización.',te:'La plataforma nos permitió mejorar modelos de riesgo y ofrecer productos más personalizados. — Equipo Directivo, Línea Directa Eledé',img:'https://servinformacion.com/wp-content/uploads/2024/10/ELEDE.png.webp',url:'https://servinformacion.com/estudios-de-caso/linea-directa-elede/'},
+{id:21,ini:'CO',n:'Compensar – Google Workspace',co:'Colombia',y:'2024',ind:'Gobierno',se:'Enterprise',pr:'Google Workspace',de:'Compensar necesitaba modernizar herramientas de trabajo colaborativo para más de 3.000 colaboradores.',so:'Implementación de Google Workspace habilitando herramientas de colaboración y comunicación.',rs:'Mejora en productividad y reducción de costos tecnológicos.',te:'Google Workspace transformó la manera en que colaboran nuestros más de 3.000 colaboradores. — Equipo Directivo, Compensar',img:'https://servinformacion.com/wp-content/uploads/2024/10/Compensar-1.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-compensar/'},
+{id:22,ini:'GD',n:'Gobernación del Valle – Observatorio de Salud',co:'Colombia',y:'2024',ind:'Gobierno',se:'Gobierno',pr:'Analítica Predictiva',de:'La Gobernación requería un observatorio de salud para analizar datos epidemiológicos en tiempo real.',so:'Observatorio de salud con BigQuery y herramientas de visualización integrando datos de múltiples fuentes.',rs:'Mejora en la capacidad de respuesta ante emergencias sanitarias y mejor asignación de recursos.',te:'El Observatorio nos ha dado capacidad sin precedentes para monitorear indicadores de salud. — Equipo de Salud Pública, Gobernación del Valle',img:'https://servinformacion.com/wp-content/uploads/2024/08/Gobernacion-del-valle.png.webp',url:'https://servinformacion.com/estudios-de-caso/gobernacion-del-valle/'},
+{id:23,ini:'CH',n:'Chiper – Optimización Logística con Google Maps',co:'Colombia',y:'2024',ind:'Retail',se:'Enterprise',pr:'Localización Inteligente',de:'Chiper necesitaba optimizar rutas de distribución y geolocalización de puntos de venta.',so:'APIs de Google Maps para optimizar rutas de entrega y geolocalizar puntos de venta.',rs:'Reducción en costos de distribución y optimización de rutas de entrega.',te:'Las soluciones de localización nos permitieron optimizar distribución y ofrecer servicio más eficiente. — Equipo Directivo, Chiper',img:'https://servinformacion.com/wp-content/uploads/2024/07/SHIPER.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-chiper-s-a-s/'},
+{id:24,ini:'CN',n:'CNSC – Modernización de Plataforma',co:'Colombia',y:'2024',ind:'Gobierno',se:'Gobierno',pr:'Soluciones Gobierno',de:'La CNSC necesitaba modernizar su plataforma para gestionar procesos de selección de servidores públicos.',so:'Google Cloud para modernizar la plataforma de gestión de procesos meritocráticos.',rs:'Mayor capacidad para gestionar procesos nacionales y reducción en tiempos de procesamiento.',te:'Google Cloud nos permite gestionar los concursos de méritos del Estado con equidad y transparencia. — Equipo Directivo, CNSC',img:'https://servinformacion.com/wp-content/uploads/2024/07/CNSC.png.webp',url:'https://servinformacion.com/estudios-de-caso/cnsc-servinformacion/'},
+{id:25,ini:'AS',n:'Altipal SAS – Distribución y Logística',co:'Colombia',y:'2024',ind:'Logística',se:'Enterprise',pr:'Localización Inteligente',de:'Altipal necesitaba optimizar rutas de distribución y mejorar visibilidad de flota.',so:'Datarutas y localización inteligente para optimizar rutas, controlar flota y mejorar gestión de visitas.',rs:'Reducción en costos de distribución y mejora en cobertura de puntos de venta.',te:'Con Datarutas optimizamos operaciones de distribución reduciendo costos y mejorando cobertura. — Equipo Directivo, Altipal SAS',img:'https://servinformacion.com/wp-content/uploads/2024/07/Altipal-1.png.webp',url:'https://servinformacion.com/estudios-de-caso/altipal/'},
+{id:26,ini:'GL',n:'GLocation – TraceAgro 360',co:'Colombia',y:'2024',ind:'Agro',se:'SMB',pr:'Localización Inteligente',de:'GLocation necesitaba desarrollar una solución de trazabilidad agrícola en tiempo real.',so:'Desarrollo de TraceAgro 360 basada en Google Maps Platform y Google Cloud para trazabilidad logística.',rs:'Solución de trazabilidad que mejora la transparencia en la cadena de valor agrícola.',te:'TraceAgro 360 nos permitió ofrecer trazabilidad completa que mejora eficiencia en toda la cadena productiva. — Equipo Directivo, GLocation',img:'https://servinformacion.com/wp-content/uploads/2024/06/Glocation-TraceAgro.png.webp',url:'https://servinformacion.com/estudios-de-caso/g-location/'},
+{id:27,ini:'CR',n:'Crecer – Microfinanzas Digitales',co:'Colombia',y:'2024',ind:'Financiero',se:'Enterprise',pr:'Google Workspace',de:'Crecer necesitaba digitalizar procesos y mejorar colaboración entre equipos distribuidos en diversas regiones.',so:'Google Workspace digitalizando procesos de gestión, comunicación y colaboración.',rs:'Mayor eficiencia en gestión de créditos microfinancieros y reducción de costos operativos.',te:'Gracias a Servinformación nuestros asesores en todo el país están mejor conectados. — Equipo Directivo, Crecer',img:'https://servinformacion.com/wp-content/uploads/2024/05/crecer.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-crecer/'},
+{id:28,ini:'CA',n:'Cyan Agroanalytics – Inteligencia Agrícola',co:'Colombia',y:'2024',ind:'Agro',se:'SMB',pr:'Analítica Predictiva',de:'Cyan Agroanalytics necesitaba procesar grandes volúmenes de datos satelitales y de sensores IoT.',so:'Google Cloud y Google Earth Engine para procesar imágenes satelitales combinado con ML agronómico.',rs:'Plataforma que procesa datos de millones de hectáreas generando recomendaciones de precisión.',te:'Escalamos la plataforma para analizar millones de hectáreas y ofrecer recomendaciones de precisión. — Equipo Directivo, Cyan Agroanalytics',img:'https://servinformacion.com/wp-content/uploads/2024/04/Cyan.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-cyan/'},
+{id:29,ini:'DE',n:'Detektor – Migración a Google Cloud',co:'Colombia',y:'2024',ind:'Tecnología',se:'SMB',pr:'Migración a la nube',de:'Detektor necesitaba migrar sus sistemas de seguridad electrónica a la nube.',so:'Migración completa a Google Cloud de sistemas de gestión y plataformas de monitoreo.',rs:'Reducción de costos de infraestructura y mayor escalabilidad y disponibilidad.',te:'La migración fue un paso transformador para Detektor habilitando nuevas capacidades. — Equipo Directivo, Detektor',img:'https://servinformacion.com/wp-content/uploads/2024/03/Detektor-18.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-detektor/'},
+{id:30,ini:'TL',n:'Consultoría ODRD – Taxis Libres',co:'Colombia',y:'2023',ind:'Logística',se:'Enterprise',pr:'Analítica Predictiva',de:'Taxis Libres necesitaba optimizar operaciones mediante análisis de datos de demanda y oferta.',so:'Consultoría ODRD y modelos analíticos con Google Cloud para predecir demanda por zonas.',rs:'Reducción en tiempos de espera y mejor asignación de flota.',te:'Los modelos analíticos nos permiten anticipar la demanda y optimizar la distribución de flota. — Equipo Directivo, Taxis Libres',img:'https://servinformacion.com/wp-content/uploads/2023/11/Taxislibres-16-600x588.png.webp',url:'https://servinformacion.com/estudios-de-caso/taxis-libres/'},
+{id:31,ini:'AA',n:'AGRODAT AI – Google Maps Agricultura',co:'Colombia',y:'2023',ind:'Agro',se:'SMB',pr:'Localización Inteligente',de:'AGRODAT AI necesitaba integrar Google Maps Platform en su solución de analítica agrícola.',so:'Integración de APIs de Google Maps habilitando georreferenciación de parcelas y visualización de datos.',rs:'Plataforma con capacidades geoespaciales avanzadas que mejoran la precisión de las recomendaciones.',te:'La integración de Google Maps llevó nuestra plataforma a un nuevo nivel de precisión. — Equipo Directivo, AGRODAT AI',img:'https://servinformacion.com/wp-content/uploads/2023/11/Maps-Agrodat.png.webp',url:'https://servinformacion.com/estudios-de-caso/agrodat-ai-con-google-maps/'},
+{id:32,ini:'GL',n:'GLOCATION – Plataforma Geoespacial',co:'Colombia',y:'2023',ind:'Tecnología',se:'SMB',pr:'Localización Inteligente',de:'GLOCATION necesitaba desarrollar una plataforma geoespacial robusta para clientes empresariales.',so:'Plataforma geoespacial basada en Google Maps Platform para servicios de localización y análisis territorial.',rs:'Plataforma en producción con múltiples clientes empresariales.',te:'Con Google Maps construimos una plataforma que nos abrió las puertas a grandes clientes. — Equipo Directivo, GLOCATION',img:'https://servinformacion.com/wp-content/uploads/2023/09/Glocation-07.png.webp',url:'https://servinformacion.com/estudios-de-caso/glocation/'},
+{id:33,ini:'CN',n:'CNID – Centro Nacional de Información',co:'Colombia',y:'2023',ind:'Gobierno',se:'Gobierno',pr:'Analítica Predictiva',de:'El CNID necesitaba modernizar su plataforma de gestión y análisis de información estratégica.',so:'Plataforma de analítica en Google Cloud que centraliza y procesa grandes volúmenes de datos.',rs:'Mayor disponibilidad de información estratégica y nuevas capacidades de análisis.',te:'La plataforma transformó nuestra capacidad de gestión de información para decisiones más rápidas. — Equipo Directivo, CNID',img:'https://servinformacion.com/wp-content/uploads/2023/07/CNID-32.png.webp',url:'https://servinformacion.com/estudios-de-caso/cnid/'},
+{id:34,ini:'AT',n:'ATU – Transporte Urbano Lima y Callao',co:'Perú',y:'2023',ind:'Gobierno',se:'Gobierno',pr:'Localización Inteligente',de:'La ATU necesitaba mejorar la gestión del transporte público de Lima y Callao.',so:'Localización inteligente con Google Maps para geolocalización de flota y sistema de información en tiempo real.',rs:'Mejora en puntualidad y reducción de tiempos de espera para usuarios del transporte.',te:'Las soluciones de localización nos permiten modernizar el transporte público de Lima y Callao. — Equipo Directivo, ATU',img:'https://servinformacion.com/wp-content/uploads/2023/07/ATU.png.webp',url:'https://servinformacion.com/estudios-de-caso/atu-autoridad-de-transporte-urbano-para-lima-y-callao/'},
+{id:35,ini:'AG',n:'AGRODATAI – Google Workspace',co:'Colombia',y:'2023',ind:'Agro',se:'SMB',pr:'Google Workspace',de:'AGRODATAI necesitaba modernizar herramientas de trabajo para mejorar colaboración.',so:'Google Workspace habilitando herramientas de colaboración y gestión documental.',rs:'Mayor eficiencia en gestión de proyectos y reducción de costos.',te:'Google Workspace mejoró significativamente la colaboración de nuestro equipo. — Equipo Directivo, AGRODATAI',img:'https://servinformacion.com/wp-content/uploads/2023/06/Agrodat-30-1.png.webp',url:'https://servinformacion.com/estudios-de-caso/agrodatai-s-a-s/'},
+{id:36,ini:'PI',n:'PROA IA – Gestión del Cambio con IA',co:'Colombia',y:'2023',ind:'Tecnología',se:'SMB',pr:'Analítica Predictiva',de:'PROA IA necesitaba IA para potenciar servicios de gestión del cambio organizacional.',so:'Modelos de IA con Google Cloud para analizar clima organizacional y generar recomendaciones.',rs:'Mayor precisión en medición del impacto de procesos de cambio.',te:'La IA implementada elevó la precisión de nuestros servicios de gestión del cambio. — Equipo Directivo, PROA IA',img:'https://servinformacion.com/wp-content/uploads/2023/06/PROA-29.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-proa-ia-gestion-del-cambio/'},
+{id:37,ini:'UD',n:'Unidad de Salud Ocupacional – Google Workspace',co:'Colombia',y:'2023',ind:'Salud',se:'SMB',pr:'Google Workspace',de:'Necesitaba modernizar herramientas de gestión documental y comunicación para cumplir normas SG-SST.',so:'Google Workspace digitalizando procesos de salud ocupacional.',rs:'Digitalización de procesos y reducción en tiempos de gestión documental.',te:'Digitalizamos procesos de salud ocupacional cumpliendo de manera más eficiente con requerimientos. — Equipo Directivo, Unidad de Salud Ocupacional',img:'https://servinformacion.com/wp-content/uploads/2023/06/salud-ocupacional-28.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-unidad-de-salud-ocupacional/'},
+{id:38,ini:'BC',n:'BANASOFT CIA. LTDA. – Cloud Ecuador',co:'Ecuador',y:'2023',ind:'Tecnología',se:'SMB',pr:'Soluciones Cloud',de:'BANASOFT, empresa de software para el sector bananero, necesitaba modernizar su infraestructura.',so:'Migración a Google Cloud para mejorar disponibilidad y escalabilidad de las soluciones.',rs:'Mayor disponibilidad de plataformas y reducción de costos de infraestructura.',te:'La migración a Google Cloud fue clave para la continuidad y crecimiento de BANASOFT. — Equipo Directivo, BANASOFT',img:'https://servinformacion.com/wp-content/uploads/2023/06/Banasoft-27-400x392.png.webp',url:'https://servinformacion.com/estudios-de-caso/banasoft-cia-ltda/'},
+{id:39,ini:'PO',n:'Powwi – Pagos GDE Cloud',co:'Colombia',y:'2022',ind:'Financiero',se:'SMB',pr:'Soluciones Cloud',de:'Powwi necesitaba modernizar su plataforma de pagos digitales para mejorar escalabilidad y seguridad.',so:'Migración e implementación en Google Cloud mejorando la infraestructura de procesamiento.',rs:'Mayor capacidad de procesamiento y mejor seguridad en las transacciones.',te:'Google Cloud ha transformado la capacidad de nuestra plataforma de pagos. — Equipo Directivo, Powwi',img:'https://servinformacion.com/wp-content/uploads/2022/11/powwi-12-300x291.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-powwi-pagos-gde/'},
+{id:40,ini:'SF',n:'Superfinanciera – Smart Supervision',co:'Colombia',y:'2022',ind:'Gobierno',se:'Gobierno',pr:'Analítica Predictiva',de:'La Superfinanciera necesitaba modernizar herramientas de supervisión del sistema financiero con IA.',so:'Smart Supervision con Google Cloud incluyendo analítica avanzada y ML para monitoreo en tiempo real.',rs:'Mayor capacidad supervisora con detección temprana de riesgos.',te:'Smart Supervision representa un salto en nuestra capacidad de supervisión. — Equipo Directivo, Superfinanciera',img:'https://servinformacion.com/wp-content/uploads/2022/11/SFC-11-300x291.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-superintendencia-financiera-de-colombia-2/'},
+{id:41,ini:'LD',n:'Línea Directa – Google Workspace',co:'Colombia',y:'2022',ind:'Financiero',se:'Enterprise',pr:'Google Workspace',de:'Línea Directa necesitaba modernizar herramientas de colaboración para mejorar la productividad.',so:'Google Workspace habilitando colaboración, comunicación y gestión documental.',rs:'Mejora en productividad y reducción de costos en infraestructura tecnológica.',te:'Google Workspace transformó la forma en que trabajamos en Línea Directa. — Equipo Directivo, Línea Directa',img:'https://servinformacion.com/wp-content/uploads/2022/05/Linea-Directa-300x291.png.webp',url:'https://servinformacion.com/estudios-de-caso/linea-directa/'},
+{id:42,ini:'EP',n:'EPM – Google Workspace',co:'Colombia',y:'2022',ind:'Energía y Utilities',se:'Enterprise',pr:'Google Workspace',de:'EPM necesitaba modernizar herramientas de colaboración para equipos en múltiples ciudades y países.',so:'Google Workspace para EPM y filiales habilitando colaboración y videoconferencia en la nube.',rs:'Mayor eficiencia en coordinación de equipos y reducción de costos de comunicación.',te:'Google Workspace mejoró la coordinación entre equipos de EPM en diferentes ciudades. — Equipo Directivo, EPM',img:'https://servinformacion.com/wp-content/uploads/2022/05/EPM-300x291.png.webp',url:'https://servinformacion.com/estudios-de-caso/epm/'},
+{id:43,ini:'TE',n:'Terpel – Google Maps Estaciones de Servicio',co:'Colombia',y:'2022',ind:'Energía y Utilities',se:'Enterprise',pr:'Localización Inteligente',de:'Terpel necesitaba mejorar la visibilidad digital de su red de estaciones de servicio.',so:'Google Maps Platform para integrar estaciones Terpel en el ecosistema de Google Maps.',rs:'Mayor visibilidad digital de la red y aumento en el tráfico a puntos de servicio.',te:'Con Google Maps nuestras estaciones tienen visibilidad digital sin precedentes. — Equipo Directivo, Terpel',img:'https://servinformacion.com/wp-content/uploads/2022/05/Terpel-300x300.jpeg.webp',url:'https://servinformacion.com/estudios-de-caso/caso-de-exito-terpel/'},
+{id:44,ini:'FO',n:'Foscal – Google Workspace en Salud',co:'Colombia',y:'2022',ind:'Salud',se:'Enterprise',pr:'Google Workspace',de:'Foscal necesitaba modernizar herramientas de comunicación y colaboración para mejorar coordinación clínica.',so:'Google Workspace digitalizando comunicación y colaboración entre equipos médicos y administrativos.',rs:'Mejora en coordinación clínica y reducción de tiempos en procesos administrativos.',te:'Google Workspace mejoró significativamente la coordinación entre nuestros equipos médicos. — Equipo Directivo, Foscal',img:'https://servinformacion.com/wp-content/uploads/2022/05/Foscal.jpeg.webp',url:'https://servinformacion.com/estudios-de-caso/foscal-caso-de-uso/'},
+{id:45,ini:'SO',n:'Solistica – Logística con Google Maps',co:'Colombia',y:'2022',ind:'Logística',se:'Enterprise',pr:'Localización Inteligente',de:'Solistica necesitaba optimizar rutas de distribución y mejorar visibilidad de flota.',so:'Google Maps Platform para mejorar gestión de flota y eficiencia en entregas.',rs:'Reducción en costos de combustible y mejora en tiempos de entrega.',te:'Con la optimización de rutas logramos reducciones en costos y mejoras en tiempos de entrega. — Equipo Directivo, Solistica',img:'https://servinformacion.com/wp-content/uploads/2022/05/Caso-exito-Solistica.jpg.webp',url:'https://servinformacion.com/estudios-de-caso/caso-de-exito-solistica/'},
+{id:46,ini:'AG',n:'AgrodatAi – Don Tulio Agricultura de Precisión',co:'Colombia',y:'2021',ind:'Agro',se:'SMB',pr:'Analítica Predictiva',de:'AgrodatAi necesitaba soluciones de agricultura de precisión para el cultivo de Don Tulio.',so:'Plataforma de analítica agrícola con Google Cloud y Earth Engine para recomendaciones de precisión.',rs:'Reducción en uso de insumos agrícolas y mejora en rendimientos del cultivo.',te:'El cultivo de Don Tulio ha dado un salto hacia la agricultura de precisión. — Equipo Directivo, AgrodatAi',img:'https://servinformacion.com/wp-content/uploads/2021/10/Don-Julio.jpg.webp',url:'https://servinformacion.com/estudios-de-caso/caso-agrodatai-don-tulio/'},
+{id:47,ini:'GL',n:'Gluky – Loyalty Analytics',co:'Colombia',y:'2021',ind:'Tecnología',se:'SMB',pr:'Analítica Predictiva',de:'Gluky necesitaba escalar su infraestructura de datos para procesar grandes volúmenes de transacciones de lealtad.',so:'BigQuery para procesamiento de datos de lealtad y modelos de segmentación de usuarios.',rs:'Plataforma que procesa millones de transacciones con mejores insights sobre comportamiento.',te:'BigQuery nos permitió escalar para procesar millones de transacciones de lealtad. — Equipo Directivo, Gluky',img:'https://servinformacion.com/wp-content/uploads/2021/07/Casos-de-Exito-18.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-de-uso-gluky/'},
+{id:48,ini:'EP',n:'EPM Hidroituango – Gestión de Crisis',co:'Colombia',y:'2021',ind:'Energía y Utilities',se:'Enterprise',pr:'Localización Inteligente',de:'Durante la emergencia de Hidroituango, EPM necesitaba herramientas para coordinar operaciones.',so:'Localización inteligente y Google Maps para gestión de emergencias y monitoreo de zonas de riesgo.',rs:'Mejor coordinación de operaciones de emergencia y monitoreo efectivo de zonas de riesgo.',te:'Las herramientas de localización fueron cruciales durante la emergencia de Hidroituango. — Equipo Directivo, EPM',img:'https://servinformacion.com/wp-content/uploads/2021/06/Casos-de-Exito-17.png.webp',url:'https://servinformacion.com/estudios-de-caso/epm-hidroituango/'},
+{id:49,ini:'E/',n:'Enel / Codensa – Gestión de Red Eléctrica',co:'Colombia',y:'2021',ind:'Energía y Utilities',se:'Enterprise',pr:'Localización Inteligente',de:'Enel / Codensa necesitaba mejorar la gestión de su red de distribución eléctrica.',so:'Localización inteligente con datos cartográficos para geolocalización de activos eléctricos.',rs:'Reducción en tiempos de atención de averías y mayor eficiencia en la red.',te:'Mejoramos significativamente la gestión de nuestra red eléctrica. — Equipo Directivo, Enel / Codensa',img:'https://servinformacion.com/wp-content/uploads/2021/03/Casos-de-Exito-16.png.webp',url:'https://servinformacion.com/estudios-de-caso/enel-codensa/'},
+{id:50,ini:'RA',n:'Rappi – Google Maps Delivery',co:'Colombia',y:'2021',ind:'Logística',se:'Enterprise',pr:'Localización Inteligente',de:'Rappi necesitaba optimizar la localización de su plataforma de delivery para reducir errores de entrega.',so:'APIs de Google Maps para mejorar geocodificación, optimización de rutas y visualización en tiempo real.',rs:'Reducción en errores de entrega y mejora en tiempos de delivery.',te:'Google Maps y Servinformación han sido aliados clave en la optimización de localización de Rappi. — Equipo Directivo, Rappi',img:'https://servinformacion.com/wp-content/uploads/2021/11/CasoDelivery-33-1.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-de-exito-rappi/'},
+{id:51,ini:'CN',n:'Comisión Nacional del Servicio Civil – CNSC',co:'Colombia',y:'2021',ind:'Gobierno',se:'Gobierno',pr:'Soluciones Gobierno',de:'La CNSC debía gestionar concursos de méritos para millones de aspirantes simultáneos.',so:'Google Cloud para modernizar plataforma de gestión de concursos garantizando escalabilidad.',rs:'Plataforma capaz de gestionar millones de aspirantes con reducción de tiempos de procesamiento.',te:'Google Cloud nos dio capacidad para gestionar los concursos de méritos más grandes de la historia. — Equipo Directivo, CNSC',img:'https://servinformacion.com/wp-content/uploads/2021/03/Casos-de-Exito-15.png.webp',url:'https://servinformacion.com/estudios-de-caso/cnsc-caso-de-uso/'},
+{id:52,ini:'SF',n:'Superintendencia Financiera de Colombia',co:'Colombia',y:'2021',ind:'Gobierno',se:'Gobierno',pr:'Soluciones Gobierno',de:'La Superfinanciera necesitaba modernizar su infraestructura para mejorar la supervisión financiera.',so:'Migración a Google Cloud de sistemas de información y supervisión financiera.',rs:'Modernización de infraestructura supervisora y reducción de costos tecnológicos.',te:'La migración nos permitió modernizar la infraestructura y mejorar la supervisión del sistema financiero. — Equipo Directivo, Superfinanciera',img:'https://servinformacion.com/wp-content/uploads/2021/03/Casos-de-Exito-14.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-superintendencia-financiera-de-colombia/'},
+{id:53,ini:'SD',n:'Siti Doctor – Telemedicina',co:'Colombia',y:'2021',ind:'Salud',se:'SMB',pr:'Localización Inteligente',de:'Siti Doctor necesitaba una plataforma de telemedicina para localizar médicos y agendar consultas.',so:'Plataforma de telemedicina con Google Maps para geolocalización de médicos y consultorios.',rs:'Plataforma con geolocalización precisa que facilita a pacientes encontrar atención médica.',te:'Google Maps nos permite ofrecer localización precisa para encontrar atención médica. — Equipo Directivo, Siti Doctor',img:'https://servinformacion.com/wp-content/uploads/2021/03/Casos-de-Exito-13.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-de-exito-sitidoctor/'},
+{id:54,ini:'SI',n:'SitiData – Calidad y Enriquecimiento de Datos',co:'Colombia',y:'2021',ind:'Tecnología',se:'SMB',pr:'Localización Inteligente',de:'SitiData necesitaba validar y enriquecer bases de datos de direcciones para clientes empresariales.',so:'Dataquality/SitiData para validación, enriquecimiento y georreferenciación masiva de bases de datos.',rs:'Mejora significativa en calidad de bases de datos y reducción de devoluciones de envíos.',te:'Dataquality transformó la calidad de nuestras bases de datos reduciendo errores. — Equipo Directivo, SitiData',img:'https://servinformacion.com/wp-content/uploads/2021/03/Casos-de-Exito-12.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-de-exito-sitidata/'},
+{id:55,ini:'AG',n:'AgrodatAi – Plataforma de Analítica Agrícola',co:'Colombia',y:'2021',ind:'Agro',se:'SMB',pr:'Analítica Predictiva',de:'AgrodatAi necesitaba construir una plataforma escalable de analítica agrícola con múltiples fuentes de datos.',so:'Google Cloud y Vertex AI para construir la plataforma integrando datos satelitales y de campo.',rs:'Plataforma de analítica agrícola con presencia en múltiples países de Latinoamérica.',te:'Construimos una plataforma de inteligencia agrícola que genera valor para miles de agricultores. — Equipo Directivo, AgrodatAi',img:'https://servinformacion.com/wp-content/uploads/2021/10/Servinews.jpg.webp',url:'https://servinformacion.com/estudios-de-caso/agrodatai/'},
+{id:56,ini:'CA',n:'CAR – Corporación Autónoma Regional',co:'Colombia',y:'2021',ind:'Gobierno',se:'Gobierno',pr:'Localización Inteligente',de:'La CAR necesitaba herramientas geoespaciales para monitorear ecosistemas bajo su jurisdicción.',so:'Google Earth Engine para monitorear coberturas vegetales, cuerpos de agua y recursos naturales.',rs:'Mejor monitoreo de ecosistemas y capacidad para detectar cambios en coberturas vegetales.',te:'Las herramientas geoespaciales nos dieron visión sin precedentes del estado de los ecosistemas. — Equipo Directivo, CAR',img:'https://servinformacion.com/wp-content/uploads/2021/03/Casos-de-Exito-11.png.webp',url:'https://servinformacion.com/estudios-de-caso/car-caso-de-uso/'},
+{id:57,ini:'ID',n:'Instituto Distrital de Turismo – Patrimonio Cultural',co:'Colombia',y:'2021',ind:'Gobierno',se:'Gobierno',pr:'Localización Inteligente',de:'El Instituto necesitaba digitalizar y georreferenciar el patrimonio cultural de Bogotá.',so:'Google Maps para georreferenciar sitios de interés turístico y cultural de Bogotá.',rs:'Mayor visibilidad y accesibilidad del patrimonio cultural bogotano.',te:'Con Google Maps pusimos a Bogotá en el mapa digital del turismo cultural. — Equipo Directivo, IDT',img:'https://servinformacion.com/wp-content/uploads/2021/03/Casos-de-Exito-10.png.webp',url:'https://servinformacion.com/estudios-de-caso/instituto-distrital-de-patrimonio-cultural/'},
+{id:58,ini:'GZ',n:'Grupo Zoom – Logística de Última Milla',co:'Colombia',y:'2021',ind:'Logística',se:'Enterprise',pr:'Localización Inteligente',de:'Grupo Zoom necesitaba optimizar geocodificación de direcciones y enrutamiento de mensajería.',so:'APIs de Google Maps y Dataquality para validación masiva de direcciones y optimización de rutas.',rs:'Reducción en errores de entrega y mejora en tiempos de distribución.',te:'Mejoramos radicalmente la calidad de bases de datos y optimizamos rutas de mensajería. — Equipo Directivo, Grupo Zoom',img:'https://servinformacion.com/wp-content/uploads/2021/03/Casos-de-Exito-09.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-de-uso-grupo-zomm/'},
+{id:59,ini:'MI',n:'Minka – Pagos Interoperables',co:'Colombia',y:'2021',ind:'Financiero',se:'SMB',pr:'Soluciones Cloud',de:'Minka necesitaba infraestructura cloud para soportar pagos interoperables en tiempo real.',so:'Google Cloud garantizando alta disponibilidad, seguridad y escalabilidad para procesamiento.',rs:'Plataforma operativa con capacidad de procesar millones de transacciones con alta disponibilidad.',te:'Google Cloud nos proporcionó la infraestructura robusta para pagos interoperables de Colombia. — Equipo Directivo, Minka',img:'https://servinformacion.com/wp-content/uploads/2021/03/Casos-de-Exito-08.png.webp',url:'https://servinformacion.com/estudios-de-caso/minka/'},
+{id:60,ini:'CL',n:'Claro – Gestión de Red de Telecomunicaciones',co:'Colombia',y:'2021',ind:'Telecomunicaciones',se:'Enterprise',pr:'Localización Inteligente',de:'Claro necesitaba mejorar la gestión de su red mediante tecnología geoespacial.',so:'Localización inteligente para geolocalización de activos de red y análisis de cobertura.',rs:'Mejor gestión de red y reducción en tiempos de atención de averías.',te:'La localización inteligente mejoró nuestra gestión de red y la planificación de infraestructura. — Equipo Directivo, Claro Colombia',img:'https://servinformacion.com/wp-content/uploads/2021/03/Casos-de-Exito-07.png.webp',url:'https://servinformacion.com/estudios-de-caso/claro-caso-de-uso/'},
+{id:61,ini:'DI',n:'DirecTV – Ventas de Campo con Geomarketing',co:'Colombia',y:'2021',ind:'Telecomunicaciones',se:'Enterprise',pr:'Localización Inteligente',de:'DirecTV necesitaba reducir tiempos de carga de información para vendedores de campo.',so:'Geomarketing y localización para acceso rápido a información de cobertura y prospectos.',rs:'Reducción del tiempo de carga de 3 minutos a 30 segundos.',te:'Somos capaces de no perder una venta por velocidad. De 3 minutos pasamos a 30 segundos. — Jorge Echeverri, Gerente Adquisición, DirecTV',img:'https://servinformacion.com/wp-content/uploads/2021/03/Casos-de-Exito-06.png.webp',url:'https://servinformacion.com/estudios-de-caso/directv-caso-de-uso/'},
+{id:62,ini:'AM',n:'Ads Movil – Publicidad Geolocalizada',co:'Colombia',y:'2021',ind:'Tecnología',se:'SMB',pr:'Localización Inteligente',de:'Ads Movil necesitaba mejorar segmentación geográfica de su plataforma de publicidad móvil.',so:'Datos georreferenciados y Google Maps para segmentación geográfica avanzada.',rs:'Mayor precisión en segmentación y mejora en tasas de conversión de campañas.',te:'Con los datos georreferenciados de Servinformación nuestra plataforma alcanzó un nuevo nivel. — Equipo Directivo, Ads Movil',img:'https://servinformacion.com/wp-content/uploads/2021/03/Casos-de-Exito-05-300x300.png.webp',url:'https://servinformacion.com/estudios-de-caso/adsmovil-caso-de-exito/'},
+{id:63,ini:'PR',n:'Punto Red – Conexred Pagos',co:'Colombia',y:'2021',ind:'Financiero',se:'Enterprise',pr:'Localización Inteligente',de:'Puntored necesitaba mejorar la gestión de su red de corresponsales bancarios.',so:'Infocomercio y localización inteligente para geolocalizar y gestionar la red de puntos.',rs:'Mejor gestión de la red y mayor cobertura financiera en zonas no bancarizadas.',te:'Generamos proyectos tecnológicos que permiten a comercios potenciar sus negocios con acceso a servicios financieros. — Sergio López, VP Operaciones, Puntored',img:'https://servinformacion.com/wp-content/uploads/2021/03/Casos-de-Exito-04.png.webp',url:'https://servinformacion.com/estudios-de-caso/puntored-caso-de-uso-conexred/'},
+{id:64,ini:'MD',n:'MinCultura – Cartografía Cultural de Colombia',co:'Colombia',y:'2021',ind:'Gobierno',se:'Gobierno',pr:'Localización Inteligente',de:'MinCultura necesitaba georreferenciar el patrimonio cultural para mejorar la planificación.',so:'Soluciones geoespaciales para cartografiar el patrimonio y equipamientos culturales del país.',rs:'Mapa georreferenciado del patrimonio cultural colombiano como herramienta de planificación.',te:'Logramos georreferenciar el patrimonio de Colombia creando herramienta para políticas culturales. — Equipo Directivo, MinCultura',img:'https://servinformacion.com/wp-content/uploads/2021/03/Casos-de-Exito-03.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-mincultura/'},
+{id:65,ini:'CH',n:'Challenger – Retail Digital',co:'Colombia',y:'2021',ind:'Retail',se:'Enterprise',pr:'Google Workspace',de:'Challenger necesitaba modernizar herramientas de colaboración y ejecutar su estrategia digital.',so:'Google Workspace habilitando herramientas de colaboración y gestión digital.',rs:'Ambiente digital habilitado y mejora en toma de decisiones comerciales.',te:'Implementamos un ambiente digital que facilita la toma de decisiones comerciales. — Christian Hernández, Jefe TICs, Challenger',img:'https://servinformacion.com/wp-content/uploads/2021/03/Casos-de-Exito-02-300x300.png.webp',url:'https://servinformacion.com/estudios-de-caso/challenger-caso-de-uso/'},
+{id:66,ini:'PG',n:'Pagos GDE – Plataforma de Pagos Digitales',co:'Colombia',y:'2021',ind:'Financiero',se:'SMB',pr:'Soluciones Cloud',de:'Pagos GDE necesitaba construir una plataforma de pagos digitales escalable y segura.',so:'Google Cloud para la construcción garantizando escalabilidad, seguridad y alta disponibilidad.',rs:'Plataforma operativa con alta disponibilidad y procesamiento seguro de transacciones.',te:'Con Google Cloud construimos una plataforma de pagos robusta y escalable. — Equipo Directivo, Pagos GDE',img:'https://servinformacion.com/wp-content/uploads/2021/03/Casos-de-Exito-01.png.webp',url:'https://servinformacion.com/estudios-de-caso/caso-de-exito-pagos-gde/'},
+{id:67,ini:'AD',n:'Sapiencia Medellín – Educación Superior Digital',co:'Colombia',y:'2021',ind:'Educación',se:'Gobierno',pr:'Google Workspace',de:'Sapiencia necesitaba digitalizar procesos y mejorar la atención a beneficiarios de becas.',so:'Google Workspace for Education para digitalizar procesos administrativos y comunicación con estudiantes.',rs:'Digitalización de procesos de becas y reducción de tiempos de trámite.',te:'Google Workspace transformó la gestión de Sapiencia mejorando la atención a los jóvenes. — Equipo Directivo, Sapiencia',img:'https://servinformacion.com/wp-content/uploads/2021/08/exito-sapiencia-300x300.png.webp',url:'https://servinformacion.com/estudios-de-caso/agencia-de-educacion-superior-de-medellin-sapiencia/'}
+];
+
+// Colores por segmento
+var SEG_COLORS = {Enterprise:'var(--info)',Gobierno:'var(--brand)',SMB:'var(--warn)'};
+var SEG_BG = {Enterprise:'var(--info-bg)',Gobierno:'var(--brand-light)',SMB:'var(--warn-bg)'};
+
+function renderCasos() {
+  var year    = document.getElementById('f-year').value;
+  var country = document.getElementById('f-country').value;
+  var ind     = document.getElementById('f-industry').value;
+  var seg     = document.getElementById('f-segment').value;
+  var sol     = document.getElementById('f-sol').value;
+
+  var filtered = DB.filter(function(c) {
+    return (!year    || c.y  === year)
+        && (!country || c.co === country)
+        && (!ind     || c.ind === ind)
+        && (!seg     || c.se  === seg)
+        && (!sol     || c.pr  === sol);
+  });
+
+  var count = document.getElementById('casos-count');
+  if (count) count.textContent = 'Mostrando ' + filtered.length + ' de ' + DB.length;
+
+  var grid  = document.getElementById('casos-grid');
+  var empty = document.getElementById('casos-empty');
+  if (!grid) return;
+
+  if (filtered.length === 0) {
+    grid.style.display  = 'none';
+    empty.style.display = 'block';
+    return;
+  }
+  grid.style.display  = 'grid';
+  empty.style.display = 'none';
+
+  grid.innerHTML = filtered.map(function(c) {
+    var bgSeg = SEG_BG[c.se]  || 'var(--bg)';
+    var clSeg = SEG_COLORS[c.se] || 'var(--text-3)';
+    return '<div class="caso-card" onclick="openCaso(' + c.id + ')" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;cursor:pointer;transition:box-shadow .2s,border-color .2s,transform .2s;box-shadow:var(--shadow-xs)">'
+      + '<div style="position:relative;overflow:hidden;height:130px;background:#e8ecf0">'
+      + '<img src="' + c.img + '" alt="' + c.n + '" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display=\'none\'">'
+      + '<span style="position:absolute;top:8px;right:8px;font-size:10px;font-weight:600;padding:3px 8px;border-radius:20px;background:' + bgSeg + ';color:' + clSeg + '">' + c.se + '</span>'
+      + '</div>'
+      + '<div style="padding:12px 14px">'
+      + '<div style="font-size:13px;font-weight:600;color:var(--text-1);line-height:1.3;margin-bottom:6px">' + c.n + '</div>'
+      + '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">'
+      + '<span style="font-size:10px;padding:2px 7px;border-radius:10px;background:var(--brand-light);color:var(--brand-dark);font-weight:500">' + c.co + '</span>'
+      + '<span style="font-size:10px;padding:2px 7px;border-radius:10px;background:var(--bg);border:1px solid var(--border);color:var(--text-2);font-weight:500">' + c.ind + '</span>'
+      + '</div>'
+      + '<div style="display:flex;align-items:center;justify-content:space-between">'
+      + '<span style="font-size:11px;color:var(--text-3)">' + c.pr + '</span>'
+      + '<span style="font-size:11px;font-weight:600;color:var(--brand)">' + c.y + '</span>'
+      + '</div>'
+      + '</div>'
+      + '</div>';
+  }).join('');
+
+  // Hover effect
+  grid.querySelectorAll('.caso-card').forEach(function(card) {
+    card.addEventListener('mouseenter', function() {
+      this.style.boxShadow = 'var(--shadow-md)';
+      this.style.borderColor = 'var(--border-mid)';
+      this.style.transform = 'translateY(-2px)';
+    });
+    card.addEventListener('mouseleave', function() {
+      this.style.boxShadow = 'var(--shadow-xs)';
+      this.style.borderColor = 'var(--border)';
+      this.style.transform = 'translateY(0)';
+    });
+  });
+}
+
+function openCaso(id) {
+  var c = DB.find(function(x){ return x.id === id; });
+  if (!c) return;
+  var bgSeg = SEG_BG[c.se]  || 'var(--bg)';
+  var clSeg = SEG_COLORS[c.se] || 'var(--text-3)';
+  document.getElementById('caso-modal-content').innerHTML =
+    '<div style="position:relative">'
+    + '<img src="' + c.img + '" alt="' + c.n + '" style="width:100%;height:200px;object-fit:cover;display:block" onerror="this.style.display=\'none\'">'
+    + '<button onclick="closeCasoModal()" style="position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.5);border:none;color:white;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center">✕</button>'
+    + '</div>'
+    + '<div style="padding:24px 28px 28px">'
+    + '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">'
+    + '<span style="font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:' + bgSeg + ';color:' + clSeg + '">' + c.se + '</span>'
+    + '<span style="font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:var(--brand-light);color:var(--brand-dark)">' + c.co + '</span>'
+    + '<span style="font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:var(--bg);border:1px solid var(--border);color:var(--text-2)">' + c.ind + '</span>'
+    + '<span style="font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:var(--bg);border:1px solid var(--border);color:var(--brand)">' + c.y + '</span>'
+    + '</div>'
+    + '<h2 style="font-size:20px;font-weight:600;color:var(--text-1);letter-spacing:-.2px;margin-bottom:6px;line-height:1.3">' + c.n + '</h2>'
+    + '<div style="font-size:12px;color:var(--brand);font-weight:500;margin-bottom:20px">' + c.pr + '</div>'
+    + '<div style="display:flex;flex-direction:column;gap:16px">'
+    + modal_section('🎯 Desafío', c.de)
+    + modal_section('💡 Solución', c.so)
+    + modal_section('📈 Resultados', c.rs)
+    + (c.te ? '<div style="background:var(--brand-light);border-left:3px solid var(--brand);border-radius:0 var(--r) var(--r) 0;padding:14px 16px"><p style="font-size:13px;color:var(--brand-dark);line-height:1.6;font-style:italic">"' + c.te + '"</p></div>' : '')
+    + '</div>'
+    + '<div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);display:flex;gap:10px;justify-content:flex-end">'
+    + '<button onclick="closeCasoModal()" style="padding:9px 18px;border:1px solid var(--border-mid);border-radius:var(--r);font-size:13px;font-weight:500;background:var(--surface);color:var(--text-2);cursor:pointer;font-family:\'DM Sans\',sans-serif">Cerrar</button>'
+    + '<a href="' + c.url + '" target="_blank" rel="noopener" style="padding:9px 18px;border-radius:var(--r);font-size:13px;font-weight:500;background:var(--brand);color:white;text-decoration:none;display:inline-flex;align-items:center;gap:6px">Ver caso completo ↗</a>'
+    + '</div>'
+    + '</div>';
+  document.getElementById('caso-modal').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+
+function modal_section(title, text) {
+  return '<div>'
+    + '<div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin-bottom:6px">' + title + '</div>'
+    + '<p style="font-size:13px;color:var(--text-2);line-height:1.65">' + text + '</p>'
+    + '</div>';
+}
+
+function closeCasoModal(e) {
+  if (e && e.target !== document.getElementById('caso-modal')) return;
+  document.getElementById('caso-modal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function clearCasosFilters() {
+  ['f-year','f-country','f-industry','f-segment','f-sol'].forEach(function(id){
+    document.getElementById(id).value = '';
+  });
+  renderCasos();
+}
+
+// ══════════════════════════════════════
+// NAVEGACIÓN SPA
+// ══════════════════════════════════════
 function nav(item) {
   if (!item) return;
   const pageId = item.dataset.page;
@@ -612,11 +875,253 @@ function switchTab(prefix, id, btn) {
 
 // ── Fecha dinámica ──
 (function(){
-  const d = new Date();
-  const dias = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
-  const meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-  const el = document.getElementById('date-line');
+  var d = new Date();
+  var dias = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+  var meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  var el = document.getElementById('date-line');
   if (el) el.textContent = dias[d.getDay()] + ' ' + d.getDate() + ' de ' + meses[d.getMonth()] + ' · 20 soluciones · 7 países activos';
+})();
+
+// ── Inicializar casos al navegar a esa sección
+document.querySelectorAll('.sb-item[data-page="casos"]').forEach(function(el){
+  el.addEventListener('click', function(){ setTimeout(renderCasos, 80); });
+});
+
+// ── Cerrar modal con Escape ──
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape') { document.getElementById('caso-modal').style.display='none'; document.body.style.overflow=''; }
+});
+
+// ══════════════════════════════════════
+// SISTEMA DE IDIOMAS (ES / PT-BR)
+// ══════════════════════════════════════
+var LANGS = {
+  es: {
+    // Meta
+    page_title:'Hub Comercial · Servinformación',
+    // Sidebar
+    hub_sub:'Hub Comercial', nav_principal:'Principal', nav_dashboard:'Dashboard',
+    nav_casos:'Casos de éxito', nav_playbook:'Sales Playbook', nav_landings:'Landing Pages',
+    nav_conocimiento:'Conocimiento', nav_entrenamiento:'Entrenamiento',
+    nav_recursos_sec:'Más recursos', nav_recursos:'Recursos adicionales', ai_btn:'Asistente IA',
+    // Topbar
+    search_ph:'Buscar casos, materiales, soluciones…',
+    // Dashboard
+    dash_hello:'Hola,', dash_team:'Equipo Comercial',
+    date_prefix:'Hub Comercial · Servinformación · 20 soluciones · 7 países activos',
+    kpi_sol:'Soluciones activas', kpi_sol_trend:'+2 este mes ↑',
+    kpi_pais:'Países con casos', kpi_pais_trend:'+1 país ↑',
+    kpi_mat:'Materiales activos', kpi_mat_trend:'+3 esta sem ↑',
+    kpi_casos:'Casos de éxito', kpi_casos_trend:'Meta: 100',
+    dash_featured:'Caso destacado', tag_new:'Nuevo',
+    btn_ver_casos:'Ver casos', featured_desc:'Migración de 33 modelos analíticos a Google Cloud, reduciendo tiempos de procesamiento en 85%. Proyecto completado en 6 meses.',
+    dash_quick:'Acceso rápido', dash_recent:'Casos recientes', dash_activity:'Actividad reciente',
+    qn_casos_sub:'67 casos · 2021–2026 · 7 países', qn_play_sub:'Paso a paso para cerrar deals',
+    qn_land_sub:'Logística · Agénticas IA · MVP', qn_train:'Plan de entrenamiento',
+    qn_train_sub:'Geomarketing · Sitidata · Datarutas',
+    btn_ver_todos:'Ver todos →',
+    act_casos:'casos de éxito', act_loaded:'cargados desde la base de datos oficial',
+    act_today:'Hoy', act_avail:'Casos disponibles:',
+    act_updated:'actualizó el Playbook de', act_1h:'Hace 1 hora', act_2h:'Hace 2 horas',
+    act_nb:'cuaderno actualizado con nuevos casos',
+    ai_title:'Asistente Comercial IA · Claude', ai_connected:'Conectado',
+    ai_intro:'Soy tu Asistente Comercial. Puedo buscar casos por país o industria, ayudarte a crear propuestas y argumentar objeciones de precio.',
+    ai_ph:'Escribe tu consulta…',
+    chip_1:'Presencia por país', chip_2:'Crear propuesta', chip_3:'Objeción precio',
+    chip_4:'Casos en gobierno', chip_5:'Casos financiero CO', chip_6:'Recomendar solución logística',
+    // Casos
+    bc_home:'Inicio', casos_title_em:'Éxito',
+    casos_sub:'67 casos documentados · 2021–2026 · 7 países · Haz clic en cualquier caso para ver la ficha completa',
+    btn_add_caso:'+ Agregar caso',
+    f_all_years:'📅 Todos los años', f_all_countries:'🌎 Todos los países',
+    f_industry:'🏭 Industria', f_segment:'🏷 Segmento', f_solution:'⚙️ Solución',
+    ind_fin:'Financiero', ind_edu:'Educación', ind_sal:'Salud', ind_gov:'Gobierno',
+    ind_tec:'Tecnología', ind_log:'Logística', ind_ene:'Energía y Utilities',
+    ind_mfg:'Manufactura', ind_tel:'Telecomunicaciones',
+    sol_mig:'Migración a la nube', sol_gov:'Soluciones Gobierno',
+    btn_clear:'✕ Limpiar', btn_clear_filters:'Limpiar filtros',
+    empty_title:'Sin resultados', empty_sub:'Intenta con otros filtros',
+    casos_showing:'Mostrando', casos_of:'de',
+    // Modal
+    modal_challenge:'🎯 Desafío', modal_solution:'💡 Solución',
+    modal_results:'📈 Resultados', modal_close:'Cerrar', modal_full:'Ver caso completo ↗',
+    // Playbook
+    play_sub:'Guías y templates para cerrar deals · Abre directamente en Google Slides',
+    play_drive:'Ver todos en Drive', play_avail:'disponibles', play_soon_count:'próximamente',
+    play_fmt:'Google Slides · Abre en nueva pestaña',
+    play_avail_lbl:'Disponibles ahora', play_soon_lbl:'Próximamente',
+    play_open:'Abrir playbook ↗', play_badge_live:'Disponible', play_badge_soon:'Próximamente',
+    play_soon_msg:'En preparación',
+    play_help:'¿No sabes cuál playbook usar? Cuéntale al Asistente IA la industria y el tamaño del cliente — te recomienda el enfoque más efectivo.',
+    play_help_btn:'Consultar al asistente',
+    // Landings
+    land_sub:'Páginas de producto para compartir con prospectos · Selecciona una categoría',
+    land_tab1:'🚛 Logística y Transporte', land_tab2:'🤖 Soluciones Agénticas IA', land_tab3:'💡 Innovación MVP',
+    land_open:'Abrir ↗', land_badge_live:'Activa', land_soon_msg:'En preparación',
+    // NotebookLM
+    nb_sub:'Cuadernos de conocimiento por solución · Actualización continua · Abre en nueva pestaña',
+    nb_tab1:'Soluciones Servinformación', nb_tab2:'Soluciones Google',
+    nb_open:'Abrir cuaderno ↗', nb_badge:'LIVE',
+    // Entrenamiento
+    train_sub:'Selecciona un curso para acceder a Google Classroom · Registra tu avance ahí mismo',
+    train_summary:'cursos disponibles · Registra tu avance directamente en Google Classroom',
+    train_of:'de', train_link:'Ir a Google Classroom ↗', train_cont:'Continuar en Classroom ↗',
+    train_start:'Empezar en Classroom ↗', train_done:'Completado', train_prog:'En progreso',
+    train_none:'No iniciado', train_help:'¿No sabes por dónde empezar? El Asistente IA puede recomendarte cuál curso priorizar según tu territorio.',
+    // Recursos
+    rec_sub:'Herramientas y plataformas del ecosistema Servinformación · Abre en nueva pestaña',
+    rec_grp1:'Plataformas internas', rec_grp2:'Solicitudes y formularios', rec_grp3:'Seguridad y compliance',
+    rec_serv_name:'Servicios Profesionales', rec_serv_desc:'Portal de servicios HIL — metodologías de implementación y alcances por proyecto',
+    rec_ens_name:'Servi te enseña', rec_ens_desc:'Plataforma de capacitación interna — tutoriales, videos y rutas de aprendizaje',
+    rec_odoo_name:'Odoo', rec_odoo_desc:'ERP — gestión de proyectos, CRM y operaciones internas de Servinformación',
+    rec_mkt_name:'Brief de Marketing', rec_mkt_desc:'Solicita piezas gráficas, contenido o campañas al equipo de marketing',
+    rec_cyb_name:'Ciberseguridad', rec_cyb_desc:'Guías de posicionamiento para clientes en sectores regulados — banca, salud, gobierno',
+    // Misc
+    soon:'Función disponible próximamente'
+  },
+  pt: {
+    page_title:'Hub Comercial · Servinformação',
+    hub_sub:'Hub Comercial', nav_principal:'Principal', nav_dashboard:'Dashboard',
+    nav_casos:'Casos de sucesso', nav_playbook:'Sales Playbook', nav_landings:'Landing Pages',
+    nav_conocimiento:'Conhecimento', nav_entrenamiento:'Treinamento',
+    nav_recursos_sec:'Mais recursos', nav_recursos:'Recursos adicionais', ai_btn:'Assistente IA',
+    search_ph:'Buscar casos, materiais, soluções…',
+    dash_hello:'Olá,', dash_team:'Equipe Comercial',
+    date_prefix:'Hub Comercial · Servinformação · 20 soluções · 7 países ativos',
+    kpi_sol:'Soluções ativas', kpi_sol_trend:'+2 este mês ↑',
+    kpi_pais:'Países com casos', kpi_pais_trend:'+1 país ↑',
+    kpi_mat:'Materiais ativos', kpi_mat_trend:'+3 esta sem ↑',
+    kpi_casos:'Casos de sucesso', kpi_casos_trend:'Meta: 100',
+    dash_featured:'Caso em destaque', tag_new:'Novo',
+    btn_ver_casos:'Ver casos', featured_desc:'Migração de 33 modelos analíticos para o Google Cloud, reduzindo os tempos de processamento em 85%. Projeto concluído em 6 meses.',
+    dash_quick:'Acesso rápido', dash_recent:'Casos recentes', dash_activity:'Atividade recente',
+    qn_casos_sub:'67 casos · 2021–2026 · 7 países', qn_play_sub:'Passo a passo para fechar negócios',
+    qn_land_sub:'Logística · IA Agêntica · MVP', qn_train:'Plano de treinamento',
+    qn_train_sub:'Geomarketing · Sitidata · Datarutas',
+    btn_ver_todos:'Ver todos →',
+    act_casos:'casos de sucesso', act_loaded:'carregados da base de dados oficial',
+    act_today:'Hoje', act_avail:'Casos disponíveis:',
+    act_updated:'atualizou o Playbook de', act_1h:'Há 1 hora', act_2h:'Há 2 horas',
+    act_nb:'caderno atualizado com novos casos',
+    ai_title:'Assistente Comercial IA · Claude', ai_connected:'Conectado',
+    ai_intro:'Sou seu Assistente Comercial. Posso buscar casos por país ou setor, ajudá-lo a criar propostas e argumentar objeções de preço.',
+    ai_ph:'Digite sua consulta…',
+    chip_1:'Presença por país', chip_2:'Criar proposta', chip_3:'Objeção de preço',
+    chip_4:'Casos no governo', chip_5:'Casos financeiro CO', chip_6:'Recomendar solução logística',
+    bc_home:'Início', casos_title_em:'Sucesso',
+    casos_sub:'67 casos documentados · 2021–2026 · 7 países · Clique em qualquer caso para ver a ficha completa',
+    btn_add_caso:'+ Adicionar caso',
+    f_all_years:'📅 Todos os anos', f_all_countries:'🌎 Todos os países',
+    f_industry:'🏭 Setor', f_segment:'🏷 Segmento', f_solution:'⚙️ Solução',
+    ind_fin:'Financeiro', ind_edu:'Educação', ind_sal:'Saúde', ind_gov:'Governo',
+    ind_tec:'Tecnologia', ind_log:'Logística', ind_ene:'Energia e Utilities',
+    ind_mfg:'Manufatura', ind_tel:'Telecomunicações',
+    sol_mig:'Migração para a nuvem', sol_gov:'Soluções Governo',
+    btn_clear:'✕ Limpar', btn_clear_filters:'Limpar filtros',
+    empty_title:'Sem resultados', empty_sub:'Tente com outros filtros',
+    casos_showing:'Mostrando', casos_of:'de',
+    modal_challenge:'🎯 Desafio', modal_solution:'💡 Solução',
+    modal_results:'📈 Resultados', modal_close:'Fechar', modal_full:'Ver caso completo ↗',
+    play_sub:'Guias e templates para fechar negócios · Abre diretamente no Google Slides',
+    play_drive:'Ver todos no Drive', play_avail:'disponíveis', play_soon_count:'em breve',
+    play_fmt:'Google Slides · Abre em nova aba',
+    play_avail_lbl:'Disponíveis agora', play_soon_lbl:'Em breve',
+    play_open:'Abrir playbook ↗', play_badge_live:'Disponível', play_badge_soon:'Em breve',
+    play_soon_msg:'Em preparação',
+    play_help:'Não sabe qual playbook usar? Pergunte ao Assistente IA sobre o setor e tamanho do cliente — ele recomenda a abordagem mais eficaz.',
+    play_help_btn:'Consultar o assistente',
+    land_sub:'Páginas de produto para compartilhar com prospects · Selecione uma categoria',
+    land_tab1:'🚛 Logística e Transporte', land_tab2:'🤖 Soluções Agênticas IA', land_tab3:'💡 Inovação MVP',
+    land_open:'Abrir ↗', land_badge_live:'Ativa', land_soon_msg:'Em preparação',
+    nb_sub:'Cadernos de conhecimento por solução · Atualização contínua · Abre em nova aba',
+    nb_tab1:'Soluções Servinformação', nb_tab2:'Soluções Google',
+    nb_open:'Abrir caderno ↗', nb_badge:'AO VIVO',
+    train_sub:'Selecione um curso para acessar o Google Classroom · Registre seu progresso lá',
+    train_summary:'cursos disponíveis · Registre seu progresso diretamente no Google Classroom',
+    train_of:'de', train_link:'Ir ao Google Classroom ↗', train_cont:'Continuar no Classroom ↗',
+    train_start:'Começar no Classroom ↗', train_done:'Concluído', train_prog:'Em andamento',
+    train_none:'Não iniciado', train_help:'Não sabe por onde começar? O Assistente IA pode recomendar qual curso priorizar de acordo com seu território.',
+    rec_sub:'Ferramentas e plataformas do ecossistema Servinformação · Abre em nova aba',
+    rec_grp1:'Plataformas internas', rec_grp2:'Solicitações e formulários', rec_grp3:'Segurança e compliance',
+    rec_serv_name:'Serviços Profissionais', rec_serv_desc:'Portal de serviços HIL — metodologias de implementação e escopos por projeto',
+    rec_ens_name:'Servi te ensina', rec_ens_desc:'Plataforma de capacitação interna — tutoriais, vídeos e trilhas de aprendizagem',
+    rec_odoo_name:'Odoo', rec_odoo_desc:'ERP — gestão de projetos, CRM e operações internas da Servinformação',
+    rec_mkt_name:'Brief de Marketing', rec_mkt_desc:'Solicite peças gráficas, conteúdo ou campanhas à equipe de marketing',
+    rec_cyb_name:'Cibersegurança', rec_cyb_desc:'Guias de posicionamento para clientes em setores regulados — bancos, saúde, governo',
+    soon:'Função disponível em breve'
+  }
+};
+
+var currentLang = 'es';
+
+function T(key) {
+  return (LANGS[currentLang] && LANGS[currentLang][key]) || (LANGS.es[key]) || key;
+}
+
+function setLang(lang) {
+  currentLang = lang;
+  document.getElementById('html-root').lang = lang === 'pt' ? 'pt-BR' : 'es';
+  document.getElementById('page-title').textContent = T('page_title');
+  localStorage.setItem('hub_lang', lang);
+
+  // Toggle button styles
+  document.getElementById('lang-es').classList.toggle('on', lang === 'es');
+  document.getElementById('lang-pt').classList.toggle('on', lang === 'pt');
+
+  // Translate all data-i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    var val = T(key);
+    // Preserve inner HTML for elements with strong tags
+    if (key === 'ai_intro') {
+      el.innerHTML = lang === 'pt'
+        ? 'Sou seu <strong>Assistente Comercial</strong>. Posso buscar casos por país ou setor, ajudá-lo a criar propostas e argumentar objeções de preço.'
+        : 'Soy tu <strong>Asistente Comercial</strong>. Puedo buscar casos por país o industria, ayudarte a crear propuestas y argumentar objeciones de precio.';
+    } else {
+      el.textContent = val;
+    }
+  });
+
+  // Translate placeholders
+  document.querySelectorAll('[data-i18n-ph]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n-ph');
+    el.placeholder = T(key);
+  });
+
+  // Update date line
+  updateDateLine();
+
+  // Re-render dynamic sections
+  renderCasos();
+}
+
+function detectLang() {
+  var saved = localStorage.getItem('hub_lang');
+  if (saved) return saved;
+  var nav = (navigator.language || navigator.userLanguage || 'es').toLowerCase();
+  return nav.startsWith('pt') ? 'pt' : 'es';
+}
+
+// ── Fecha/data dinámica ──
+function updateDateLine() {
+  var d = new Date();
+  var el = document.getElementById('date-line');
+  if (!el) return;
+  if (currentLang === 'pt') {
+    var dias = ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'];
+    var meses = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+    el.textContent = dias[d.getDay()] + ', ' + d.getDate() + ' de ' + meses[d.getMonth()] + ' · ' + T('date_prefix');
+  } else {
+    var diasEs = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+    var mesesEs = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+    el.textContent = diasEs[d.getDay()] + ' ' + d.getDate() + ' de ' + mesesEs[d.getMonth()] + ' · ' + T('date_prefix');
+  }
+}
+
+// ── Init ──
+(function(){
+  var lang = detectLang();
+  setLang(lang);
 })();
 </script>
 </body>
