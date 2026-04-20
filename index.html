@@ -326,6 +326,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-1);m
     <div class="sb-sec" data-i18n="nav_conocimiento">Conocimiento</div>
     <div class="sb-item" data-page="notebooklm" onclick="nav(this)"><span class="s-ico">🧠</span>NotebookLM</div>
     <div class="sb-item" data-page="entrenamiento" onclick="nav(this)"><span class="s-ico">🎓</span><span data-i18n="nav_entrenamiento">Entrenamiento</span></div>
+    <div class="sb-item" data-page="training" onclick="nav(this)"><span class="s-ico">🏋️</span><span data-i18n="nav_training">Training Time</span></div>
     <div class="sb-sec" data-i18n="nav_recursos_sec">Más recursos</div>
     <div class="sb-item" data-page="recursos" onclick="nav(this)"><span class="s-ico">📎</span><span data-i18n="nav_recursos">Recursos adicionales</span></div>
   </nav>
@@ -399,6 +400,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-1);m
           <div class="qn" onclick="nav(document.querySelector('[data-page=playbook]'))"><div class="qn-ico" style="background:var(--brand-light)">📘</div><div><div class="qn-name" data-i18n="nav_playbook">Sales Playbook</div><div class="qn-sub" data-i18n="qn_play_sub">Paso a paso para cerrar deals</div></div><span class="qn-arr">›</span></div>
           <div class="qn" onclick="nav(document.querySelector('[data-page=landings]'))"><div class="qn-ico" style="background:var(--warn-bg)">📊</div><div><div class="qn-name" data-i18n="nav_landings">Landing Pages</div><div class="qn-sub" data-i18n="qn_land_sub">Logística · Agénticas IA · MVP</div></div><span class="qn-arr">›</span></div>
           <div class="qn" onclick="nav(document.querySelector('[data-page=entrenamiento]'))"><div class="qn-ico" style="background:var(--purple-bg)">🎓</div><div><div class="qn-name" data-i18n="qn_train">Plan de entrenamiento</div><div class="qn-sub" data-i18n="qn_train_sub">Geomarketing · Sitidata · Datarutas</div></div><span class="qn-arr">›</span></div>
+          <div class="qn" onclick="nav(document.querySelector('[data-page=training]'))"><div class="qn-ico" style="background:#fff0f0">🏋️</div><div><div class="qn-name" data-i18n="nav_training">Training Time</div><div class="qn-sub" data-i18n="qn_training_sub">Biblioteca de formación · Google Drive</div></div><span class="qn-arr">›</span></div>
         </div>
       </div>
       <div class="card">
@@ -528,7 +530,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-1);m
       </a>
     </div>
     <div class="stats-bar">
-      <div class="stat-it"><div class="stat-dot sd-on"></div><strong>3</strong> <span data-i18n="play_avail">disponibles</span></div>
+      <div class="stat-it"><div class="stat-dot sd-on"></div><strong>4</strong> <span data-i18n="play_avail">disponibles</span></div>
       <div class="stat-div"></div>
       <div class="stat-it"><div class="stat-dot sd-off"></div><strong>5</strong> <span data-i18n="play_soon_count">próximamente</span></div>
       <div class="stat-div"></div>
@@ -539,6 +541,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-1);m
       <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,var(--brand),var(--brand-mid))"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--brand-light)">🧠</div><span class="pb-badge-live" data-i18n="play_badge_live">Disponible</span></div><div><div class="pb-name">byCerebro</div><div class="pb-desc">Funcionalidades, precios por país y argumentarios para cerrar con el pitch correcto.</div></div><div class="pb-tags"><span class="pb-tag">Funcionalidades</span><span class="pb-tag">Precios</span><span class="pb-tag">Argumentarios</span><span class="pb-tag">Casos de uso</span></div></div><div class="pb-ft"><span class="pb-filetype">Google Slides</span><a href="https://docs.google.com/presentation/d/1DgOaPOp1mZDG2gqaPEkHLnViE52JSTsozqb50l9sXxY/edit?usp=drive_link" target="_blank" rel="noopener" class="pb-open" data-i18n="play_open">Abrir playbook ↗</a></div></div>
       <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,var(--info),#4285f4)"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--info-bg)">💬</div><span class="pb-badge-live" data-i18n="play_badge_live">Disponible</span></div><div><div class="pb-name">LicitChat</div><div class="pb-desc">Guía de venta para oportunidades en licitaciones y sector público.</div></div><div class="pb-tags"><span class="pb-tag">Sector público</span><span class="pb-tag">Licitaciones</span><span class="pb-tag">Pitch</span></div></div><div class="pb-ft"><span class="pb-filetype">Google Slides</span><a href="https://docs.google.com/presentation/d/1mHkNn-j2r6NZj_1trMbo_B6F6DOS5UeeOKgC9VdPlMQ/edit?usp=drive_link" target="_blank" rel="noopener" class="pb-open" data-i18n="play_open">Abrir playbook ↗</a></div></div>
       <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,#1a73e8,#34a853)"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:var(--info-bg)">⚡</div><span class="pb-badge-live" data-i18n="play_badge_live">Disponible</span></div><div><div class="pb-name">Smart1</div><div class="pb-desc">Inteligencia de audiencias, análisis de afluencia y benchmarking competitivo.</div></div><div class="pb-tags"><span class="pb-tag">Audiencias</span><span class="pb-tag">Afluencia</span><span class="pb-tag">Benchmark</span></div></div><div class="pb-ft"><span class="pb-filetype">Google Slides</span><a href="https://docs.google.com/presentation/d/1mHkNn-j2r6NZj_1trMbo_B6F6DOS5UeeOKgC9VdPlMQ/edit?usp=drive_link" target="_blank" rel="noopener" class="pb-open" data-i18n="play_open">Abrir playbook ↗</a></div></div>
+      <div class="pb-card live"><div class="pb-accent" style="background:linear-gradient(90deg,#c0392b,#e74c3c)"></div><div class="pb-bd"><div class="pb-top"><div class="pb-ico" style="background:#fce8e8">🔐</div><span class="pb-badge-live" data-i18n="play_badge_live">Disponible</span></div><div><div class="pb-name">Security Command Center</div><div class="pb-desc">Sales Play completo para SCC: versiones Standard, Premium y Enterprise, segmentación por industria, competencia y pitch telefónico.</div></div><div class="pb-tags"><span class="pb-tag">Ciberseguridad</span><span class="pb-tag">SCC</span><span class="pb-tag">CNAPP</span><span class="pb-tag">Multinube</span></div></div><div class="pb-ft"><span class="pb-filetype">Google Slides · Paula Murcia · Cloud Strategy</span><a href="https://docs.google.com/presentation/d/1s2IGqlM8rR5NjNPtmZdaFCxYHz2pmBQMbKBt5pjpz0Y/edit?usp=sharing" target="_blank" rel="noopener" class="pb-open" data-i18n="play_open">Abrir playbook ↗</a></div></div>
     </div>
     <div class="slbl" data-i18n="play_soon_lbl">Próximamente</div>
     <div class="pb-grid">
@@ -624,6 +627,99 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-1);m
       <div class="course-card"><div class="course-side" style="background:var(--border-mid)"></div><div class="course-body"><div class="course-ico" style="background:var(--bg)">🚗</div><div class="course-info"><div class="course-name">Datarutas</div><div class="course-desc">Optimiza rutas de distribución y gestiona territorios de ventas con datos geoespaciales. Asignación de zonas y KPIs de eficiencia de flota.</div><a href="https://classroom.google.com/c/NjgyMjgyOTU3MzU4" target="_blank" rel="noopener" class="course-link"data-i18n="train_start">Empezar en Classroom ↗</a></div><div class="course-prog"><div class="prog-pct p-none">0%</div><div class="prog-track"><div class="prog-fill pf-none" style="width:0%"></div></div><div class="prog-status" data-i18n="train_none">No iniciado</div></div></div></div>
     </div>
     <div class="help-banner"><div class="help-ico">💡</div><div class="help-txt"><strong>¿No sabes por dónde empezar?</strong> El Asistente IA puede recomendarte cuál curso priorizar según tu territorio y las soluciones que más vendes.</div></div>
+  </section>
+
+
+  <!-- ══════════════════════════
+       PAGE: TRAINING TIME
+  ══════════════════════════ -->
+  <section class="page" id="page-training">
+    <nav class="bc"><button class="bc-link" onclick="nav(document.querySelector('[data-page=dashboard]'))">🏠 <span data-i18n="bc_home">Inicio</span></button><span class="bc-sep">›</span><span class="bc-cur" data-i18n="nav_training">Training Time</span></nav>
+
+    <div class="pg-hd">
+      <div>
+        <h1>Training <em>Time</em> 🏋️</h1>
+        <p data-i18n="training_sub">Biblioteca completa de formación comercial · Alojada en Google Drive</p>
+      </div>
+      <a href="https://drive.google.com/drive/folders/133Y2T4txfkt3n_WdSntPhyjsMbUY6J5n?usp=drive_link" target="_blank" rel="noopener" class="btn btn-primary">
+        <svg width="14" height="14" viewBox="0 0 87.3 78" xmlns="http://www.w3.org/2000/svg"><path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/><path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0 -1.2 4.5h27.5z" fill="#00ac47"/><path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/><path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d"/><path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc"/><path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 27h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/></svg>
+        <span data-i18n="training_open_drive">Abrir en Google Drive</span>
+      </a>
+    </div>
+
+    <!-- Hero card -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-sm);margin-bottom:24px">
+      <div style="display:flex">
+        <div style="width:4px;background:linear-gradient(180deg,#e63946 0%,#457b9d 100%);flex-shrink:0"></div>
+        <div style="padding:20px 24px;flex:1">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap">
+            <div>
+              <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin-bottom:8px" data-i18n="training_what">¿Qué encontrarás?</div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px">
+                <span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-2);background:var(--bg);padding:6px 12px;border-radius:8px;border:1px solid var(--border)">📹 <span data-i18n="training_cat1">Videos de formación</span></span>
+                <span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-2);background:var(--bg);padding:6px 12px;border-radius:8px;border:1px solid var(--border)">📊 <span data-i18n="training_cat2">Presentaciones</span></span>
+                <span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-2);background:var(--bg);padding:6px 12px;border-radius:8px;border:1px solid var(--border)">📄 <span data-i18n="training_cat3">Guías y manuales</span></span>
+                <span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-2);background:var(--bg);padding:6px 12px;border-radius:8px;border:1px solid var(--border)">🧪 <span data-i18n="training_cat4">Ejercicios prácticos</span></span>
+              </div>
+            </div>
+            <div style="text-align:right;flex-shrink:0">
+              <div style="font-size:28px;font-weight:600;color:var(--brand);line-height:1">Drive</div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:2px" data-i18n="training_updated">Actualización continua</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- How to use -->
+    <div class="slbl" data-i18n="training_how_lbl">Cómo acceder</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:24px">
+
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:18px 20px;box-shadow:var(--shadow-xs)">
+        <div style="width:36px;height:36px;border-radius:9px;background:var(--brand-light);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:12px">1️⃣</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text-1);margin-bottom:5px" data-i18n="training_step1_title">Haz clic en "Abrir en Drive"</div>
+        <div style="font-size:12px;color:var(--text-3);line-height:1.55" data-i18n="training_step1_desc">Accede a la biblioteca completa de materiales de formación del equipo comercial.</div>
+      </div>
+
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:18px 20px;box-shadow:var(--shadow-xs)">
+        <div style="width:36px;height:36px;border-radius:9px;background:var(--info-bg);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:12px">2️⃣</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text-1);margin-bottom:5px" data-i18n="training_step2_title">Navega por carpetas</div>
+        <div style="font-size:12px;color:var(--text-3);line-height:1.55" data-i18n="training_step2_desc">Los materiales están organizados por solución y tipo de contenido para que encuentres lo que necesitas rápido.</div>
+      </div>
+
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:18px 20px;box-shadow:var(--shadow-xs)">
+        <div style="width:36px;height:36px;border-radius:9px;background:var(--warn-bg);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:12px">3️⃣</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text-1);margin-bottom:5px" data-i18n="training_step3_title">Descarga o visualiza</div>
+        <div style="font-size:12px;color:var(--text-3);line-height:1.55" data-i18n="training_step3_desc">Puedes ver los materiales directamente en Drive o descargarlos para usarlos sin conexión en tus reuniones.</div>
+      </div>
+
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:18px 20px;box-shadow:var(--shadow-xs)">
+        <div style="width:36px;height:36px;border-radius:9px;background:var(--purple-bg);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:12px">4️⃣</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text-1);margin-bottom:5px" data-i18n="training_step4_title">Comparte con tu equipo</div>
+        <div style="font-size:12px;color:var(--text-3);line-height:1.55" data-i18n="training_step4_desc">Envía el enlace de cualquier material directamente a colegas o úsalo en sesiones de formación grupal.</div>
+      </div>
+
+    </div>
+
+    <!-- CTA grande -->
+    <div style="background:linear-gradient(135deg,var(--brand-light) 0%,#d4f0e6 100%);border:1px solid rgba(15,110,86,.15);border-radius:var(--r-lg);padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+      <div>
+        <div style="font-size:18px;font-weight:600;color:var(--brand-dark);margin-bottom:6px" data-i18n="training_cta_title">Accede a toda la biblioteca de Training Time</div>
+        <div style="font-size:13px;color:var(--brand);line-height:1.5" data-i18n="training_cta_sub">Videos · Presentaciones · Guías · Ejercicios · Todo en un solo lugar en Google Drive</div>
+      </div>
+      <a href="https://drive.google.com/drive/folders/133Y2T4txfkt3n_WdSntPhyjsMbUY6J5n?usp=drive_link" target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:var(--brand);color:white;border-radius:var(--r);font-size:14px;font-weight:600;text-decoration:none;flex-shrink:0;transition:background .15s"
+         onmouseover="this.style.background='var(--brand-mid)'" onmouseout="this.style.background='var(--brand)'">
+        <svg width="16" height="16" viewBox="0 0 87.3 78" xmlns="http://www.w3.org/2000/svg"><path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#fff"/><path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0 -1.2 4.5h27.5z" fill="#fff"/><path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#fff"/><path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#fff"/><path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#fff"/><path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 27h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#fff"/></svg>
+        <span data-i18n="training_open_drive">Abrir en Google Drive</span>
+      </a>
+    </div>
+
+    <!-- AI tip -->
+    <div class="help-banner" style="margin-top:16px">
+      <div class="help-ico">🤖</div>
+      <div class="help-txt" data-i18n="training_ai_tip"><strong>¿Buscas algo específico?</strong> Pregúntale al Asistente Comercial IA — puede recomendarte qué materiales de formación priorizar según la solución que estás vendiendo o el cliente que tienes en mente.</div>
+    </div>
   </section>
 
   <!-- ══════════════════════════
@@ -977,7 +1073,30 @@ var LANGS = {
     rec_mkt_name:'Brief de Marketing', rec_mkt_desc:'Solicita piezas gráficas, contenido o campañas al equipo de marketing',
     rec_cyb_name:'Ciberseguridad', rec_cyb_desc:'Guías de posicionamiento para clientes en sectores regulados — banca, salud, gobierno',
     // Misc
-    soon:'Función disponible próximamente'
+    soon:'Función disponible próximamente',
+    // Training Time
+    nav_training:'Training Time',
+    qn_training_sub:'Biblioteca de formación · Google Drive',
+    training_sub:'Biblioteca completa de formación comercial · Alojada en Google Drive',
+    training_open_drive:'Abrir en Google Drive',
+    training_what:'¿Qué encontrarás?',
+    training_cat1:'Videos de formación',
+    training_cat2:'Presentaciones',
+    training_cat3:'Guías y manuales',
+    training_cat4:'Ejercicios prácticos',
+    training_updated:'Actualización continua',
+    training_how_lbl:'Cómo acceder',
+    training_step1_title:'Haz clic en "Abrir en Drive"',
+    training_step1_desc:'Accede a la biblioteca completa de materiales de formación del equipo comercial.',
+    training_step2_title:'Navega por carpetas',
+    training_step2_desc:'Los materiales están organizados por solución y tipo de contenido para que encuentres lo que necesitas rápido.',
+    training_step3_title:'Descarga o visualiza',
+    training_step3_desc:'Puedes ver los materiales directamente en Drive o descargarlos para usarlos sin conexión en tus reuniones.',
+    training_step4_title:'Comparte con tu equipo',
+    training_step4_desc:'Envía el enlace de cualquier material directamente a colegas o úsalo en sesiones de formación grupal.',
+    training_cta_title:'Accede a toda la biblioteca de Training Time',
+    training_cta_sub:'Videos · Presentaciones · Guías · Ejercicios · Todo en un solo lugar en Google Drive',
+    training_ai_tip:'¿Buscas algo específico? Pregúntale al Asistente Comercial IA — puede recomendarte qué materiales priorizar según la solución que estás vendiendo.'
   },
   pt: {
     page_title:'Hub Comercial · Servinformação',
@@ -1048,7 +1167,30 @@ var LANGS = {
     rec_odoo_name:'Odoo', rec_odoo_desc:'ERP — gestão de projetos, CRM e operações internas da Servinformação',
     rec_mkt_name:'Brief de Marketing', rec_mkt_desc:'Solicite peças gráficas, conteúdo ou campanhas à equipe de marketing',
     rec_cyb_name:'Cibersegurança', rec_cyb_desc:'Guias de posicionamento para clientes em setores regulados — bancos, saúde, governo',
-    soon:'Função disponível em breve'
+    soon:'Função disponível em breve',
+    // Training Time
+    nav_training:'Training Time',
+    qn_training_sub:'Biblioteca de treinamento · Google Drive',
+    training_sub:'Biblioteca completa de formação comercial · Hospedada no Google Drive',
+    training_open_drive:'Abrir no Google Drive',
+    training_what:'O que você vai encontrar?',
+    training_cat1:'Vídeos de treinamento',
+    training_cat2:'Apresentações',
+    training_cat3:'Guias e manuais',
+    training_cat4:'Exercícios práticos',
+    training_updated:'Atualização contínua',
+    training_how_lbl:'Como acessar',
+    training_step1_title:'Clique em "Abrir no Drive"',
+    training_step1_desc:'Acesse a biblioteca completa de materiais de treinamento da equipe comercial.',
+    training_step2_title:'Navegue pelas pastas',
+    training_step2_desc:'Os materiais estão organizados por solução e tipo de conteúdo para que você encontre o que precisa rapidamente.',
+    training_step3_title:'Baixe ou visualize',
+    training_step3_desc:'Você pode ver os materiais diretamente no Drive ou baixá-los para usar offline em suas reuniões.',
+    training_step4_title:'Compartilhe com sua equipe',
+    training_step4_desc:'Envie o link de qualquer material diretamente para colegas ou use-o em sessões de treinamento em grupo.',
+    training_cta_title:'Acesse toda a biblioteca do Training Time',
+    training_cta_sub:'Vídeos · Apresentações · Guias · Exercícios · Tudo em um só lugar no Google Drive',
+    training_ai_tip:'Procurando algo específico? Pergunte ao Assistente Comercial IA — ele pode recomendar quais materiais priorizar de acordo com a solução que você está vendendo.'
   }
 };
 
